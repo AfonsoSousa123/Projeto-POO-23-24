@@ -1,8 +1,8 @@
 ------------------------------------------------------------------------
-PROJECT TITLE: Barbie Game
-PURPOSE OF PROJECT: Co-op game
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS: Milena Carreira, Tânia Gouveia e Afonso Sousa
-USER INSTRUCTIONS:
+TÍTULO DO PROJETO: Barbie - The Game;
+PROPÓSITO DO PROJETO: Jogo Co-op que se baseia-se no filme “BarbieThe Movie”;
+VERSÃO OU DATA: 24/09/2023;
+COMO INICIAR O PROJETO:
+AUTORES: Milena Carreira, Tânia Gouveia e Afonso Sousa;
+INSTRUÇÕES DO UTILIZADOR:
 ------------------------------------------------------------------------
