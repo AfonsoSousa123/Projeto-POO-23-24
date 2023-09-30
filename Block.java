@@ -1,15 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Ken here.
+ * Write a description of class Block here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Ken extends Player
+public class Block extends Obstacle
 {
     /**
-     * Act - do whatever the Ken wants to do. This method is called whenever
+     * Act - do whatever the Block wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
