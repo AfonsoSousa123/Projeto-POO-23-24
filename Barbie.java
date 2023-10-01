@@ -14,7 +14,7 @@ public class Barbie extends Player
     GifImage bwalkingR = new GifImage("barbie_walking_right.gif");
     GifImage bwalkingL = new GifImage("barbie_walking_left.gif");
     
-    private int Speed = 7;
+    private int Speed = 5;
     private int vSpeed = 0;
     private int acceleration = 2;
     private int jumpStrenght = 12;
