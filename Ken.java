@@ -23,7 +23,16 @@ public class Ken extends Player
     
     public void act()
     {
-        movePlayer(KenKeys.UP, KenKeys.DOWN, KenKeys.LEFT, KenKeys.RIGHT, getX(), getY(), kwalkingL.getCurrentImage(), kwalkingR.getCurrentImage());
+        movePlayer(
+            KenKeys.UP, 
+            KenKeys.DOWN, 
+            KenKeys.LEFT, 
+            KenKeys.RIGHT, 
+            getX(), getY(), 
+            kwalkingL.getCurrentImage(), 
+            kwalkingR.getCurrentImage(),
+            kenF
+        );
         // checkKeys();
         // checkFall();
     }

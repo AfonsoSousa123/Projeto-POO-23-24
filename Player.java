@@ -38,7 +38,8 @@ public class Player extends Actor
         int x, 
         int y, 
         GreenfootImage imageLeft,
-        GreenfootImage imageRight
+        GreenfootImage imageRight,
+        GreenfootImage imageFront
     ) {
         if(Greenfoot.isKeyDown(up)) {
             // setRotation(Direction.UP);
@@ -53,6 +54,8 @@ public class Player extends Actor
         } else if(Greenfoot.isKeyDown(right)) {
             setImage(imageRight);
             moveRight(x,y);
+        } else {
+            setImage(imageFront);
         }
     }
     

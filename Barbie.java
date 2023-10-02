@@ -22,7 +22,17 @@ public class Barbie extends Player
     
     public void act()
     {
-        movePlayer(BarbieKeys.UP, BarbieKeys.DOWN, BarbieKeys.LEFT, BarbieKeys.RIGHT, getX(), getY(), bwalkingL.getCurrentImage(), bwalkingR.getCurrentImage());
+        movePlayer(
+            BarbieKeys.UP, 
+            BarbieKeys.DOWN, 
+            BarbieKeys.LEFT, 
+            BarbieKeys.RIGHT, 
+            getX(), 
+            getY(), 
+            bwalkingL.getCurrentImage(), 
+            bwalkingR.getCurrentImage(),
+            barbieF
+        );
         // checkKeys();
         // checkFall();
     }
