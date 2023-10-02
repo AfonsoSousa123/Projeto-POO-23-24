@@ -14,68 +14,56 @@ public class Barbie extends Player
     GifImage bwalkingR = new GifImage("barbie_walking_right.gif");
     GifImage bwalkingL = new GifImage("barbie_walking_left.gif");
     
-    private int Speed = 5;
-    private int vSpeed = 0;
-    private int acceleration = 2;
-    private int jumpStrenght = 12;
+    class BarbieKeys { // Class to store the values of the Keys for Barbie
+        public static final String UP = "W";
+        public static final String DOWN = "S";
+        public static final String LEFT = "A";
+        public static final String RIGHT = "D";
+    }
     
     public void act()
     {
-        checkKeys();
-        checkFall();
+        // checkKeys();
+        // checkFall();
     }
     
-    private void checkKeys()
-    {
-        //Andar esuqerda e direita
-        if(Greenfoot.isKeyDown("D"))
-        {
-            setImage(bwalkingR.getCurrentImage());
-            moveRight();
-        }
-        else if(Greenfoot.isKeyDown("A"))
-        {
-            setImage(bwalkingL.getCurrentImage());
-            moveLeft();
-        }
-        else
-        {
-            setImage(barbieF);
-        }
+    // private void checkKeys()
+    // {
+        // //Andar esuqerda e direita
+        // if(Greenfoot.isKeyDown(BarbieKeys.RIGHT))
+        // {
+            // setImage(bwalkingR.getCurrentImage());
+            // moveRight();
+        // }
+        // else if(Greenfoot.isKeyDown(BarbieKeys.LEFT))
+        // {
+            // setImage(bwalkingL.getCurrentImage());
+            // moveLeft();
+        // }
+        // else
+        // {
+            // setImage(barbieF);
+        // }
         
-        if(Greenfoot.isKeyDown("W"))
-        {
-            jump();
-        }
-    }
+        // if(Greenfoot.isKeyDown("W"))
+        // {
+            // jump();
+        // }
+    // }
     
-    public void jump()
-    {
-        vSpeed = - jumpStrenght;
-        fall();
-    }
+    // public void jump()
+    // {
+        // vSpeed = - jumpStrenght;
+        // fall();
+    // }
     
-    public void checkFall()
-    {
-        if(!isTouching(Ground.class))
-        {
-            fall();
-        }
-    }
+    // public void checkFall()
+    // {
+        // if(!isTouching(Ground.class))
+        // {
+            // fall();
+        // }
+    // }
     
-    public void fall()
-    {
-        setLocation( getX(), getY() + vSpeed);
-        vSpeed = vSpeed + acceleration;
-    }
     
-    public void moveRight()
-    {
-        setLocation( getX() + Speed, getY());
-    }
-    
-    public void moveLeft()
-    {
-        setLocation( getX() - Speed, getY());
-    }
 }

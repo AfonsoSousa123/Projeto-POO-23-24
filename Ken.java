@@ -13,69 +13,43 @@ public class Ken extends Player
     
     GifImage kwalkingR = new GifImage("ken_walking_right.gif");
     GifImage kwalkingL = new GifImage("ken_walking_left.gif");
+    Actor player;
     
-    private int Speed = 5;
-    private int vSpeed = 0;
-    private int acceleration = 2;
-    private int jumpStrenght = 12;
+    // private int Speed = 5;
+    // private int vSpeed = 0;
+    // private int acceleration = 2;
+    // private int jumpStrenght = 12;
+    
     
     public void act()
     {
-        checkKeys();
-        checkFall();
+        movePlayer(KenKeys.UP, KenKeys.DOWN, KenKeys.LEFT, KenKeys.RIGHT, getX(), getY());
+        // checkKeys();
+        // checkFall();
     }
     
-    private void checkKeys()
-    {
-        //Andar esuqerda e direita 
-        if(Greenfoot.isKeyDown("right"))
-        {
-            setImage(kwalkingR.getCurrentImage());
-            moveRight();
-        }
-        else if(Greenfoot.isKeyDown("left"))
-        {
-            setImage(kwalkingL.getCurrentImage());
-            moveLeft();
-        }
-        else
-        {
-            setImage(kenF);
-        }
+    // private void checkKeys()
+    // {
+        // //Andar esuqerda e direita 
+        // if(Greenfoot.isKeyDown("right"))
+        // {
+            // setImage(kwalkingR.getCurrentImage());
+            // moveRight(getX(),getY());
+        // }
+        // else if(Greenfoot.isKeyDown("left"))
+        // {
+            // setImage(kwalkingL.getCurrentImage());
+            // moveLeft(getX(),getY());
+        // }
+        // else
+        // {
+            // setImage(kenF);
+        // }
         
-        if(Greenfoot.isKeyDown("up"))
-        {
-            jump();
-        }
-    }
-    
-    public void jump()
-    {
-        vSpeed = - jumpStrenght;
-        fall();
-    }
-    
-    public void checkFall()
-    {
-        if(!isTouching(Ground.class))
-        {
-            fall();
-        }
-    }
-    
-    public void fall()
-    {
-        setLocation( getX(), getY() + vSpeed);
-        vSpeed = vSpeed + acceleration;
-    }
-    
-    public void moveRight()
-    {
-        setLocation( getX() + Speed , getY());
-    }
-    
-    public  void moveLeft()
-    {
-        setLocation( getX() - Speed, getY());
-    }
+        // if(Greenfoot.isKeyDown("up"))
+        // {
+            // jump();
+        // }
+    // }
+
 }
