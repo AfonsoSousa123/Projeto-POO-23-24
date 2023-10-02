@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Actor
 {
-    final int speed = 2;
+    public final int speed = 2;
     public int length;
     
     class Direction { // Class to store the values of the rotation for each movement
