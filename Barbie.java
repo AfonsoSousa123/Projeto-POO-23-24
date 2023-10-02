@@ -8,7 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Barbie extends Player
 {
-    //GreenfootImage BARBIE;
     GreenfootImage barbieF = new GreenfootImage("Barbie_front.png");
     
     GifImage bwalkingR = new GifImage("barbie_walking_right.gif");
@@ -23,6 +22,7 @@ public class Barbie extends Player
     
     public void act()
     {
+        movePlayer(BarbieKeys.UP, BarbieKeys.DOWN, BarbieKeys.LEFT, BarbieKeys.RIGHT, getX(), getY(), bwalkingL.getCurrentImage(), bwalkingR.getCurrentImage());
         // checkKeys();
         // checkFall();
     }
@@ -64,6 +64,4 @@ public class Barbie extends Player
             // fall();
         // }
     // }
-    
-    
 }

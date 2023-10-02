@@ -13,8 +13,6 @@ public class Player extends Actor
     public int acceleration = 2;
     public int jumpStrenght = 12;
     public int length;
-    Actor ken;
-    Actor barbie;
     
     // class Direction { // Class to store the values of the rotation for each movement
         // public static final int UP = 270;
@@ -23,16 +21,8 @@ public class Player extends Actor
         // public static final int RIGHT = 0;
     // }
     
-    class KenKeys { // Class to store the values of the Keys for Ken
-        public static final String UP = "up";
-        public static final String DOWN = "down";
-        public static final String LEFT = "left";
-        public static final String RIGHT = "right";
-    }
-    
-    
     public Player() {
-        // movePlayer(KenKeys.UP,KenKeys.DOWN,KenKeys.LEFT,KenKeys.RIGHT, ken.getX(),ken.getY());
+         
     }
     
     public void act()
@@ -40,7 +30,16 @@ public class Player extends Actor
         
     }
     
-    public void movePlayer(string up, string down, string left, string right, int x, int y) {
+    public void movePlayer(
+        String up, 
+        String down, 
+        String left, 
+        String right, 
+        int x, 
+        int y, 
+        GreenfootImage imageLeft,
+        GreenfootImage imageRight
+    ) {
         if(Greenfoot.isKeyDown(up)) {
             // setRotation(Direction.UP);
             jump(x,y);
@@ -49,9 +48,10 @@ public class Player extends Actor
             // movePlayer(x,y);
             fall(x,y);
         } else if(Greenfoot.isKeyDown(left)) {
-            // setRotation(Direction.LEFT);
+            setImage(imageLeft);
             moveLeft(x,y);
         } else if(Greenfoot.isKeyDown(right)) {
+            setImage(imageRight);
             moveRight(x,y);
         }
     }

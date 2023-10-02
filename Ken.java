@@ -13,17 +13,17 @@ public class Ken extends Player
     
     GifImage kwalkingR = new GifImage("ken_walking_right.gif");
     GifImage kwalkingL = new GifImage("ken_walking_left.gif");
-    Actor player;
     
-    // private int Speed = 5;
-    // private int vSpeed = 0;
-    // private int acceleration = 2;
-    // private int jumpStrenght = 12;
-    
+    class KenKeys { // Class to store the values of the Keys for Ken
+        public static final String UP = "up";
+        public static final String DOWN = "down";
+        public static final String LEFT = "left";
+        public static final String RIGHT = "right";
+    }
     
     public void act()
     {
-        movePlayer(KenKeys.UP, KenKeys.DOWN, KenKeys.LEFT, KenKeys.RIGHT, getX(), getY());
+        movePlayer(KenKeys.UP, KenKeys.DOWN, KenKeys.LEFT, KenKeys.RIGHT, getX(), getY(), kwalkingL.getCurrentImage(), kwalkingR.getCurrentImage());
         // checkKeys();
         // checkFall();
     }
