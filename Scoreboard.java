@@ -12,7 +12,10 @@ public class Scoreboard extends Actor
     int width;
     int height = 60;
     int score = 0;
+    int livesCounter = 3;
     GreenfootImage boardImage;
+    GreenfootImage heart = new GreenfootImage("");
+
     
     public void addedToWorld(World w) {
         myWorld = (MarioStyleWorld)w;
