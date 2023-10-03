@@ -14,9 +14,8 @@ public class Scoreboard extends Actor
     int score = 0;
     int livesCounter = 3;
     GreenfootImage boardImage;
-    GreenfootImage heart = new GreenfootImage("");
+    GreenfootImage heart = new GreenfootImage("heart.png");
 
-    
     public void addedToWorld(World w) {
         myWorld = (MarioStyleWorld)w;
         width = myWorld.getWidth();
@@ -26,7 +25,7 @@ public class Scoreboard extends Actor
         setImage(boardImage);
     }
     
-    public void addScore(int amount) {
+    public void addScore(int amount) { // increments the score with the given amount
         score += amount;
     }
     
@@ -36,6 +35,10 @@ public class Scoreboard extends Actor
         boardImage.setColor(Color.WHITE);
         boardImage.setFont(new Font("Arial", 24));
         boardImage.drawString("Score: "+ score, 20, 40);
+        
+        // for(int i=0; i < livesCounter; i++) {
+            // heart;
+        // }
     }
     
     public void act()
@@ -43,7 +46,7 @@ public class Scoreboard extends Actor
         drawScore();
     }
     
-    public void lives() {
-        
+    private void lives(int x, int y) {
+        heart.drawImage(heart, x, y);
     }
 }
