@@ -33,45 +33,5 @@ public class Barbie extends Player
             bwalkingR.getCurrentImage(),
             barbieF
         );
-        // checkKeys();
-        // checkFall();
     }
-    
-    // private void checkKeys()
-    // {
-        // //Andar esuqerda e direita
-        // if(Greenfoot.isKeyDown(BarbieKeys.RIGHT))
-        // {
-            // setImage(bwalkingR.getCurrentImage());
-            // moveRight();
-        // }
-        // else if(Greenfoot.isKeyDown(BarbieKeys.LEFT))
-        // {
-            // setImage(bwalkingL.getCurrentImage());
-            // moveLeft();
-        // }
-        // else
-        // {
-            // setImage(barbieF);
-        // }
-        
-        // if(Greenfoot.isKeyDown("W"))
-        // {
-            // jump();
-        // }
-    // }
-    
-    // public void jump()
-    // {
-        // vSpeed = - jumpStrenght;
-        // fall();
-    // }
-    
-    // public void checkFall()
-    // {
-        // if(!isTouching(Ground.class))
-        // {
-            // fall();
-        // }
-    // }
 }

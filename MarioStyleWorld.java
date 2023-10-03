@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MarioStyleWorld extends World
+public class MarioStyleWorld extends MainWorld
 {
     private int imageCount = 0;
     private GreenfootImage bgImage = new GreenfootImage("space1.jpg");
@@ -18,7 +18,7 @@ public class MarioStyleWorld extends World
     public MarioStyleWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1300, 800, 1); 
+        // super(1300, 800, 1); 
     }
     
     public void act() {

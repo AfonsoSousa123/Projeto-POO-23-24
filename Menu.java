@@ -6,9 +6,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Menu extends World
+public class Menu extends MainWorld
 {
-
     /**
      * Constructor for objects of class Ecra_inicial.
      * 
@@ -16,19 +15,19 @@ public class Menu extends World
     public Menu()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1300, 800, 1);
+        // super(1300, 800, 1);
         populateWorld();
     }
     
     private void populateWorld()
     {
         Titulo titulo = new Titulo();
-        addObject(titulo,349, 193);
+        addObject(titulo, 349, 193);
         
         Desenho desenho = new Desenho();
-        addObject(desenho,226, 568);
+        addObject(desenho, 226, 568);
         
         Botao botao = new Botao();
-        addObject(botao,556, 452);
+        addObject(botao, 556, 452);
     }
 }

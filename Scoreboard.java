@@ -39,4 +39,8 @@ public class Scoreboard extends Actor
     {
         drawScore();
     }
+    
+    public void lives() {
+        
+    }
 }

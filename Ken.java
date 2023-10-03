@@ -33,32 +33,5 @@ public class Ken extends Player
             kwalkingR.getCurrentImage(),
             kenF
         );
-        // checkKeys();
-        // checkFall();
     }
-    
-    // private void checkKeys()
-    // {
-        // //Andar esuqerda e direita 
-        // if(Greenfoot.isKeyDown("right"))
-        // {
-            // setImage(kwalkingR.getCurrentImage());
-            // moveRight(getX(),getY());
-        // }
-        // else if(Greenfoot.isKeyDown("left"))
-        // {
-            // setImage(kwalkingL.getCurrentImage());
-            // moveLeft(getX(),getY());
-        // }
-        // else
-        // {
-            // setImage(kenF);
-        // }
-        
-        // if(Greenfoot.isKeyDown("up"))
-        // {
-            // jump();
-        // }
-    // }
-
 }

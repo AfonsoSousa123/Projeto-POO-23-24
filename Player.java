@@ -13,14 +13,7 @@ public class Player extends Actor
     public int acceleration = 2;
     public int jumpStrenght = 12;
     public int length;
-    
-    // class Direction { // Class to store the values of the rotation for each movement
-        // public static final int UP = 270;
-        // public static final int DOWN = 90;
-        // public static final int LEFT = 180;
-        // public static final int RIGHT = 0;
-    // }
-    
+   
     public Player() {
          
     }
@@ -126,10 +119,18 @@ public class Player extends Actor
         // return 0;
     // }
     
-    // private int adjustOffset(int offset) {
-        // int signOfOffset = (int)Math.signum(offset);
-        // int distanceToFront = length/2;
-        // int adjustAmount = distanceToFront * signOfOffset;
-        // return offset + adjustAmount;
+    private int adjustOffset(int offset) {
+        int signOfOffset = (int)Math.signum(offset);
+        int distanceToFront = length/2;
+        int adjustAmount = distanceToFront * signOfOffset;
+        return offset + adjustAmount;
+    }
+    
+     
+    // class Direction { // Class to store the values of the rotation for each movement
+        // public static final int UP = 270;
+        // public static final int DOWN = 90;
+        // public static final int LEFT = 180;
+        // public static final int RIGHT = 0;
     // }
 }

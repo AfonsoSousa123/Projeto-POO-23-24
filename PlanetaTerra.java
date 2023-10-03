@@ -6,9 +6,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PlanetaTerra extends World
+public class PlanetaTerra extends MainWorld
 {
-
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -16,7 +15,7 @@ public class PlanetaTerra extends World
     public PlanetaTerra()
     {    
         // Create a new world with 1300x800  cells with a cell size of 1x1 pixels.
-        super(1300, 800, 1);
+        // super(1300, 800, 1);
         populateWorld();
     }
     /**
@@ -33,4 +32,5 @@ public class PlanetaTerra extends World
         
         Ground ground = new Ground();
         addObject(ground,944, 797);
-    }}
+    }
+}

@@ -17,4 +17,6 @@ comment7.params=x\ y
 comment7.target=void\ moveRight(int,\ int)
 comment8.params=x\ y
 comment8.target=void\ moveLeft(int,\ int)
-numComments=9
+comment9.params=offset
+comment9.target=int\ adjustOffset(int)
+numComments=10
