@@ -8,12 +8,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Barbie extends Player
 {
-    /**
-     * Act - do whatever the Barbie wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    GreenfootImage barbieF = new GreenfootImage("Barbie_front.png");
+    
+    GifImage bwalkingR = new GifImage("barbie_walking_right.gif");
+    GifImage bwalkingL = new GifImage("barbie_walking_left.gif");
+    
+    class BarbieKeys { // Class to store the values of the Keys for Barbie
+        public static final String UP = "W";
+        public static final String DOWN = "S";
+        public static final String LEFT = "A";
+        public static final String RIGHT = "D";
+    }
+    
     public void act()
     {
-        // Add your action code here.
+        movePlayer(
+            BarbieKeys.UP, 
+            BarbieKeys.DOWN, 
+            BarbieKeys.LEFT, 
+            BarbieKeys.RIGHT, 
+            getX(), 
+            getY(), 
+            bwalkingL.getCurrentImage(), 
+            bwalkingR.getCurrentImage(),
+            barbieF
+        );
     }
 }

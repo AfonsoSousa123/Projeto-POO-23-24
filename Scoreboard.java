@@ -8,12 +8,45 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Scoreboard extends Actor
 {
-    /**
-     * Act - do whatever the Scoreboard wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    MarioStyleWorld myWorld;
+    int width;
+    int height = 60;
+    int score = 0;
+    int livesCounter = 3;
+    GreenfootImage boardImage;
+    GreenfootImage heart = new GreenfootImage("heart.png");
+
+    public void addedToWorld(World w) {
+        myWorld = (MarioStyleWorld)w;
+        width = myWorld.getWidth();
+        boardImage = new GreenfootImage(width, height);
+        boardImage.setColor(Color.BLACK);
+        boardImage.fillRect(0,0,width,height);
+        setImage(boardImage);
+    }
+    
+    public void addScore(int amount) { // increments the score with the given amount
+        score += amount;
+    }
+    
+    public void drawScore() {
+        boardImage.setColor(Color.BLACK);
+        boardImage.fillRect(0,0,width,height);
+        boardImage.setColor(Color.WHITE);
+        boardImage.setFont(new Font("Arial", 24));
+        boardImage.drawString("Score: "+ score, 20, 40);
+        
+        // for(int i=0; i < livesCounter; i++) {
+            // heart;
+        // }
+    }
+    
     public void act()
     {
-        // Add your action code here.
+        drawScore();
+    }
+    
+    private void lives(int x, int y) {
+        heart.drawImage(heart, x, y);
     }
 }

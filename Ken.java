@@ -8,12 +8,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Ken extends Player
 {
-    /**
-     * Act - do whatever the Ken wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    //Images Ken
+    GreenfootImage kenF = new GreenfootImage("Ken_front.png");
+    
+    GifImage kwalkingR = new GifImage("ken_walking_right.gif");
+    GifImage kwalkingL = new GifImage("ken_walking_left.gif");
+    
+    class KenKeys { // Class to store the values of the Keys for Ken
+        public static final String UP = "up";
+        public static final String DOWN = "down";
+        public static final String LEFT = "left";
+        public static final String RIGHT = "right";
+    }
+    
     public void act()
     {
-        // Add your action code here.
+        movePlayer(
+            KenKeys.UP, 
+            KenKeys.DOWN, 
+            KenKeys.LEFT, 
+            KenKeys.RIGHT, 
+            getX(), getY(), 
+            kwalkingL.getCurrentImage(), 
+            kwalkingR.getCurrentImage(),
+            kenF
+        );
     }
 }
