@@ -27,7 +27,6 @@ public class Target extends Actor
     public GreenfootImage resizeImage(GreenfootImage image, int width, int height) {
         image.scale(width, height);
         setImage(image);
-        
         return image;
     }
 }

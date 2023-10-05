@@ -17,7 +17,7 @@ public class MainWorld extends World
     public MainWorld()
     {    
         // Create a new world with 1300x800 cells with a cell size of 1x1 pixels.
-        super(1300, 800, 1, true); // the boolean atribute, is to set the world with bounds
+        super(1300, 800, 1, false); // the boolean atribute, is to set the world with bounds
         sb = new Scoreboard();
         addObject(sb, getWidth()/2, 30); // Adds the Scoreboard onto the Worlds
     }
@@ -27,6 +27,15 @@ public class MainWorld extends World
      */
     public void addScore(int amount) { 
         sb.addScore(amount);
+    }
+    
+    /**
+     * Resizes the given background to the widht and height specified
+     */
+    public GreenfootImage resizeImage(GreenfootImage imageBackground, int width, int height) {
+        imageBackground.scale(width, height);
+        setBackground(imageBackground);
+        return imageBackground;
     }
     
 }

@@ -42,5 +42,8 @@ public class Barbie extends Player
             bwalkingR.getCurrentImage(),
             barbieF
         );
+        checkFall(this, getX(), getY(), 1);
+        fall(getX(), getY());
+        collectStuds();
     }
 }

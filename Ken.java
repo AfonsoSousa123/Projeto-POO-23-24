@@ -43,5 +43,8 @@ public class Ken extends Player
             kwalkingR.getCurrentImage(),
             kenF
         );
+        checkFall(this, getX(), getY(), 1);
+        fall(getX(), getY());
+        collectStuds();
     }
 }
