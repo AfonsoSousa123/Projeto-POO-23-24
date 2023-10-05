@@ -8,12 +8,26 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Target extends Actor
 {
-    /**
-     * Act - do whatever the Target wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act()
     {
         // Add your action code here.
+    }
+    
+    /**
+     * Constructor for the Target class.
+     * 
+     */
+    public Target() {
+        
+    }
+    
+    /**
+     * Resizes the given image to the widht and height specified
+     */
+    public GreenfootImage resizeImage(GreenfootImage image, int width, int height) {
+        image.scale(width, height);
+        setImage(image);
+        
+        return image;
     }
 }

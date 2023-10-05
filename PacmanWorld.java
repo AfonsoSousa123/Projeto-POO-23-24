@@ -13,10 +13,10 @@ public class PacmanWorld extends MainWorld
         "bbbbbpbbbbbbbbb",
         "*b**b*b********",
         "*b*bbbbbpbbbpb*",
-        "*b*b*K*b*.*B*.*",
-        "*b*b*.*b*.*.*.*",
-        "*p*...........*",
-        "*b*.**.*.****.*",
+        "*b*b*K*b*b*B*b*",
+        "*b*b*.*b*b*.*b*",
+        "*p*bpbbbbbpbbb*",
+        "*b*b**b*b****p*",
         "bpbbbbb*bbbpbbb",
         "****p******p***",
     };
@@ -32,6 +32,7 @@ public class PacmanWorld extends MainWorld
     public PacmanWorld()
     {
         drawMap();
+        setPaintOrder(Scoreboard.class, Player.class, Target.class);
     }
     
     /**
@@ -60,6 +61,9 @@ public class PacmanWorld extends MainWorld
                         break;
                     case 'K':
                         addObject(new Ken(),x,y);
+                        break;
+                    case 'E':
+                        addObject(new Enemy(),x,y);
                         break;
                     default:
                         break;

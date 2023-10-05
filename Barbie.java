@@ -20,6 +20,15 @@ public class Barbie extends Player
         public static final String RIGHT = "D";
     }
     
+    /**
+     * Constructor for the Barbie Class.
+     * 
+     */
+    public Barbie()
+    {
+        
+    }
+    
     public void act()
     {
         movePlayer(

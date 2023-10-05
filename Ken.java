@@ -21,6 +21,15 @@ public class Ken extends Player
         public static final String RIGHT = "right";
     }
     
+    /**
+     * Constructor for the Ken Class.
+     * 
+     */
+    public Ken()
+    {
+        
+    }
+    
     public void act()
     {
         movePlayer(

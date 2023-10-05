@@ -13,6 +13,7 @@ public class Player extends Actor
     public int acceleration = 2;
     public int jumpStrenght = 12;
     public int length;
+    MainWorld myWorld;
     
     class Direction { // Class to store the values of the rotation for each movement
         public static final int UP = 270;
@@ -25,9 +26,13 @@ public class Player extends Actor
          
     }
     
+    public void addedToWorld(World w) {
+        myWorld = (MainWorld)w;
+    }
+    
     public void act()
     {
-        
+        collectStuds();
     }
     
     public void movePlayer(
@@ -56,6 +61,11 @@ public class Player extends Actor
         } else {
             setImage(imageFront);
         }
+        // Actor ground = getOneObjectAtOffset(adjustOffset(x), adjustOffset(y), Ground.class);
+        
+        // if(ground==null) { 
+           // setLocation(x, y + adjustOffset(y));
+        // }
     }
     
     public void moveTopView(int x, int y, int rotation) {
@@ -70,22 +80,41 @@ public class Player extends Actor
         Actor block = getOneObjectAtOffset(adjustedChangeX, adjustedChangeY, Block2x2.class);
         // if the block is null then we can move
         if(block==null) { 
-           setLocation(currentX + changeX, currentY + changeY); 
+           setLocation(currentX + changeX, currentY + changeY);
         }
     }
     
+    /**
+     * Resizes the given image to the widht and height specified
+     */
+    public GreenfootImage resizeImage(GreenfootImage image, int width, int height) {
+        image.scale(width, height);
+        setImage(image);
+        
+        return image;
+    }
+    
+    /**
+     * Simulates the gravity of the Player
+     */
     public void fall(int x,int y)
     {
         setLocation(x, y + VSPEED);
         VSPEED = VSPEED + acceleration;
     }
     
+    /**
+     * Simulates the jump of the Player
+     */
     public void jump(int x,int y)
     {
         VSPEED = - jumpStrenght;
         fall(x,y);
     }
     
+    /**
+     *  Checks if the Player is falling
+     */
     public void checkFall(int x,int y)
     {
         if(!isTouching(Ground.class))
@@ -94,11 +123,17 @@ public class Player extends Actor
         }
     }
     
+    /**
+     * Moves the Player to the right
+     */
     public void moveRight(int x,int y)
     {
         setLocation( x + SPEED, y);
     }
     
+    /**
+     * Moves the Player to the left
+     */
     public void moveLeft(int x,int y)
     {
         setLocation( x - SPEED, y);
@@ -129,5 +164,18 @@ public class Player extends Actor
         int distanceToFront = length/2;
         int adjustAmount = distanceToFront * signOfOffset;
         return offset + adjustAmount;
+    }
+    
+    public void collectStuds() {
+        Actor studBlue = getOneIntersectingObject(StudBlue.class);
+        Actor studPurple = getOneIntersectingObject(StudPurple.class);
+        
+        if(studBlue!= null) {
+            myWorld.removeObject(studBlue);
+            myWorld.addScore(5);
+        } else if (studPurple!= null) {
+            myWorld.removeObject(studPurple);
+            myWorld.addScore(1);
+        }
     }
 }

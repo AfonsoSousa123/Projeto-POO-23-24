@@ -6,4 +6,5 @@ comment1.target=MainWorld()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ MainWorld.\r\n\ \r\n
 comment2.params=amount
 comment2.target=void\ addScore(int)
+comment2.text=\r\n\ Public\ Method\ for\ the\ score\ to\ be\ accessible\ from\ all\ the\ Project\r\n
 numComments=3

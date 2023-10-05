@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Scoreboard extends Actor
 {
-    MarioStyleWorld myWorld;
+    MainWorld myWorld;
     int width;
     int height = 60;
     int score = 0;
@@ -17,11 +17,12 @@ public class Scoreboard extends Actor
     GreenfootImage heart = new GreenfootImage("heart.png");
 
     public void addedToWorld(World w) {
-        myWorld = (MarioStyleWorld)w;
+        myWorld = (MainWorld)w;
         width = myWorld.getWidth();
         boardImage = new GreenfootImage(width, height);
         boardImage.setColor(Color.BLACK);
         boardImage.fillRect(0,0,width,height);
+        boardImage.setTransparency(100);
         setImage(boardImage);
     }
     
@@ -36,9 +37,9 @@ public class Scoreboard extends Actor
         boardImage.setFont(new Font("Arial", 24));
         boardImage.drawString("Score: "+ score, 20, 40);
         
-        // for(int i=0; i < livesCounter; i++) {
-            // heart;
-        // }
+        for(int i=0; i < livesCounter; i++) {
+            lives(10, 23);
+        }
     }
     
     public void act()
