@@ -13,6 +13,13 @@ public class Player extends Actor
     public int acceleration = 2;
     public int jumpStrenght = 12;
     public int length;
+    
+    class Direction { // Class to store the values of the rotation for each movement
+        public static final int UP = 270;
+        public static final int DOWN = 90;
+        public static final int LEFT = 180;
+        public static final int RIGHT = 0;
+    }
    
     public Player() {
          
@@ -39,7 +46,6 @@ public class Player extends Actor
             jump(x,y);
         } else if(Greenfoot.isKeyDown(down)) {
             // setRotation(Direction.DOWN);
-            // movePlayer(x,y);
             fall(x,y);
         } else if(Greenfoot.isKeyDown(left)) {
             setImage(imageLeft);
@@ -49,6 +55,22 @@ public class Player extends Actor
             moveRight(x,y);
         } else {
             setImage(imageFront);
+        }
+    }
+    
+    public void moveTopView(int x, int y, int rotation) {
+        int currentX = x;
+        int currentY = y;
+        int direction = rotation; // getRotation()
+        int changeX = getChangeX(direction);
+        int changeY = getChangeY(direction);
+        int adjustedChangeX = adjustOffset(changeX);
+        int adjustedChangeY = adjustOffset(changeY);
+        
+        Actor block = getOneObjectAtOffset(adjustedChangeX, adjustedChangeY, Block2x2.class);
+        // if the block is null then we can move
+        if(block==null) { 
+           setLocation(currentX + changeX, currentY + changeY); 
         }
     }
     
@@ -82,55 +104,30 @@ public class Player extends Actor
         setLocation( x - SPEED, y);
     }
     
-    // public void movePlayer(int x, int y) {
-        // int currentX = x;
-        // int currentY = y;
-        // int direction = getRotation();
-        // int changeX = getChangeX(direction);
-        // int changeY = getChangeY(direction);
-        // int adjustedChangeX = adjustOffset(changeX);
-        // int adjustedChangeY = adjustOffset(changeY);
-        
-        // Actor block = getOneObjectAtOffset(adjustedChangeX, adjustedChangeY, Block.class);
-        // // if the block is null then we can move
-        // if(block==null) { 
-           // setLocation(currentX + changeX, currentY + changeY); 
-        // }
-        
-    // }
+    public int getChangeX(int direction) {
+        if(direction == Direction.RIGHT) {
+            return SPEED;
+        } 
+        if(direction == Direction.LEFT) {
+            return -SPEED;
+        }
+        return 0;
+    }
     
-    // public int getChangeX(int direction) {
-        // if(direction == Direction.RIGHT) {
-            // return SPEED;
-        // } 
-        // if(direction == Direction.LEFT) {
-            // return -SPEED;
-        // }
-        // return 0;
-    // }
-    
-    // public int getChangeY(int direction) {
-        // if(direction == Direction.DOWN) {
-            // return SPEED;
-        // } 
-        // if(direction == Direction.UP) {
-            // return -SPEED;
-        // }
-        // return 0;
-    // }
+    public int getChangeY(int direction) {
+        if(direction == Direction.DOWN) {
+            return SPEED;
+        } 
+        if(direction == Direction.UP) {
+            return -SPEED;
+        }
+        return 0;
+    }
     
     private int adjustOffset(int offset) {
-        int signOfOffset = (int)Math.signum(offset);
+        int signOfOffset = (int)Math.signum(offset); // casting the offset to be int instead of double
         int distanceToFront = length/2;
         int adjustAmount = distanceToFront * signOfOffset;
         return offset + adjustAmount;
     }
-    
-     
-    // class Direction { // Class to store the values of the rotation for each movement
-        // public static final int UP = 270;
-        // public static final int DOWN = 90;
-        // public static final int LEFT = 180;
-        // public static final int RIGHT = 0;
-    // }
 }

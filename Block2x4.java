@@ -1,15 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Ground here.
+ * Write a description of class Block2x4 here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Ground extends Obstacle
+public class Block2x4 extends Obstacle
 {
     /**
-     * Act - do whatever the Ground wants to do. This method is called whenever
+     * Act - do whatever the Block2x4 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()

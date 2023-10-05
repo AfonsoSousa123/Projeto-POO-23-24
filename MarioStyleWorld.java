@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MarioStyleWorld extends MainWorld
 {
     private int imageCount = 0;
-    private GreenfootImage bgImage = new GreenfootImage("space1.jpg");
+    private GreenfootImage bgImage = new GreenfootImage("CityBackground.png");
 
     /**
      * Constructor for objects of class MarioStyleWorld.
@@ -17,8 +17,7 @@ public class MarioStyleWorld extends MainWorld
      */
     public MarioStyleWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        // super(1300, 800, 1); 
+        super(); 
         prepare();
     }
 
@@ -32,9 +31,11 @@ public class MarioStyleWorld extends MainWorld
             imageCount += bgImage.getWidth();
         }
         int temp = imageCount;
+        bgImage.scale(1300, 800); // Scales the image to the desired width and height 
         getBackground().drawImage(bgImage, temp, 0);
         getBackground().drawImage(bgImage, temp + bgImage.getWidth(), 0);
     }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.

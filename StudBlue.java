@@ -1,15 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Stud here.
+ * Write a description of class StudBlue here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Stud extends Target
+public class StudBlue extends Target
 {
     /**
-     * Act - do whatever the Stud wants to do. This method is called whenever
+     * Act - do whatever the StudBlue wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()

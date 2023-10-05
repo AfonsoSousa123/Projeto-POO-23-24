@@ -28,7 +28,8 @@ public class Ken extends Player
             KenKeys.DOWN, 
             KenKeys.LEFT, 
             KenKeys.RIGHT, 
-            getX(), getY(), 
+            getX(), 
+            getY(), 
             kwalkingL.getCurrentImage(), 
             kwalkingR.getCurrentImage(),
             kenF

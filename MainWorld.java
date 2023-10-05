@@ -17,7 +17,7 @@ public class MainWorld extends World
     public MainWorld()
     {    
         // Create a new world with 1300x800 cells with a cell size of 1x1 pixels.
-        super(1300, 800, 1);
+        super(1300, 800, 1, false); // the boolean atribute, is to set the world with bounds
         sb = new Scoreboard();
         // addObject(sb, getWidth()/2,430); // Adds the Scoreboard onto the Worlds
     }
