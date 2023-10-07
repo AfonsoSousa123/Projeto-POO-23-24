@@ -189,12 +189,12 @@ public class Player extends Actor
     public boolean platformAbove(Actor player)
     {
         int spriteHeight = getImage().getHeight();
-        int yDistance = spriteHeight/-3;
+        int yDistance = spriteHeight/-4;
         Actor ceiling = getOneObjectAtOffset(0, yDistance, Ground.class);
         if(ceiling != null)
         {
-            VSPEED = 1;
-            bopHead(ceiling, getX(), getY());
+            VSPEED = 0;
+            bopHead(ceiling);
             return true;
         }
         else
@@ -203,11 +203,11 @@ public class Player extends Actor
         }
     }
     
-    public void bopHead(Actor ceiling, int x, int y)
+    public void bopHead(Actor ceiling)
     {
         int ceilingHeight = ceiling.getImage().getHeight();
-        int newY = ceiling.getY() + (ceilingHeight + getImage().getHeight())/2;
-        setLocation(x, newY);
+        int newY = ceiling.getY() + (ceilingHeight + getImage().getHeight())/3;
+        setLocation(getX(), newY);
     }
     
     /**
