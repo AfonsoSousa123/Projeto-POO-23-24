@@ -23,10 +23,18 @@ public class Scoreboard extends Actor
         boardImage.setColor(Color.BLACK);
         boardImage.fillRect(0,0,width,height);
         boardImage.setTransparency(100);
+        
         setImage(boardImage);
     }
     
-    public void addScore(int amount) { // increments the score with the given amount
+    public void act() {
+        drawScore();
+    }
+    
+    /**
+     * Increments the score with the given amount
+     */
+    public void addScore(int amount) {
         score += amount;
     }
     
@@ -36,18 +44,10 @@ public class Scoreboard extends Actor
         boardImage.setColor(Color.WHITE);
         boardImage.setFont(new Font("Arial", 24));
         boardImage.drawString("Score: "+ score, 20, 40);
-        
-        for(int i=0; i < livesCounter; i++) {
-            lives(10, 23);
-        }
+        boardImage.drawImage(heart, 1200, 60);
     }
-    
-    public void act()
-    {
-        drawScore();
-    }
-    
+
     private void lives(int x, int y) {
-        heart.drawImage(heart, x, y);
+        
     }
 }

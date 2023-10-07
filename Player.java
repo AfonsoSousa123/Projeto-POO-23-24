@@ -60,42 +60,41 @@ public class Player extends Actor
         GreenfootImage imageFront
     ) {
         if(getWorld() instanceof  MarioStyleWorld) {
-        if(Greenfoot.isKeyDown(up) && onGround(this)) {
-            // setRotation(Direction.UP);
-            jump(x,y);
-        } else if(Greenfoot.isKeyDown(down)) {
-            // setRotation(Direction.DOWN);
-            //fall(x,y);
-        } else if(Greenfoot.isKeyDown(left)) {
-            setImage(imageLeft);
-            moveLeft(x,y);
-        } else if(Greenfoot.isKeyDown(right)) {
-            setImage(imageRight);
-            moveRight(x,y);
-        } else {
-            setImage(imageFront);
+            if(Greenfoot.isKeyDown(up) && onGround(this)) {
+                // setRotation(Direction.UP);
+                jump(x,y);
+            } else if(Greenfoot.isKeyDown(down)) {
+                // setRotation(Direction.DOWN);
+                //fall(x,y);
+            } else if(Greenfoot.isKeyDown(left)) {
+                setImage(imageLeft);
+                moveLeft(x,y);
+            } else if(Greenfoot.isKeyDown(right)) {
+                setImage(imageRight);
+                moveRight(x,y);
+            } else {
+                setImage(imageFront);
+            }
         }
-    }
-    else if ((getWorld() instanceof PacmanWorld))
-    {
-        if(Greenfoot.isKeyDown(up)) {
-            // setRotation(Direction.UP);
-            //jump(x,y);
-            moveUp(x,y);
-        } else if(Greenfoot.isKeyDown(down)) {
-            // setRotation(Direction.DOWN);
-            // fall(x,y);
-            moveDown(x,y);
-        } else if(Greenfoot.isKeyDown(left)) {
-            setImage(imageLeft);
-            moveLeft(x,y);
-        } else if(Greenfoot.isKeyDown(right)) {
-            setImage(imageRight);
-            moveRight(x,y);
-        } else {
-            setImage(imageFront);
+        else if ((getWorld() instanceof PacmanWorld)) {
+            if(Greenfoot.isKeyDown(up)) {
+                // setRotation(Direction.UP);
+                //jump(x,y);
+                moveUp(x,y);
+            } else if(Greenfoot.isKeyDown(down)) {
+                // setRotation(Direction.DOWN);
+                // fall(x,y);
+                moveDown(x,y);
+            } else if(Greenfoot.isKeyDown(left)) {
+                setImage(imageLeft);
+                moveLeft(x,y);
+            } else if(Greenfoot.isKeyDown(right)) {
+                setImage(imageRight);
+                moveRight(x,y);
+            } else {
+                setImage(imageFront);
+            }
         }
-    }
     }
     
     /**
@@ -135,7 +134,6 @@ public class Player extends Actor
         return image;
     }
     
-    
     /**
      * Simulates the gravity of the Player
      */
@@ -157,13 +155,12 @@ public class Player extends Actor
      */
     public void checkFall(Player player, int x,int y, int offset) {
         if(getWorld() instanceof  MarioStyleWorld){
-        if(!onGround(player))
-        {
-            fall(x,y);
-        } else if (onGround(player)) {
-            VSPEED = 0;
+            if(!onGround(player)) {
+                fall(x,y);
+            } else if (onGround(player)) {
+                VSPEED = 0;
+            }
         }
-    }
     }
     
     
@@ -180,31 +177,34 @@ public class Player extends Actor
             // VSPEED = 0;
         // }
     // }
-    
+    /**
+     *  Checks if the Player is falling
+     */    
     public boolean onGround(Actor player) {
         Actor ground = getOneObjectAtOffset(0, getImage().getHeight()/3, Ground.class);
         return ground != null;
     }
     
-    public boolean platformAbove(Actor player)
-    {
+    /**
+     * Checks if the Player is touching the above platform
+     */
+    public boolean platformAbove(Actor player) {
         int spriteHeight = getImage().getHeight();
         int yDistance = spriteHeight/-4;
         Actor ceiling = getOneObjectAtOffset(0, yDistance, Ground.class);
-        if(ceiling != null)
-        {
+        if(ceiling != null) {
             VSPEED = 0;
             bopHead(ceiling);
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
     
-    public void bopHead(Actor ceiling)
-    {
+    /**
+     *  
+     */
+    public void bopHead(Actor ceiling) {
         int ceilingHeight = ceiling.getImage().getHeight();
         int newY = ceiling.getY() + (ceilingHeight + getImage().getHeight())/3;
         setLocation(getX(), newY);
@@ -213,25 +213,28 @@ public class Player extends Actor
     /**
      * Moves the Player to the right
      */
-    public void moveRight(int x,int y)
-    {
+    public void moveRight(int x,int y) {
         setLocation( x + SPEED, y);
     }
     
     /**
      * Moves the Player to the left
      */
-    public void moveLeft(int x,int y)
-    {
+    public void moveLeft(int x,int y) {
         setLocation( x - SPEED, y);
     }
     
-    public void moveDown(int x, int y)
-    {
+    /**
+     * Moves the Player Down
+     */
+    public void moveDown(int x, int y) {
         setLocation(x, y + SPEED);
     }
-     public void moveUp(int x, int y)
-    {
+    
+    /**
+     * Moves the Player Up
+     */
+     public void moveUp(int x, int y) {
         setLocation(x, y - SPEED);
     }
     

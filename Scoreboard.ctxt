@@ -1,14 +1,15 @@
 #BlueJ class context
 comment0.target=Scoreboard
-comment0.text=\n\ Write\ a\ description\ of\ class\ Scoreboard\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Scoreboard\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=w
 comment1.target=void\ addedToWorld(greenfoot.World)
-comment2.params=amount
-comment2.target=void\ addScore(int)
-comment3.params=
-comment3.target=void\ drawScore()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=amount
+comment3.target=void\ addScore(int)
+comment3.text=\r\n\ Increments\ the\ score\ with\ the\ given\ amount\r\n
 comment4.params=
-comment4.target=void\ act()
+comment4.target=void\ drawScore()
 comment5.params=x\ y
 comment5.target=void\ lives(int,\ int)
 numComments=6
