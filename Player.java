@@ -50,12 +50,13 @@ public class Player extends Actor
         GreenfootImage imageRight,
         GreenfootImage imageFront
     ) {
+        if(getWorld() instanceof  MarioStyleWorld) {
         if(Greenfoot.isKeyDown(up)) {
             // setRotation(Direction.UP);
             jump(x,y);
         } else if(Greenfoot.isKeyDown(down)) {
             // setRotation(Direction.DOWN);
-            // fall(x,y);
+            //fall(x,y);
         } else if(Greenfoot.isKeyDown(left)) {
             setImage(imageLeft);
             moveLeft(x,y);
@@ -65,6 +66,27 @@ public class Player extends Actor
         } else {
             setImage(imageFront);
         }
+    }
+    else if ((getWorld() instanceof PacmanWorld))
+    {
+        if(Greenfoot.isKeyDown(up)) {
+            // setRotation(Direction.UP);
+            //jump(x,y);
+            moveUp(x,y);
+        } else if(Greenfoot.isKeyDown(down)) {
+            // setRotation(Direction.DOWN);
+            // fall(x,y);
+            moveDown(x,y);
+        } else if(Greenfoot.isKeyDown(left)) {
+            setImage(imageLeft);
+            moveLeft(x,y);
+        } else if(Greenfoot.isKeyDown(right)) {
+            setImage(imageRight);
+            moveRight(x,y);
+        } else {
+            setImage(imageFront);
+        }
+    }
     }
     
     /**
@@ -102,6 +124,7 @@ public class Player extends Actor
         return image;
     }
     
+    
     /**
      * Simulates the gravity of the Player
      */
@@ -115,12 +138,14 @@ public class Player extends Actor
      */
     public void jump(int x,int y) {
         VSPEED = -jumpStrenght;
+        fall(x,y);
     }
     
     /**
      *  Checks if the Player is falling
      */
     public void checkFall(Player player, int x,int y, int offset) {
+        if(getWorld() instanceof  MarioStyleWorld){
         if(!onGround(player))
         {
             fall(x,y);
@@ -128,6 +153,8 @@ public class Player extends Actor
             VSPEED = 0;
         }
     }
+    }
+    
     
     // /**
      // *  Checks if the Player is falling
@@ -144,8 +171,8 @@ public class Player extends Actor
     // }
     
     public boolean onGround(Actor player) {
-         player = getOneObjectAtOffset(0, getImage().getHeight()/2, Ground.class);
-        return player != null;
+        Actor under = getOneObjectAtOffset(0, getImage().getHeight()/3, Ground.class);
+        return under != null;
     }
     
     /**
@@ -162,6 +189,15 @@ public class Player extends Actor
     public void moveLeft(int x,int y)
     {
         setLocation( x - SPEED, y);
+    }
+    
+    public void moveDown(int x, int y)
+    {
+        setLocation(x, y + SPEED);
+    }
+     public void moveUp(int x, int y)
+    {
+        setLocation(x, y - SPEED);
     }
     
     // /**
