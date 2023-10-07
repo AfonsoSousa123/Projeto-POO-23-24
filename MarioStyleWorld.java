@@ -20,6 +20,7 @@ public class MarioStyleWorld extends MainWorld
         setBackground(resizeImage(bgImage, 1000, 800)); // Scales the image to the desired width and height 
         prepare();
         populateWorld();
+        // gameOver(this);
     }
 
     public void act() {
@@ -191,5 +192,13 @@ public class MarioStyleWorld extends MainWorld
         addObject(studBlue32,3553,291);
         StudBlue studBlue33 = new StudBlue();
         addObject(studBlue33,2251,727);
+        Heart heart = new Heart();
+        addObject(heart,5114,131);
+        heart.setLocation(5152,128);
+        Heart heart2 = new Heart();
+        addObject(heart2,1963,97);
+        heart2.setLocation(1962,82);
+        heart2.setLocation(2069,156);
+        heart2.setLocation(2065,160);
     }
 }

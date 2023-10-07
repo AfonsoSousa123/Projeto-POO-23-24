@@ -24,7 +24,7 @@ public class Player extends Actor
     // }
    
     public Player() {
-         
+        
     }
     
     public void addedToWorld(World w) {
@@ -36,6 +36,9 @@ public class Player extends Actor
         
     }
     
+    /**
+     * Moves the Player
+     */
     public void movePlayer(
         String up, 
         String down, 
@@ -61,6 +64,16 @@ public class Player extends Actor
             moveRight(x,y);
         } else {
             setImage(imageFront);
+        }
+    }
+    
+    /**
+     * Checks if the Player is out of the boundaries of the world and if so the Game is Over
+     */
+    public void gameOver(Actor player) {
+        if (player.getY() > getWorld().getHeight() + 100) {
+            Greenfoot.setWorld(new GameOver());
+            Greenfoot.stop();
         }
     }
     
@@ -197,6 +210,18 @@ public class Player extends Actor
         } else if (studPurple!= null) {
             myWorld.addScore(100);
             myWorld.removeObject(studPurple);
+        }
+    }
+    
+    /**
+     * Collects the studs and adds points to the Scoreboard
+     */
+    public void collectHearts() {
+        Actor heart = getOneIntersectingObject(Heart.class);
+        
+        if(heart!= null) {
+            // myWorld.addLive();
+            myWorld.removeObject(heart);
         }
     }
 }

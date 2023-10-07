@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MainWorld extends World
 {
     Scoreboard sb; // space variable
+    Player barbie;
+    Player ken;
     
     class BarbieKeys { // Class to store the values of the Keys for Barbie
         public static final String UP = "W";
