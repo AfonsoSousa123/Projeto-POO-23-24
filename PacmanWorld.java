@@ -17,7 +17,7 @@ public class PacmanWorld extends MainWorld
         "*b*b*.*b*b*.*b*",
         "*p*bpbbbbbpbbb*",
         "*b*b**b*b****p*",
-        "bpbbbbb*bbbpbbb",
+        "bpbbbbb*bbbpbhb",
         "****p******p***",
     };
     
@@ -61,6 +61,9 @@ public class PacmanWorld extends MainWorld
                         break;
                     case 'K':
                         addObject(new Ken(),x,y);
+                        break;
+                    case 'h':
+                        addObject(new Heart(),x,y);
                         break;
                     case 'E':
                         addObject(new Enemy(),x,y);
