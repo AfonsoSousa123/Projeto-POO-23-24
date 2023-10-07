@@ -8,11 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Actor
 {
-    public int SPEED = 6;
-    public int VSPEED = 0;
-    public int acceleration = 2;
-    public int jumpStrenght = 12;
-    public int length;
+    private int SPEED = 2;
+    private int VSPEED = 0;
+    private int acceleration = 2;
+    private int jumpStrenght = 20;
+    private int length;
+
     MainWorld myWorld;
     
     // class Direction { // Class to store the values of the rotation for each movement
@@ -51,7 +52,7 @@ public class Player extends Actor
             jump(x,y);
         } else if(Greenfoot.isKeyDown(down)) {
             // setRotation(Direction.DOWN);
-            fall(x,y);
+            // fall(x,y);
         } else if(Greenfoot.isKeyDown(left)) {
             setImage(imageLeft);
             moveLeft(x,y);
@@ -61,11 +62,6 @@ public class Player extends Actor
         } else {
             setImage(imageFront);
         }
-        // Actor ground = getOneObjectAtOffset(adjustOffset(x), adjustOffset(y), Ground.class);
-        
-        // if(ground==null) { 
-           // setLocation(x, y + adjustOffset(y));
-        // }
     }
     
     // public void moveTopView(int x, int y, int rotation) {
@@ -98,28 +94,45 @@ public class Player extends Actor
      */
     public void fall(int x,int y) {
         setLocation(x, y + VSPEED);
-        // VSPEED = VSPEED + acceleration;
+        VSPEED += acceleration;
     }
     
     /**
      * Simulates the jump of the Player
      */
     public void jump(int x,int y) {
-        VSPEED = - jumpStrenght;
+        VSPEED = -jumpStrenght;
     }
     
     /**
      *  Checks if the Player is falling
      */
     public void checkFall(Player player, int x,int y, int offset) {
-        if(!player.isTouching(Obstacle.class))
+        if(!onGround(player))
         {
-            VSPEED++;
-        } else {
-            setLocation(x, y - offset);
-            // setLocation(x, y);
+            fall(x,y);
+        } else if (onGround(player)) {
             VSPEED = 0;
         }
+    }
+    
+    // /**
+     // *  Checks if the Player is falling
+     // */
+    // public void checkFall(Player player, int x,int y, int offset) {
+        // if(!player.isTouching(Ground.class))
+        // {
+            // VSPEED++;
+        // } else {
+            // setLocation(x, y - offset);
+            // // setLocation(x, y);
+            // VSPEED = 0;
+        // }
+    // }
+    
+    public boolean onGround(Actor player) {
+         player = getOneObjectAtOffset(0, getImage().getHeight()/2, Ground.class);
+        return player != null;
     }
     
     /**

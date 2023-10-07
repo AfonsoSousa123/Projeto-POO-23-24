@@ -10,6 +10,13 @@ public class MainWorld extends World
 {
     Scoreboard sb; // space variable
     
+    class BarbieKeys { // Class to store the values of the Keys for Barbie
+        public static final String UP = "W";
+        public static final String DOWN = "S";
+        public static final String LEFT = "A";
+        public static final String RIGHT = "D";
+    }
+    
     /**
      * Constructor for objects of class MainWorld.
      * 
@@ -37,5 +44,4 @@ public class MainWorld extends World
         setBackground(imageBackground);
         return imageBackground;
     }
-    
 }

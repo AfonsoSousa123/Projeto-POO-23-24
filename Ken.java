@@ -44,7 +44,8 @@ public class Ken extends Player
             kenF
         );
         checkFall(this, getX(), getY(), 1);
-        fall(getX(), getY());
+        onGround(this);
+        // fall(getX(), getY());
         collectStuds();
     }
 }

@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Obstacle extends Actor
 {
+    MarioStyleWorld marioWorld;
+    private int SPEED = 8;
+    
     /**
      * Act - do whatever the Obstacle wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -15,5 +18,15 @@ public class Obstacle extends Actor
     public void act()
     {
         // Add your action code here.
+    }
+    
+    public void moveObstacle() {
+        // if (getWorld() == marioWorld) {
+            if(Greenfoot.isKeyDown("A") || Greenfoot.isKeyDown("left")) {
+                move(SPEED);
+            } else if(Greenfoot.isKeyDown("D") || Greenfoot.isKeyDown("right")) {
+                move(-SPEED);
+            }
+        // }
     }
 }

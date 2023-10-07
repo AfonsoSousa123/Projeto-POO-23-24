@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Target extends Actor
 {
+    MarioStyleWorld marioWorld;
+    private int SPEED = 8;
+
     public void act()
     {
         // Add your action code here.
@@ -19,6 +22,16 @@ public class Target extends Actor
      */
     public Target() {
         
+    }
+    
+    public void moveTarget() {
+        // if (getWorld() == marioWorld) {
+            if(Greenfoot.isKeyDown("A") || Greenfoot.isKeyDown("left")) {
+                move(SPEED);
+            } else if(Greenfoot.isKeyDown("D") || Greenfoot.isKeyDown("right")) {
+                move(-SPEED);
+            }
+        // }
     }
     
     /**

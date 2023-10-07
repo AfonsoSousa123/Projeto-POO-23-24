@@ -14,6 +14,6 @@ public class Ground extends Obstacle
      */
     public void act()
     {
-        // Add your action code here.
+        moveObstacle();
     }
 }

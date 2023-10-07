@@ -43,7 +43,8 @@ public class Barbie extends Player
             barbieF
         );
         checkFall(this, getX(), getY(), 1);
-        fall(getX(), getY());
+        onGround(this);
+        // fall(getX(), getY());
         collectStuds();
     }
 }

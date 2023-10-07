@@ -18,6 +18,6 @@ public class StudBlue extends Target
      */
     public void act()
     {
-        // Add your action code here.
+        moveTarget();
     }
 }
