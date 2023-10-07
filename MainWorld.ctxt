@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=MainWorld
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ MainWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ MainWorld\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=MainWorld()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ MainWorld.\r\n\ \r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ MainWorld.\n\ \n
 comment2.params=amount
 comment2.target=void\ addScore(int)
-comment2.text=\r\n\ Public\ Method\ for\ the\ score\ to\ be\ accessible\ from\ all\ the\ Project\r\n
+comment2.text=\n\ Public\ Method\ for\ the\ score\ to\ be\ accessible\ from\ all\ the\ Project\n
 comment3.params=imageBackground\ width\ height
 comment3.target=greenfoot.GreenfootImage\ resizeImage(greenfoot.GreenfootImage,\ int,\ int)
-comment3.text=\r\n\ Resizes\ the\ given\ background\ to\ the\ widht\ and\ height\ specified\r\n
+comment3.text=\n\ Resizes\ the\ given\ background\ to\ the\ widht\ and\ height\ specified\n
 numComments=4

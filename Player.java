@@ -12,7 +12,7 @@ public class Player extends Actor
     private int SPEED = 2;
     private int VSPEED = 0;
     private int acceleration = 2;
-    private int jumpStrenght = 20;
+    private int jumpStrenght = 50;
     private int length;
     private int volume = 30;
 
@@ -59,7 +59,7 @@ public class Player extends Actor
         GreenfootImage imageFront
     ) {
         if(getWorld() instanceof  MarioStyleWorld) {
-        if(Greenfoot.isKeyDown(up)) {
+        if(Greenfoot.isKeyDown(up) && onGround(this)) {
             // setRotation(Direction.UP);
             jump(x,y);
         } else if(Greenfoot.isKeyDown(down)) {
@@ -181,8 +181,32 @@ public class Player extends Actor
     // }
     
     public boolean onGround(Actor player) {
-        Actor under = getOneObjectAtOffset(0, getImage().getHeight()/3, Ground.class);
-        return under != null;
+        Actor ground = getOneObjectAtOffset(0, getImage().getHeight()/3, Ground.class);
+        return ground != null;
+    }
+    
+    public boolean platformAbove(Actor player)
+    {
+        int spriteHeight = getImage().getHeight();
+        int yDistance = spriteHeight/-3;
+        Actor ceiling = getOneObjectAtOffset(0, yDistance, Ground.class);
+        if(ceiling != null)
+        {
+            VSPEED = 1;
+            bopHead(ceiling, getX(), getY());
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    public void bopHead(Actor ceiling, int x, int y)
+    {
+        int ceilingHeight = ceiling.getImage().getHeight();
+        int newY = ceiling.getY() + (ceilingHeight + getImage().getHeight())/2;
+        setLocation(x, newY);
     }
     
     /**
