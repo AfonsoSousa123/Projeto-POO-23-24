@@ -26,7 +26,7 @@ public class Botao extends Actor
     {
         if (Greenfoot.mouseClicked(this)) 
         {
-            Greenfoot.setWorld(new PlanetaTerra());
+            Greenfoot.setWorld(new MarioStyleWorld());
         }
     }
 }

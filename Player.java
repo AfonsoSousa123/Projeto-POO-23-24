@@ -14,7 +14,8 @@ public class Player extends Actor
     private int acceleration = 2;
     private int jumpStrenght = 20;
     private int length;
-    private int volume = 30;
+    private int volume = 20;
+    private int oneUpVolume = 70;
 
     // Initializes the sounds
     GreenfootSound gameOverSound = new GreenfootSound("Falling-object.mp3");
@@ -22,7 +23,7 @@ public class Player extends Actor
     GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
 
     // World variables
-    MainWorld myWorld;
+    MainWorld mainWorld;
     
     // class Direction { // Class to store the values of the rotation for each movement
         // public static final int UP = 270;
@@ -36,7 +37,7 @@ public class Player extends Actor
     }
     
     public void addedToWorld(World w) {
-        myWorld = (MainWorld)w;
+        mainWorld = (MainWorld)w;
     }
     
     public void act()
@@ -253,13 +254,13 @@ public class Player extends Actor
         if(studBlue!= null) {
             coinSound.setVolume(volume);
             coinSound.play();
-            myWorld.addScore(20);
-            myWorld.removeObject(studBlue);
+            mainWorld.addScore(20);
+            mainWorld.removeObject(studBlue);
         } else if (studPurple!= null) {
             coinSound.setVolume(volume);
             coinSound.play();
-            myWorld.addScore(100);
-            myWorld.removeObject(studPurple);
+            mainWorld.addScore(100);
+            mainWorld.removeObject(studPurple);
         }
     }
     
@@ -270,10 +271,10 @@ public class Player extends Actor
         Actor heart = getOneIntersectingObject(Heart.class);
         
         if(heart!= null) {
-            // oneUpSound.setVolume(volume);
+            oneUpSound.setVolume(oneUpVolume);
             oneUpSound.play();
-            // myWorld.addLive();
-            myWorld.removeObject(heart);
+            // mainWorld.addLive();
+            mainWorld.removeObject(heart);
         }
     }
 }
