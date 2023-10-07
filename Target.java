@@ -8,7 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Target extends Actor
 {
-    MarioStyleWorld marioWorld;
     private int SPEED = 8;
 
     public void act()
