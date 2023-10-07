@@ -25,13 +25,13 @@ public class Target extends Actor
     }
     
     public void moveTarget() {
-        // if (getWorld() == marioWorld) {
+         if (getWorld() instanceof  MarioStyleWorld) {
             if(Greenfoot.isKeyDown("A") || Greenfoot.isKeyDown("left")) {
                 move(SPEED);
             } else if(Greenfoot.isKeyDown("D") || Greenfoot.isKeyDown("right")) {
                 move(-SPEED);
             }
-        // }
+         }
     }
     
     /**
