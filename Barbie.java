@@ -26,7 +26,9 @@ public class Barbie extends Player
      */
     public Barbie()
     {
-        
+        redimencionaImg(this, barbieF, 50);
+        redimencionaGif(this, bwalkingR, 50);
+        redimencionaGif(this, bwalkingL, 50);
     }
     
     public void act()

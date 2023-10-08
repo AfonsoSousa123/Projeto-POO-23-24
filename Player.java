@@ -140,6 +140,25 @@ public class Player extends Actor
         return image;
     }
     
+public void redimencionaImg(Actor player, GreenfootImage image, int percent)
+{
+    int wide = image.getWidth()*percent/100;
+        int high = image.getHeight()*percent/100;
+        image.scale(wide, high);
+    }
+    
+    
+    public void redimencionaGif(Actor player, GifImage gif, int percent)
+{
+        for (GreenfootImage image : gif.getImages())
+        {
+        int wide = image.getWidth()*percent/100;
+        int high = image.getHeight()*percent/100;
+        image.scale(wide, high);
+        }
+}
+
+    
     /**
      * Simulates the gravity of the Player
      */
