@@ -21,6 +21,15 @@ public class Ken extends Player
         public static final String RIGHT = "right";
     }
     
+    /**
+     * Constructor for the Ken Class.
+     * 
+     */
+    public Ken()
+    {
+        
+    }
+    
     public void act()
     {
         movePlayer(
@@ -28,10 +37,17 @@ public class Ken extends Player
             KenKeys.DOWN, 
             KenKeys.LEFT, 
             KenKeys.RIGHT, 
-            getX(), getY(), 
+            getX(), 
+            getY(), 
             kwalkingL.getCurrentImage(), 
             kwalkingR.getCurrentImage(),
             kenF
         );
+        checkBounds(this);
+        checkFall(this, getX(), getY(), 1);
+        onGround(this);
+        platformAbove(this);
+        collectStuds();
+        collectHearts(this);
     }
 }

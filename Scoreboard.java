@@ -8,24 +8,40 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Scoreboard extends Actor
 {
-    MarioStyleWorld myWorld;
-    int width;
-    int height = 60;
-    int score = 0;
-    int livesCounter = 3;
-    GreenfootImage boardImage;
-    GreenfootImage heart = new GreenfootImage("heart.png");
+    MainWorld myWorld;
+    private final int LIVES = 2;
+    private int width;
+    private int height = 60;
+    public int score = 0;
+    public int barbieLives = LIVES;
+    public int kenLives = LIVES;
 
+    GreenfootImage boardImage;
+    // GreenfootImage heart = new GreenfootImage("heart.png");
+
+    public Scoreboard() {
+        
+    }
+    
     public void addedToWorld(World w) {
-        myWorld = (MarioStyleWorld)w;
+        myWorld = (MainWorld)w;
         width = myWorld.getWidth();
         boardImage = new GreenfootImage(width, height);
         boardImage.setColor(Color.BLACK);
         boardImage.fillRect(0,0,width,height);
+        boardImage.setTransparency(100);
+        // boardImage.drawImage(heart, 1200, 60);
         setImage(boardImage);
     }
     
-    public void addScore(int amount) { // increments the score with the given amount
+    public void act() {
+        drawScore();
+    }
+    
+    /**
+     * Increments the score with the given amount
+     */
+    public void addScore(int amount) {
         score += amount;
     }
     
@@ -33,20 +49,44 @@ public class Scoreboard extends Actor
         boardImage.setColor(Color.BLACK);
         boardImage.fillRect(0,0,width,height);
         boardImage.setColor(Color.WHITE);
-        boardImage.setFont(new Font("Arial", 24));
+        boardImage.setFont(new Font("Arial", 30));
         boardImage.drawString("Score: "+ score, 20, 40);
-        
-        // for(int i=0; i < livesCounter; i++) {
-            // heart;
-        // }
+        boardImage.drawString("Lives: ", 965, 40);
+        boardImage.drawString("Barbie: "+ barbieLives, 1065, 40);
+        boardImage.drawString("Ken: "+ kenLives, 1200, 40);
+    }
+
+    public void addBarbieLives(int amount) {
+        if(barbieLives > 0) {
+            barbieLives += amount; // increments the lives to the barbieLives
+        }
     }
     
-    public void act()
-    {
-        drawScore();
+    public void removeBarbieLives(int amount) {
+        if(barbieLives > 0) {
+            barbieLives -= amount; // decrements the lives to the barbieLives
+        } else if(barbieLives == 0) {
+            reset();
+        }
     }
     
-    private void lives(int x, int y) {
-        heart.drawImage(heart, x, y);
+    public void addKenLives(int amount) {
+        if(kenLives > 0) {
+            kenLives += amount; // increments the lives to the kenLives
+        }
+    }
+    
+    public void removeKenLives(int amount) {
+        if(kenLives > 0) {
+            kenLives -= amount; // decrements the lives to the kenLives
+        } else if(kenLives == 0) {
+            reset();
+        }
+    }
+    
+    public void reset() {
+        Greenfoot.setWorld(new GameOver()); // sends the Player to the GameOver World
+        barbieLives = LIVES; // resets the counter to its original value
+        kenLives = LIVES; // resets the counter to its original value
     }
 }

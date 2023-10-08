@@ -17,7 +17,9 @@ public class PlanetaTerra extends MainWorld
         // Create a new world with 1300x800  cells with a cell size of 1x1 pixels.
         // super(1300, 800, 1);
         populateWorld();
+        prepare();
     }
+
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -25,12 +27,40 @@ public class PlanetaTerra extends MainWorld
     private void populateWorld()
     {
         Barbie barbie = new Barbie();
-        addObject(barbie,570, 622);
-        
+        addObject(barbie,570, 591);
+
         Ken ken = new Ken();
         addObject(ken,750, 591);
         
         Ground ground = new Ground();
-        addObject(ground,944, 797);
+        addObject(ground,1163,754);
+        Ground ground2 = new Ground();
+        addObject(ground2,912,755);
+        Ground ground3 = new Ground();
+        addObject(ground3,653,753);
+        Ground ground4 = new Ground();
+        addObject(ground4,384,753);
+        Ground ground5 = new Ground();
+        addObject(ground5,115,754);
+    }
+    
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        StudBlue studBlue = new StudBlue();
+        addObject(studBlue,1112,601);
+        StudBlue studBlue2 = new StudBlue();
+        addObject(studBlue2,1057,669);
+        StudBlue studBlue3 = new StudBlue();
+        addObject(studBlue3,124,651);
+        StudPurple studPurple = new StudPurple();
+        addObject(studPurple,291,325);
+        StudPurple studPurple2 = new StudPurple();
+        addObject(studPurple2,847,216);
+        StudPurple studPurple3 = new StudPurple();
+        addObject(studPurple3,1125,180);
     }
 }

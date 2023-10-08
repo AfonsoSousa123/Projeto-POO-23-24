@@ -20,6 +20,15 @@ public class Barbie extends Player
         public static final String RIGHT = "D";
     }
     
+    /**
+     * Constructor for the Barbie Class.
+     * 
+     */
+    public Barbie()
+    {
+        
+    }
+    
     public void act()
     {
         movePlayer(
@@ -33,5 +42,11 @@ public class Barbie extends Player
             bwalkingR.getCurrentImage(),
             barbieF
         );
+        checkBounds(this);
+        checkFall(this, getX(), getY(), 1);
+        onGround(this);
+        platformAbove(this);
+        collectStuds();
+        collectHearts(this);
     }
 }

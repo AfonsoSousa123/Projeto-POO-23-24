@@ -14,10 +14,7 @@ public class Botao extends Actor
      */
     public Botao()
     {
-        GreenfootImage image = getImage();
-        int width = image.getWidth();
-        int height = image.getHeight();
-        image.scale(width/2, height/2);   
+        getImage().scale(getImage().getWidth()/2, getImage().getHeight()/2);
     }
     
     public void act()
@@ -29,7 +26,7 @@ public class Botao extends Actor
     {
         if (Greenfoot.mouseClicked(this)) 
         {
-            Greenfoot.setWorld(new PlanetaTerra());
+            Greenfoot.setWorld(new MarioStyleWorld());
         }
     }
 }

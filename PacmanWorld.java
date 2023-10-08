@@ -9,19 +9,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class PacmanWorld extends MainWorld
 {
     String[] textMap = {
-        "****.******.***",
-        "...............",
-        "*.**.*.********",
-        "*.*...........*",
-        "*.*.*K*.*.*.*.*",
-        "*.*.*B*.*.*.*.*",
-        "*.*...........*",
-        "*.*.**.*.****.*",
-        ".......*.......",
-        "****.******.***",
+        "****b******p***",
+        "bbbbbpbbbbbbbbb",
+        "*b**b*b********",
+        "*b*bbbbbpbbbpb*",
+        "*b*b*K*b*b*B*b*",
+        "*b*b*.*b*b*.*b*",
+        "*p*bpbbbbbpbbb*",
+        "*b*b**b*b****p*",
+        "bpbbbbb*bbbpbhb",
+        "****p******p***",
     };
     
-    
+    private int BlockSize = 87; // Size of the block
+    private int BlockOffsetY = 10; // Y Offset of the block
+    private int BlockOffsetX = 40; // X Offset of the block
+
     /**
      * Constructor for objects of class PacmanWorld.
      * 
@@ -29,6 +32,7 @@ public class PacmanWorld extends MainWorld
     public PacmanWorld()
     {
         drawMap();
+        setPaintOrder(Scoreboard.class, Player.class, Target.class);
     }
     
     /**
@@ -39,21 +43,30 @@ public class PacmanWorld extends MainWorld
             String mapLine = textMap[i];
             for(int j=0; j<mapLine.length(); j++) {
                 char mapChar = mapLine.charAt(j);
-                int y = i * 40 + 20; // x position times the size of the Rock 40 plus the offset 20
-                int x = j * 40 + 20;
+                int y = i * BlockSize + BlockOffsetY; // x position times the size of the Block plus the offset
+                int x = j * BlockSize + BlockOffsetX; // y position times the size of the Block plus the offset
                 
                 switch (mapChar) {
                     case '*':
-                        addObject(new Block(),x,y);
+                        addObject(new Block2x2(),x,y);
                         break;
-                    case '.':
-                        // addObject(new Stud(),x,y);
+                    case 'p':
+                        addObject(new StudPurple(),x,y);
+                        break;
+                    case 'b':
+                        addObject(new StudBlue(),x,y);
                         break;
                     case 'B':
                         addObject(new Barbie(),x,y);
                         break;
                     case 'K':
                         addObject(new Ken(),x,y);
+                        break;
+                    case 'h':
+                        addObject(new Heart(),x,y);
+                        break;
+                    case 'E':
+                        addObject(new Enemy(),x,y);
                         break;
                     default:
                         break;
