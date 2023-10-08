@@ -43,12 +43,11 @@ public class Ken extends Player
             kwalkingR.getCurrentImage(),
             kenF
         );
-        gameOver(this);
+        checkBounds(this);
         checkFall(this, getX(), getY(), 1);
         onGround(this);
         platformAbove(this);
-        // fall(getX(), getY());
         collectStuds();
-        collectHearts();
+        collectHearts(this);
     }
 }

@@ -42,12 +42,11 @@ public class Barbie extends Player
             bwalkingR.getCurrentImage(),
             barbieF
         );
-        gameOver(this);
+        checkBounds(this);
         checkFall(this, getX(), getY(), 1);
         onGround(this);
         platformAbove(this);
-        // fall(getX(), getY());
         collectStuds();
-        collectHearts();
+        collectHearts(this);
     }
 }

@@ -22,11 +22,44 @@ public class MainWorld extends World
         addObject(sb, getWidth()/2, 30); // Adds the Scoreboard onto the Worlds
     }
     
+    public void act()
+    {
+        
+    }
+    
     /**
-     * Public Method for the score to be accessible from all the Project
+     * Public Method for the score to be accessible to all the Project
      */
     public void addScore(int amount) { 
         sb.addScore(amount);
+    }
+    
+    /**
+     * Public Method for the lives to be accessible to all the Project
+     */
+    public void addBarbieLives(int amount) { 
+        sb.addBarbieLives(amount);
+    }
+    
+    /**
+     * Public Method for the lives to be accessible to all the Project
+     */
+    public void addKenLives(int amount) { 
+        sb.addKenLives(amount);
+    }
+    
+    /**
+     * Public Method for the lives to be accessible to all the Project
+     */
+    public void removeBarbieLives(int amount) { 
+        sb.removeBarbieLives(amount);
+    }
+    
+    /**
+     * Public Method for the lives to be accessible to all the Project
+     */
+    public void removeKenLives(int amount) { 
+        sb.removeKenLives(amount);
     }
     
     /**

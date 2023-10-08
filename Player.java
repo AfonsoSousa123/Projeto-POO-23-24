@@ -18,7 +18,7 @@ public class Player extends Actor
     private int oneUpVolume = 70;
 
     // Initializes the sounds
-    GreenfootSound gameOverSound = new GreenfootSound("Falling-object.mp3");
+    GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
     GreenfootSound coinSound = new GreenfootSound("8bit-coin-sound-effect.mp3");
     GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
 
@@ -76,7 +76,7 @@ public class Player extends Actor
                 setImage(imageFront);
             }
         }
-        else if ((getWorld() instanceof PacmanWorld)) {
+        else if (getWorld() instanceof PacmanWorld) {
             if(Greenfoot.isKeyDown(up)) {
                 // setRotation(Direction.UP);
                 //jump(x,y);
@@ -98,14 +98,20 @@ public class Player extends Actor
     }
     
     /**
-     * Checks if the Player is out of the boundaries of the world and if so the Game is Over
+     * Checks if the Player is out of the boundaries of the world and if so removes one live
      */
-    public void gameOver(Actor player) {
-        if (player.getY() > getWorld().getHeight() + 100) {
-            gameOverSound.setVolume(volume);
-            gameOverSound.play();
-            Greenfoot.setWorld(new GameOver());
-            // Greenfoot.stop();
+    public void checkBounds(Actor player) {
+        if (player.getY() > getWorld().getHeight() + 120) {
+            fallingSound.setVolume(volume);
+            fallingSound.play();
+            
+            if (player.getClass() == Barbie.class) {
+                mainWorld.removeBarbieLives(1);
+                player.setLocation(300,300);
+            } else if (player.getClass() == Ken.class) {
+                mainWorld.removeKenLives(1);
+                player.setLocation(300,300);
+            }
         }
     }
     
@@ -163,20 +169,6 @@ public class Player extends Actor
         }
     }
     
-    
-    // /**
-     // *  Checks if the Player is falling
-     // */
-    // public void checkFall(Player player, int x,int y, int offset) {
-        // if(!player.isTouching(Ground.class))
-        // {
-            // VSPEED++;
-        // } else {
-            // setLocation(x, y - offset);
-            // // setLocation(x, y);
-            // VSPEED = 0;
-        // }
-    // }
     /**
      *  Checks if the Player is falling
      */    
@@ -192,6 +184,7 @@ public class Player extends Actor
         int spriteHeight = getImage().getHeight();
         int yDistance = spriteHeight/-4;
         Actor ceiling = getOneObjectAtOffset(0, yDistance, Ground.class);
+        
         if(ceiling != null) {
             VSPEED = 0;
             bopHead(ceiling);
@@ -202,7 +195,7 @@ public class Player extends Actor
     }
     
     /**
-     *  
+     *  Adds an offset to the height of the Player
      */
     public void bopHead(Actor ceiling) {
         int ceilingHeight = ceiling.getImage().getHeight();
@@ -278,30 +271,35 @@ public class Player extends Actor
         Actor studBlue = getOneIntersectingObject(StudBlue.class);
         Actor studPurple = getOneIntersectingObject(StudPurple.class);
         
-        if(studBlue!= null) {
-            coinSound.setVolume(volume);
+        if(studBlue != null) {
+            coinSound.setVolume(volume); // Sets the volume of the coinSound
+            coinSound.play(); // Plays the coinSound
+            mainWorld.addScore(20); // Adds 20 score to the main score
+            mainWorld.removeObject(studBlue); // Removes the studBlue object
+        } else if (studPurple != null) {
+            coinSound.setVolume(volume); 
             coinSound.play();
-            mainWorld.addScore(20);
-            mainWorld.removeObject(studBlue);
-        } else if (studPurple!= null) {
-            coinSound.setVolume(volume);
-            coinSound.play();
-            mainWorld.addScore(100);
-            mainWorld.removeObject(studPurple);
+            mainWorld.addScore(100); // Adds 100 score to the main score
+            mainWorld.removeObject(studPurple); // Removes the studPurple object
         }
     }
     
     /**
      * Collects the studs and adds points to the Scoreboard
      */
-    public void collectHearts() {
+    public void collectHearts(Actor player) {
         Actor heart = getOneIntersectingObject(Heart.class);
         
         if(heart!= null) {
-            oneUpSound.setVolume(oneUpVolume);
-            oneUpSound.play();
-            // mainWorld.addLive();
-            mainWorld.removeObject(heart);
+            oneUpSound.setVolume(oneUpVolume); // Sets the volume of the oneUpSound
+            oneUpSound.play(); // Plays the oneUpSound
+            
+            if (player.getClass() == Barbie.class) {
+                mainWorld.addBarbieLives(1); // Adds one live to the livesCounter
+            } else if (player.getClass() == Ken.class) {
+                mainWorld.addKenLives(1);
+            }
+            mainWorld.removeObject(heart); // Removes the heart object
         }
     }
 }

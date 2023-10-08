@@ -17,10 +17,10 @@ public class MarioStyleWorld extends MainWorld
      */
     public MarioStyleWorld()
     {    
+        super();
         setBackground(resizeImage(bgImage, 1000, 800)); // Scales the image to the desired width and height 
         prepare();
         populateWorld();
-        // gameOver(this);
     }
 
     public void act() {
