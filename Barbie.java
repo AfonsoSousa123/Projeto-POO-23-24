@@ -26,9 +26,9 @@ public class Barbie extends Player
      */
     public Barbie()
     {
-        redimencionaImg(this, barbieF, 50);
-        redimencionaGif(this, bwalkingR, 50);
-        redimencionaGif(this, bwalkingL, 50);
+        redimencionaImg(this, barbieF, 30);
+        redimencionaGif(this, bwalkingR, 30);
+        redimencionaGif(this, bwalkingL, 30);
     }
     
     public void act()
@@ -50,5 +50,7 @@ public class Barbie extends Player
         platformAbove(this);
         collectStuds();
         collectHearts(this);
+        checkRightWall(this);
+        checkLeftWall(this);
     }
 }

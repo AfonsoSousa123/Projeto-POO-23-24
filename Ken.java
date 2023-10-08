@@ -27,9 +27,9 @@ public class Ken extends Player
      */
     public Ken()
     {
-        redimencionaImg(this, kenF, 50);
-        redimencionaGif(this, kwalkingR, 50);
-        redimencionaGif(this, kwalkingL, 50);
+        redimencionaImg(this, kenF, 30);
+        redimencionaGif(this, kwalkingR, 30);
+        redimencionaGif(this, kwalkingL, 30);
     }
     
     public void act()
@@ -51,5 +51,7 @@ public class Ken extends Player
         platformAbove(this);
         collectStuds();
         collectHearts(this);
+        checkRightWall(this);
+        checkLeftWall(this);
     }
 }

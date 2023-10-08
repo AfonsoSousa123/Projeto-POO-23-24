@@ -223,6 +223,63 @@ public void redimencionaImg(Actor player, GreenfootImage image, int percent)
     }
     
     /**
+     * Checks if the player is touching the right wall
+     */
+    public boolean checkRightWall(Actor player)
+    {
+        int spriteWidth = getImage().getWidth();
+        int xDistance = spriteWidth/2;
+        
+        Actor rWall = getOneObjectAtOffset(xDistance, 0, Block2x2.class);
+        
+        if(rWall == null)
+        {
+            return false;
+        }
+        else {
+            StopByTherWall(rWall);
+            return true;
+        }
+    }
+    /**
+     *  Player stops when reaches a wall on the right
+     */
+    public void StopByTherWall(Actor rWall) {
+        int wallWidth = rWall.getImage().getWidth();
+        int newX = rWall.getX() - (wallWidth + getImage().getWidth())/2;
+        setLocation(newX, getY());
+    }
+    
+    /**
+     *  Checks if the player is thoucing the left wall
+     */
+    public boolean checkLeftWall(Actor player)
+    {
+        int spriteWidth = getImage().getWidth();
+        int xDistance = spriteWidth/-3;
+        
+        Actor lWall = getOneObjectAtOffset(xDistance, 0, Block2x2.class);
+        
+        if(lWall != null)
+        {
+            StopByTheLWall(lWall);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    /**
+     *  Player stops when reaches a wall on the left
+     */
+    public void StopByTheLWall(Actor lWall) {
+        int wallWidth = lWall.getImage().getWidth();
+        int newX = lWall.getX() + (wallWidth + getImage().getHeight())/3;
+        setLocation(newX, getY());
+    }
+    
+    /**
      * Moves the Player to the right
      */
     public void moveRight(int x,int y) {
