@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Stud extends Target
+public class Star extends Target
 {
     /**
      * Act - do whatever the Stud wants to do. This method is called whenever

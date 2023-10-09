@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Menu extends MainWorld
 {
+    GreenfootSound startSound = new GreenfootSound("press_start.wav");
+    
     /**
      * Constructor for objects of class Ecra_inicial.
      * 
@@ -17,6 +19,7 @@ public class Menu extends MainWorld
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         // super(1300, 800, 1);
         populateWorld();
+        
     }
     
     private void populateWorld()
@@ -29,5 +32,14 @@ public class Menu extends MainWorld
         
         Botao botao = new Botao();
         addObject(botao, 556, 452);
+    }
+    
+    public void act() {
+        // pressStartSound();
+    }
+    
+    private void pressStartSound() {
+        startSound.setVolume(70);
+        startSound.play();
     }
 }

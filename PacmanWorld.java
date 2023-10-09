@@ -10,15 +10,15 @@ public class PacmanWorld extends MainWorld
 {
     String[] textMap = {
         "****b******p***",
-        "bbpbbpbpbpbbpbb",
-        "*b**b*b********",
-        "*b*bbbbbpbbbpb*",
-        "*p*b*K*b*b*B*b*",
-        "*b*b*.*b*b*.*b*",
-        "*p*bpbbpbbpbbb*",
-        "*b*b**b*b****p*",
-        "bpbpbbb*bpbpbhb",
-        "****p******p***",
+        "phpbbpbpbpbbpbb",
+        "*p**p*b********",
+        "*b*pbpbbpbpbpb*",
+        "*p*b*K*b*p*B*p*",
+        "*b*p*p*p*b*b*p*",
+        "*p*bpbpbpbpbpb*",
+        "*b*b**b*b****h*",
+        "bpbpbpb*ppbpbpb",
+        "****p******b***",
     };
     
     private int BlockSize = 87; // Size of the block
