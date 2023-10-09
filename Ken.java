@@ -27,9 +27,7 @@ public class Ken extends Player
      */
     public Ken()
     {
-        redimencionaImg(this, kenF, 30);
-        redimencionaGif(this, kwalkingR, 30);
-        redimencionaGif(this, kwalkingL, 30);
+        setImage(redimencionaImg(kenF, 30));
     }
     
     public void act()

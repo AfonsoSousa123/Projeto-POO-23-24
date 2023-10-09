@@ -140,15 +140,16 @@ public class Player extends Actor
         return image;
     }
     
-public void redimencionaImg(Actor player, GreenfootImage image, int percent)
+public GreenfootImage redimencionaImg(GreenfootImage image, int percent)
 {
     int wide = image.getWidth()*percent/100;
-        int high = image.getHeight()*percent/100;
-        image.scale(wide, high);
-    }
+    int high = image.getHeight()*percent/100;
+    image.scale(wide, high);
+    return image;
+}
     
     
-    public void redimencionaGif(Actor player, GifImage gif, int percent)
+    public GifImage redimencionaGif(GifImage gif, int percent)
 {
         for (GreenfootImage image : gif.getImages())
         {
@@ -156,6 +157,7 @@ public void redimencionaImg(Actor player, GreenfootImage image, int percent)
         int high = image.getHeight()*percent/100;
         image.scale(wide, high);
         }
+        return gif;
 }
 
     
