@@ -1,14 +1,14 @@
 #BlueJ class context
 comment0.target=Target
-comment0.text=\n\ Write\ a\ description\ of\ class\ Target\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Target\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=void\ act()
 comment2.params=
 comment2.target=Target()
-comment2.text=\n\ Constructor\ for\ the\ Target\ class.\n\ \n
+comment2.text=\r\n\ Constructor\ for\ the\ Target\ class.\r\n\ \r\n
 comment3.params=
 comment3.target=void\ moveTarget()
 comment4.params=image\ width\ height
 comment4.target=greenfoot.GreenfootImage\ resizeImage(greenfoot.GreenfootImage,\ int,\ int)
-comment4.text=\n\ Resizes\ the\ given\ image\ to\ the\ widht\ and\ height\ specified\n
+comment4.text=\r\n\ Resizes\ the\ given\ image\ to\ the\ widht\ and\ height\ specified\r\n
 numComments=5

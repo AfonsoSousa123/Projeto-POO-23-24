@@ -13,6 +13,7 @@ public class Ken extends Player
     
     GifImage kwalkingR = new GifImage("ken_walking_right.gif");
     GifImage kwalkingL = new GifImage("ken_walking_left.gif");
+    private int ImageSize;
     
     class KenKeys { // Class to store the values of the Keys for Ken
         public static final String UP = "up";
@@ -25,11 +26,12 @@ public class Ken extends Player
      * Constructor for the Ken Class.
      * 
      */
-    public Ken()
+    public Ken(int imageSize)
     {
-        setImage(redimencionaImg(kenF, 30));
-        redimencionaGif(kwalkingL, 30);
-        redimencionaGif(kwalkingR, 30);
+        this.ImageSize = imageSize;
+        redimencionaGif(kwalkingL, ImageSize);
+        redimencionaGif(kwalkingR, ImageSize);
+        setImage(redimencionaImg(kenF, ImageSize));
     }
     
     public void act()
@@ -49,7 +51,7 @@ public class Ken extends Player
         checkFall(this, getX(), getY(), 1);
         onGround(this);
         platformAbove(this);
-        collectStuds();
+        collectStuds(this);
         collectHearts(this);
         checkRightWall(this);
         checkLeftWall(this);

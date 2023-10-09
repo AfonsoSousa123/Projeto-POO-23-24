@@ -16,6 +16,7 @@ public class Player extends Actor
     private int length;
     private int volume = 20;
     private int oneUpVolume = 70;
+    private int imageSize = 30;
 
     // Initializes the sounds
     GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
@@ -389,16 +390,16 @@ public class Player extends Actor
     /**
      * Collects the studs and adds points to the Scoreboard
      */
-    public void collectStuds() {
+    public void collectStuds(Actor player) {
         Actor studBlue = getOneIntersectingObject(StudBlue.class);
         Actor studPurple = getOneIntersectingObject(StudPurple.class);
         
-        if(studBlue != null) {
+        if(studBlue != null&& player.getClass() == Ken.class) {
             coinSound.setVolume(volume); // Sets the volume of the coinSound
             coinSound.play(); // Plays the coinSound
             mainWorld.addScore(20); // Adds 20 score to the main score
             mainWorld.removeObject(studBlue); // Removes the studBlue object
-        } else if (studPurple != null) {
+        } else if (studPurple != null && player.getClass() == Barbie.class) {
             coinSound.setVolume(volume); 
             coinSound.play();
             mainWorld.addScore(100); // Adds 100 score to the main score

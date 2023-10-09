@@ -10,6 +10,8 @@ public class MarioStyleWorld extends MainWorld
 {
     private int imageCount = 0;
     private GreenfootImage bgImage = new GreenfootImage("Clouds.jpg");
+    private Ken ken;
+    private Barbie barbie;
 
     /**
      * Constructor for objects of class MarioStyleWorld.
@@ -43,9 +45,9 @@ public class MarioStyleWorld extends MainWorld
      */
     private void populateWorld()
     {
-        Barbie barbie = new Barbie();
+        Barbie barbie = new Barbie(80);
         addObject(barbie,241,600);
-        Ken ken = new Ken();
+        Ken ken = new Ken(80);
         addObject(ken,423,604);
     }
     

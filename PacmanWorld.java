@@ -57,10 +57,10 @@ public class PacmanWorld extends MainWorld
                         addObject(new StudBlue(),x,y);
                         break;
                     case 'B':
-                        addObject(new Barbie(),x,y);
+                        addObject(new Barbie(30),x,y);
                         break;
                     case 'K':
-                        addObject(new Ken(),x,y);
+                        addObject(new Ken(30),x,y);
                         break;
                     case 'h':
                         addObject(new Heart(),x,y);

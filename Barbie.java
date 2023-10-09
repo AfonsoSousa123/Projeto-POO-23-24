@@ -13,6 +13,8 @@ public class Barbie extends Player
     GifImage bwalkingR = new GifImage("barbie_walking_right.gif");
     GifImage bwalkingL = new GifImage("barbie_walking_left.gif");
     
+    private int ImageSize;
+    
     class BarbieKeys { // Class to store the values of the Keys for Barbie
         public static final String UP = "W";
         public static final String DOWN = "S";
@@ -24,11 +26,12 @@ public class Barbie extends Player
      * Constructor for the Barbie Class.
      * 
      */
-    public Barbie()
+    public Barbie(int imageSize)
     {
-        setImage(redimencionaImg(barbieF, 30));
-        redimencionaGif(bwalkingL, 30);
-        redimencionaGif(bwalkingR, 30);
+        this.ImageSize = imageSize;
+        redimencionaGif(bwalkingL, ImageSize);
+        redimencionaGif(bwalkingR, ImageSize);
+        setImage(redimencionaImg(barbieF, ImageSize));
     }
     
     public void act()
@@ -48,7 +51,7 @@ public class Barbie extends Player
         checkFall(this, getX(), getY(), 1);
         onGround(this);
         platformAbove(this);
-        collectStuds();
+        collectStuds(this);
         collectHearts(this);
         checkRightWall(this);
         checkLeftWall(this);
