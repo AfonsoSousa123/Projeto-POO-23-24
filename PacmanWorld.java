@@ -10,20 +10,22 @@ public class PacmanWorld extends MainWorld
 {
     String[] textMap = {
         "****b******p***",
-        "bbbbbpbbbbbbbbb",
+        "bbpbbpbpbpbbpbb",
         "*b**b*b********",
         "*b*bbbbbpbbbpb*",
-        "*b*b*K*b*b*B*b*",
+        "*p*b*K*b*b*B*b*",
         "*b*b*.*b*b*.*b*",
-        "*p*bpbbbbbpbbb*",
+        "*p*bpbbpbbpbbb*",
         "*b*b**b*b****p*",
-        "bpbbbbb*bbbpbhb",
+        "bpbpbbb*bpbpbhb",
         "****p******p***",
     };
     
     private int BlockSize = 87; // Size of the block
     private int BlockOffsetY = 10; // Y Offset of the block
     private int BlockOffsetX = 40; // X Offset of the block
+    private int mobSize = 30; // Size of the mob 
+    private int playerSize = 30; // Size of the player
 
     /**
      * Constructor for objects of class PacmanWorld.
@@ -57,16 +59,16 @@ public class PacmanWorld extends MainWorld
                         addObject(new StudBlue(),x,y);
                         break;
                     case 'B':
-                        addObject(new Barbie(30),x,y);
+                        addObject(new Barbie(playerSize),x,y);
                         break;
                     case 'K':
-                        addObject(new Ken(30),x,y);
+                        addObject(new Ken(playerSize),x,y);
                         break;
                     case 'h':
                         addObject(new Heart(),x,y);
                         break;
                     case 'E':
-                        addObject(new Enemy(),x,y);
+                        addObject(new Enemy(mobSize),x,y);
                         break;
                     default:
                         break;

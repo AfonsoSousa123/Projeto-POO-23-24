@@ -8,12 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Ken extends Player
 {
+    private int ImageSize;
+    
     //Images Ken
     GreenfootImage kenF = new GreenfootImage("Ken_front.png");
     
     GifImage kwalkingR = new GifImage("ken_walking_right.gif");
     GifImage kwalkingL = new GifImage("ken_walking_left.gif");
-    private int ImageSize;
     
     class KenKeys { // Class to store the values of the Keys for Ken
         public static final String UP = "up";

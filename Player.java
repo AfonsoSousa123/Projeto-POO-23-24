@@ -141,27 +141,23 @@ public class Player extends Actor
         return image;
     }
     
-    public GreenfootImage redimencionaImg(GreenfootImage image, int percent)
-    {
-    int wide = image.getWidth()*percent/100;
-    int high = image.getHeight()*percent/100;
-    image.scale(wide, high);
-    return image;
-    }
-    
-    
-    public GifImage redimencionaGif(GifImage gif, int percent)
-    {
-        for (GreenfootImage image : gif.getImages())
-        {
+    public GreenfootImage redimencionaImg(GreenfootImage image, int percent) {
         int wide = image.getWidth()*percent/100;
         int high = image.getHeight()*percent/100;
         image.scale(wide, high);
+        return image;
+    }
+
+    public GifImage redimencionaGif(GifImage gif, int percent) {
+        for (GreenfootImage image : gif.getImages())
+        {
+            int wide = image.getWidth()*percent/100;
+            int high = image.getHeight()*percent/100;
+            image.scale(wide, high);
         }
         return gif;
     }
 
-    
     /**
      * Simulates the gravity of the Player
      */
@@ -192,7 +188,7 @@ public class Player extends Actor
     }
     
     /**
-     *  Checks if the Player is falling
+     *  Checks if the Player is on the Ground
      */    
     public boolean onGround(Actor player) {
         Actor ground = getOneObjectAtOffset(0, getImage().getHeight()/3, Ground.class);
@@ -244,6 +240,7 @@ public class Player extends Actor
             return true;
         }
     }
+    
     /**
      *  Player stops when reaches a wall on the right
      */
@@ -394,7 +391,7 @@ public class Player extends Actor
         Actor studBlue = getOneIntersectingObject(StudBlue.class);
         Actor studPurple = getOneIntersectingObject(StudPurple.class);
         
-        if(studBlue != null&& player.getClass() == Ken.class) {
+        if(studBlue != null && player.getClass() == Ken.class) {
             coinSound.setVolume(volume); // Sets the volume of the coinSound
             coinSound.play(); // Plays the coinSound
             mainWorld.addScore(20); // Adds 20 score to the main score
@@ -402,7 +399,7 @@ public class Player extends Actor
         } else if (studPurple != null && player.getClass() == Barbie.class) {
             coinSound.setVolume(volume); 
             coinSound.play();
-            mainWorld.addScore(100); // Adds 100 score to the main score
+            mainWorld.addScore(20); // Adds 20 score to the main score
             mainWorld.removeObject(studPurple); // Removes the studPurple object
         }
     }
