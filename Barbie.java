@@ -52,5 +52,7 @@ public class Barbie extends Player
         collectHearts(this);
         checkRightWall(this);
         checkLeftWall(this);
+        cubeAbove(this);
+        cubeUnder(this);
     }
 }

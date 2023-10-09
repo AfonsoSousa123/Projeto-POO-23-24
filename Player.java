@@ -140,13 +140,13 @@ public class Player extends Actor
         return image;
     }
     
-public GreenfootImage redimencionaImg(GreenfootImage image, int percent)
-{
+    public GreenfootImage redimencionaImg(GreenfootImage image, int percent)
+    {
     int wide = image.getWidth()*percent/100;
     int high = image.getHeight()*percent/100;
     image.scale(wide, high);
     return image;
-}
+    }
     
     
     public GifImage redimencionaGif(GifImage gif, int percent)
@@ -279,6 +279,50 @@ public GreenfootImage redimencionaImg(GreenfootImage image, int percent)
         int wallWidth = lWall.getImage().getWidth();
         int newX = lWall.getX() + (wallWidth + getImage().getHeight())/3;
         setLocation(newX, getY());
+    }
+    
+    public boolean cubeAbove(Actor player) {
+        int spriteHeight = getImage().getHeight();
+        int yDistance = spriteHeight/-3;
+        Actor upCube = getOneObjectAtOffset(0, yDistance, Block2x2.class);
+        
+        if(upCube != null) {
+            bateUpCube(upCube);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     *  Adds an offset to the height of the Player
+     */
+    public void bateUpCube(Actor upCube) {
+        int upCubeHeight = upCube.getImage().getHeight();
+        int newY = upCube.getY() + (upCubeHeight + getImage().getHeight())/2;
+        setLocation(getX(), newY);
+    }
+    
+    public boolean cubeUnder(Actor player) {
+        int spriteHeight = getImage().getHeight();
+        int yDistance = spriteHeight/3;
+        Actor downCube = getOneObjectAtOffset(0, yDistance, Block2x2.class);
+        
+        if(downCube == null) {
+            return true;
+        } else {
+            bateUpCube(downCube);
+            return true;
+        }
+    }
+    
+    /**
+     *  Adds an offset to the height of the Player
+     */
+    public void bateDownCube(Actor downCube) {
+        int downCubeHeight = downCube.getImage().getHeight();
+        int newY = downCube.getY() - (downCubeHeight + getImage().getHeight())/2;
+        setLocation(getX(), newY);
     }
     
     /**
