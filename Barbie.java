@@ -27,6 +27,8 @@ public class Barbie extends Player
     public Barbie()
     {
         setImage(redimencionaImg(barbieF, 30));
+        redimencionaGif(bwalkingL, 30);
+        redimencionaGif(bwalkingR, 30);
     }
     
     public void act()
@@ -38,8 +40,8 @@ public class Barbie extends Player
             BarbieKeys.RIGHT, 
             getX(), 
             getY(), 
-            bwalkingL.getCurrentImage(), 
-            bwalkingR.getCurrentImage(),
+            bwalkingL, 
+            bwalkingR,
             barbieF
         );
         checkBounds(this);

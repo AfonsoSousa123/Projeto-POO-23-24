@@ -55,8 +55,8 @@ public class Player extends Actor
         String right, 
         int x, 
         int y, 
-        GreenfootImage imageLeft,
-        GreenfootImage imageRight,
+        GifImage imageLeft,
+        GifImage imageRight,
         GreenfootImage imageFront
     ) {
         if(getWorld() instanceof  MarioStyleWorld) {
@@ -67,10 +67,10 @@ public class Player extends Actor
                 // setRotation(Direction.DOWN);
                 //fall(x,y);
             } else if(Greenfoot.isKeyDown(left)) {
-                setImage(imageLeft);
+                setImage(imageLeft.getCurrentImage());
                 moveLeft(x,y);
             } else if(Greenfoot.isKeyDown(right)) {
-                setImage(imageRight);
+                setImage(imageRight.getCurrentImage());
                 moveRight(x,y);
             } else {
                 setImage(imageFront);
@@ -86,10 +86,10 @@ public class Player extends Actor
                 // fall(x,y);
                 moveDown(x,y);
             } else if(Greenfoot.isKeyDown(left)) {
-                setImage(imageLeft);
+                setImage(imageLeft.getCurrentImage());
                 moveLeft(x,y);
             } else if(Greenfoot.isKeyDown(right)) {
-                setImage(imageRight);
+                setImage(imageRight.getCurrentImage());
                 moveRight(x,y);
             } else {
                 setImage(imageFront);
@@ -150,7 +150,7 @@ public GreenfootImage redimencionaImg(GreenfootImage image, int percent)
     
     
     public GifImage redimencionaGif(GifImage gif, int percent)
-{
+    {
         for (GreenfootImage image : gif.getImages())
         {
         int wide = image.getWidth()*percent/100;
@@ -158,7 +158,7 @@ public GreenfootImage redimencionaImg(GreenfootImage image, int percent)
         image.scale(wide, high);
         }
         return gif;
-}
+    }
 
     
     /**

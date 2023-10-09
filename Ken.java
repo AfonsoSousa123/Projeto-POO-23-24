@@ -28,6 +28,8 @@ public class Ken extends Player
     public Ken()
     {
         setImage(redimencionaImg(kenF, 30));
+        redimencionaGif(kwalkingL, 30);
+        redimencionaGif(kwalkingR, 30);
     }
     
     public void act()
@@ -39,8 +41,8 @@ public class Ken extends Player
             KenKeys.RIGHT, 
             getX(), 
             getY(), 
-            kwalkingL.getCurrentImage(), 
-            kwalkingR.getCurrentImage(),
+            kwalkingL, 
+            kwalkingR,
             kenF
         );
         checkBounds(this);
