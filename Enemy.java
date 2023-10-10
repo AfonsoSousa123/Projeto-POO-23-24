@@ -29,16 +29,13 @@ public class Enemy extends Mob
      */
     public void act()
     {
-        // moveMob(
-             // up, 
-             // down, 
-             // left, 
-             // right, 
-             // x, 
-             // y, 
-             // imageLeft,
-             // imageRight,
-             // imageFront
-        // );
+        moveMob(
+             getX(), 
+             getY(), 
+             ewalkingL,
+             ewalkingR
+        );
+        fall(getX(), getY());
+        checkFall(this, getX(), getY());
     }
 }

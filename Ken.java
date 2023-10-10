@@ -49,7 +49,7 @@ public class Ken extends Player
             kenF
         );
         checkBounds(this);
-        checkFall(this, getX(), getY(), 1);
+        checkFall(this, getX(), getY());
         onGround(this);
         platformAbove(this);
         collectStuds(this);

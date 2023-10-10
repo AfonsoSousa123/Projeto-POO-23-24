@@ -179,7 +179,7 @@ public class Player extends Actor
     /**
      *  Checks if the Player is falling
      */
-    public void checkFall(Player player, int x,int y, int offset) {
+    public void checkFall(Player player, int x,int y) {
         if(getWorld() instanceof  MarioStyleWorld){
             if(!onGround(player)) {
                 fall(x,y);

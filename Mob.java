@@ -14,8 +14,6 @@ public class Mob extends Actor
     private int acceleration = 2;
     private int jumpStrenght = 50;
     private int length;
-    private int volume = 20;
-    private int oneUpVolume = 70;
     private int imageSize = 30;
     private int count = 0;
     
@@ -68,6 +66,26 @@ public class Mob extends Actor
         }
     }
 
+    /**
+     * Simulates the gravity of the Player
+     */
+    public void fall(int x,int y) {
+        setLocation(x, y + VSPEED);
+        VSPEED += acceleration;
+    }
+    
+    /**
+     *  Checks if the Player is falling
+     */
+    public void checkFall(Mob enemy, int x,int y) {
+        if(getWorld() instanceof  MarioStyleWorld){
+            if(!onGround(enemy)) {
+                fall(x,y);
+            } else if (onGround(enemy)) {
+                VSPEED = 0;
+            }
+        }
+    }
     
     /**
      *  Checks if the Mob is on the Ground
