@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameOver extends MainWorld
 {
+    GreenfootSound gameOverSound = new GreenfootSound("game_over.wav");
+    
     /**
      * Constructor for objects of class GameOver.
      * 
@@ -17,6 +19,12 @@ public class GameOver extends MainWorld
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         // super(1300, 800, 1); 
         prepare();
+        playGameOverSound();
+    }
+    
+    private void playGameOverSound() {
+        gameOverSound.setVolume(70);
+        gameOverSound.play();
     }
     
     /**

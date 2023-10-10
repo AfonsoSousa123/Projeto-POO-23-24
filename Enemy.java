@@ -29,6 +29,16 @@ public class Enemy extends Mob
      */
     public void act()
     {
-        // Add your action code here.
+        // moveMob(
+             // up, 
+             // down, 
+             // left, 
+             // right, 
+             // x, 
+             // y, 
+             // imageLeft,
+             // imageRight,
+             // imageFront
+        // );
     }
 }

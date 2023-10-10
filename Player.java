@@ -60,7 +60,7 @@ public class Player extends Actor
         GifImage imageRight,
         GreenfootImage imageFront
     ) {
-        if(getWorld() instanceof  MarioStyleWorld) {
+        if(getWorld() instanceof MarioStyleWorld || getWorld() instanceof PlanetaTerra) {
             if(Greenfoot.isKeyDown(up) && onGround(this)) {
                 // setRotation(Direction.UP);
                 jump(x,y);
@@ -99,19 +99,21 @@ public class Player extends Actor
     }
     
     /**
-     * Checks if the Player is out of the boundaries of the world and if so removes one live
+     * Checks if the Player is out of the boundaries of the MarioStyleWorld and if so removes one live
      */
     public void checkBounds(Actor player) {
-        if (player.getY() > getWorld().getHeight() + 120) {
-            fallingSound.setVolume(volume);
-            fallingSound.play();
-            
-            if (player.getClass() == Barbie.class) {
-                mainWorld.removeBarbieLives(1);
-                player.setLocation(300,300);
-            } else if (player.getClass() == Ken.class) {
-                mainWorld.removeKenLives(1);
-                player.setLocation(300,300);
+        if(getWorld() instanceof MarioStyleWorld) {
+            if (player.getY() > getWorld().getHeight() + 120) {
+                fallingSound.setVolume(volume);
+                fallingSound.play();
+                
+                if (player.getClass() == Barbie.class) {
+                    mainWorld.removeBarbieLives(1);
+                    player.setLocation(300,300);
+                } else if (player.getClass() == Ken.class) {
+                    mainWorld.removeKenLives(1);
+                    player.setLocation(300,300);
+                }
             }
         }
     }

@@ -17,6 +17,7 @@ public class Mob extends Actor
     private int volume = 20;
     private int oneUpVolume = 70;
     private int imageSize = 30;
+    private int count = 0;
     
     public Mob() {
         
@@ -28,54 +29,45 @@ public class Mob extends Actor
      */
     public void act()
     {
-        // Add your action code here.
+        count++;
     }
     
     /**
      * Moves the Mob
      */
     public void moveMob(
-        String up, 
-        String down, 
-        String left, 
-        String right, 
         int x, 
         int y, 
         GifImage imageLeft,
-        GifImage imageRight,
-        GreenfootImage imageFront
+        GifImage imageRight
     ) {
         if(getWorld() instanceof  MarioStyleWorld) {
-            if(Greenfoot.isKeyDown(up) && onGround(this)) {
-                
-            } else if(Greenfoot.isKeyDown(down)) {
-                
-            } else if(Greenfoot.isKeyDown(left)) {
-                setImage(imageLeft.getCurrentImage());
-                // moveLeft(x,y);
-            } else if(Greenfoot.isKeyDown(right)) {
-                setImage(imageRight.getCurrentImage());
-                // moveRight(x,y);
-            } else {
-                setImage(imageFront);
+            if(onGround(this)) {
+                if (count > 120) {
+                    setImage(imageRight.getCurrentImage());
+                    setLocation(x + SPEED, y);
+                } else {
+                    setImage(imageLeft.getCurrentImage());
+                    SPEED = -SPEED;
+                    count = 0;
+                }
             }
         }
         else if (getWorld() instanceof PacmanWorld) {
-            if(Greenfoot.isKeyDown(up)) {
-                // moveUp(x,y);
-            } else if(Greenfoot.isKeyDown(down)) {
-                // moveDown(x,y);
-            } else if(Greenfoot.isKeyDown(left)) {
-                setImage(imageLeft.getCurrentImage());
-                // moveLeft(x,y);
-            } else if(Greenfoot.isKeyDown(right)) {
-                setImage(imageRight.getCurrentImage());
-                // moveRight(x,y);
-            } else {
-                setImage(imageFront);
-            }
+            // if(Greenfoot.isKeyDown(up)) {
+                // // moveUp(x,y);
+            // } else if() {
+                // // moveDown(x,y);
+            // } else if() {
+                // setImage(imageLeft.getCurrentImage());
+                // // moveLeft(x,y);
+            // } else if() {
+                // setImage(imageRight.getCurrentImage());
+                // // moveRight(x,y);
+            // }
         }
     }
+
     
     /**
      *  Checks if the Mob is on the Ground
@@ -161,30 +153,14 @@ public class Mob extends Actor
     }
     
     /**
-     * Moves the Mob to the right
+     * Moves the Mob to the right and the left
      */
-    public void moveRight(int x,int y) {
-        setLocation(x + SPEED, y);
-    }
-    
-    /**
-     * Moves the Mob to the left
-     */
-    public void moveLeft(int x,int y) {
-        setLocation(x - SPEED, y);
-    }
-    
-    /**
-     * Moves the Mob Down
-     */
-    public void moveDown(int x, int y) {
-        setLocation(x, y + SPEED);
-    }
-    
-    /**
-     * Moves the Mob Up
-     */
-     public void moveUp(int x, int y) {
-        setLocation(x, y - SPEED);
+    public void moveAround(int x,int y) {
+        if (count > 120) {
+            setLocation(x + SPEED, y);
+        } else {
+            SPEED = -SPEED;
+            count = 0;
+        }
     }
 }

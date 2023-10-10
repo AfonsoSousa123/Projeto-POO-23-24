@@ -11,7 +11,7 @@ public class PacmanWorld extends MainWorld
     String[] textMap = {
         "****b******p***",
         "phpbbpbpbpbbpbb",
-        "*p**p*b********",
+        "*p**p*p******p*",
         "*b*pbpbbpbpbpb*",
         "*p*b*K*b*p*B*p*",
         "*b*p*p*p*b*b*p*",
