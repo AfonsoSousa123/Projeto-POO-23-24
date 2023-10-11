@@ -203,5 +203,8 @@ public class MarioStyleWorld extends MainWorld
         heart2.setLocation(1962,82);
         heart2.setLocation(2069,156);
         heart2.setLocation(2065,160);
+        Enemy enemy = new Enemy(40);
+        addObject(enemy,1174,367);
+        enemy.setLocation(1199,416);
     }
 }

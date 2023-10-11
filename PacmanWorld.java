@@ -13,7 +13,7 @@ public class PacmanWorld extends MainWorld
         "phpbbpbpbpbbpbb",
         "*p**p*p******p*",
         "*b*pbpbbpbpbpb*",
-        "*p*b*K*b*p*B*p*",
+        "*p*b*B*b*p*K*p*",
         "*b*p*p*p*b*b*p*",
         "*p*bpbpbpbpbpb*",
         "*b*b**b*b****h*",
