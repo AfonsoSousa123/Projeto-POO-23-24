@@ -12,16 +12,14 @@ public class Mob extends Actor
     private int SPEED = 1;
     private int VSPEED = 0;
     private int acceleration = 2;
-    private int jumpStrenght = 50;
-    private int length;
     private int imageSize = 30;
     private int count = 0;
     
-    private int spriteHeight = getImage().getHeight();
-    private int spriteWidth = getImage().getWidth(); 
-    private int lookForWalls = spriteWidth/2;
-    private int lookForEdge = spriteWidth/4; 
-    private int lookForGround = spriteHeight/2;
+    private int width = getImage().getWidth(); 
+    private int height = getImage().getHeight();
+    private int lookForWalls = width/3;
+    private int lookForEdge = width/5; 
+    private int lookForGround = height/2;
     
     public Mob() {
         
@@ -67,27 +65,18 @@ public class Mob extends Actor
     /**
      * Moves the Mob to the right and the left
      */
-    public void moveAround(int x,int y) {
+    public void moveAround(int x, int y) {
+        // Check if the Mob is colliding with any walls or cliffs.
         Actor wall = getOneObjectAtOffset(lookForWalls, 0, Ground.class);
         Actor cliff = getOneObjectAtOffset(lookForEdge, lookForGround, Ground.class);
-        
-        if(wall == null && cliff == null) {
-            SPEED = SPEED * -1;
-            lookForWalls = lookForWalls * -1;
-            lookForEdge = lookForEdge * -1;
-        } else if (wall != null && cliff != null) {
+        // If the Mob is colliding with a wall or cliff, reverse its direction.
+        if (wall != null || cliff != null) {
             SPEED *= -1;
             lookForWalls *= -1;
             lookForEdge *= -1;
-        } else {
-            move(SPEED);
         }
-        // if (count < 60) {
-            // setLocation(x + SPEED, y);
-        // } else {
-            // setLocation(x - SPEED, y);
-            // count = 0;
-        // }
+        // Move the Mob according to its speed.
+        move(SPEED);
     }
 
     /**

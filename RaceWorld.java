@@ -10,23 +10,23 @@ public class RaceWorld extends MainWorld
 {
     private GreenfootImage bgImage = new GreenfootImage(getBackground());
     private int imageCount = 0;
-
+    private int imageSize = 60;
+    
     private Ken ken;
     private Barbie barbie;
-    private int imageSize = 60;
-
+    
     /**
      * Constructor for objects of class RaceWorld.
      * 
      */
     public RaceWorld()
     {
-
+        populateWorld();
         prepare();
     }
 
     public void act() {
-        imageCount += 1; //(or any other value; small -> slow moving, big -> fast movement)
+        imageCount += 1; //(small -> slow moving, big -> fast movement)
         drawBackgroundImage();
     }
 
@@ -45,7 +45,11 @@ public class RaceWorld extends MainWorld
      */
     private void populateWorld()
     {
+        BarbieCar barbieCar = new BarbieCar();
+        addObject(barbieCar,458,629);
 
+        KenCar kenCar = new KenCar();
+        addObject(kenCar,870,631);
     }
     
     /**
@@ -54,10 +58,6 @@ public class RaceWorld extends MainWorld
      */
     private void prepare()
     {
-        BarbieCar barbieCar = new BarbieCar();
-        addObject(barbieCar,458,629);
-
-        KenCar kenCar = new KenCar();
-        addObject(kenCar,870,631);
+        
     }
 }

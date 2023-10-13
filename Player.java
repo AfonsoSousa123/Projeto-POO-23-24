@@ -17,6 +17,7 @@ public class Player extends Actor
     private int volume = 20;
     private int oneUpVolume = 70;
     private int imageSize = 30;
+    private int level;
 
     // Initializes the sounds
     GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
@@ -62,10 +63,8 @@ public class Player extends Actor
     ) {
         if(getWorld() instanceof MarioStyleWorld || getWorld() instanceof PlanetaTerra) {
             if(Greenfoot.isKeyDown(up) && onGround(this)) {
-                // setRotation(Direction.UP);
                 jump(x,y);
             } else if(Greenfoot.isKeyDown(down)) {
-                // setRotation(Direction.DOWN);
                 //fall(x,y);
             } else if(Greenfoot.isKeyDown(left)) {
                 setImage(imageLeft.getCurrentImage());
@@ -76,15 +75,10 @@ public class Player extends Actor
             } else {
                 setImage(imageFront);
             }
-        }
-        else if (getWorld() instanceof PacmanWorld) {
+        } else if (getWorld() instanceof PacmanWorld) {
             if(Greenfoot.isKeyDown(up)) {
-                // setRotation(Direction.UP);
-                //jump(x,y);
                 moveUp(x,y);
             } else if(Greenfoot.isKeyDown(down)) {
-                // setRotation(Direction.DOWN);
-                // fall(x,y);
                 moveDown(x,y);
             } else if(Greenfoot.isKeyDown(left)) {
                 setImage(imageLeft.getCurrentImage());
@@ -101,7 +95,7 @@ public class Player extends Actor
     /**
      * Checks if the Player is out of the boundaries of the MarioStyleWorld and if so removes one live
      */
-    public void checkBounds(Actor player) {
+    public void checkBounds(Player player) {
         if(getWorld() instanceof MarioStyleWorld) {
             if (player.getY() > getWorld().getHeight() + 120) {
                 fallingSound.setVolume(volume);
@@ -133,15 +127,6 @@ public class Player extends Actor
            // setLocation(currentX + changeX, currentY + changeY);
         // }
     // }
-    
-    /**
-     * Resizes the given image to the widht and height specified
-     */
-    public GreenfootImage resizeImage(GreenfootImage image, int width, int height) {
-        image.scale(width, height);
-        setImage(image);
-        return image;
-    }
     
     public GreenfootImage redimencionaImg(GreenfootImage image, int percent) {
         int wide = image.getWidth()*percent/100;
@@ -192,7 +177,7 @@ public class Player extends Actor
     /**
      *  Checks if the Player is on the Ground
      */    
-    public boolean onGround(Actor player) {
+    public boolean onGround(Player player) {
         Actor ground = getOneObjectAtOffset(0, getImage().getHeight()/3, Ground.class);
         return ground != null;
     }
@@ -244,7 +229,7 @@ public class Player extends Actor
     }
     
     /**
-     *  Player stops when reaches a wall on the right
+     *  Player stops when it reaches a wall on the right
      */
     public void StopByTherWall(Actor rWall) {
         int wallWidth = rWall.getImage().getWidth();
@@ -275,7 +260,7 @@ public class Player extends Actor
     /**
      *  Player stops when reaches a wall on the left
      */
-    public void StopByTheLWall(Actor lWall) {
+    private void StopByTheLWall(Actor lWall) {
         int wallWidth = lWall.getImage().getWidth();
         int newX = lWall.getX() + (wallWidth + getImage().getHeight())/3;
         setLocation(newX, getY());
@@ -319,7 +304,7 @@ public class Player extends Actor
     /**
      *  Adds an offset to the height of the Player
      */
-    public void bateDownCube(Actor downCube) {
+    private void bateDownCube(Actor downCube) {
         int downCubeHeight = downCube.getImage().getHeight();
         int newY = downCube.getY() - (downCubeHeight + getImage().getHeight())/2;
         setLocation(getX(), newY);
@@ -328,28 +313,28 @@ public class Player extends Actor
     /**
      * Moves the Player to the right
      */
-    public void moveRight(int x,int y) {
+    private void moveRight(int x,int y) {
         setLocation( x + SPEED, y);
     }
     
     /**
      * Moves the Player to the left
      */
-    public void moveLeft(int x,int y) {
+    private void moveLeft(int x,int y) {
         setLocation( x - SPEED, y);
     }
     
     /**
      * Moves the Player Down
      */
-    public void moveDown(int x, int y) {
+    private void moveDown(int x, int y) {
         setLocation(x, y + SPEED);
     }
     
     /**
      * Moves the Player Up
      */
-     public void moveUp(int x, int y) {
+    private void moveUp(int x, int y) {
         setLocation(x, y - SPEED);
     }
     
@@ -386,6 +371,11 @@ public class Player extends Actor
         return offset + adjustAmount;
     }
     
+    private void playOneUpSound() {
+        coinSound.setVolume(volume); // Sets the volume of the coinSound
+        coinSound.play(); // Plays the coinSound
+    }
+    
     /**
      * Collects the studs and adds points to the Scoreboard
      */
@@ -394,13 +384,11 @@ public class Player extends Actor
         Actor studPurple = getOneIntersectingObject(StudPurple.class);
         
         if(studBlue != null && player.getClass() == Ken.class) {
-            coinSound.setVolume(volume); // Sets the volume of the coinSound
-            coinSound.play(); // Plays the coinSound
+            playOneUpSound();
             mainWorld.addScore(20); // Adds 20 score to the main score
             mainWorld.removeObject(studBlue); // Removes the studBlue object
         } else if (studPurple != null && player.getClass() == Barbie.class) {
-            coinSound.setVolume(volume); 
-            coinSound.play();
+            playOneUpSound();
             mainWorld.addScore(20); // Adds 20 score to the main score
             mainWorld.removeObject(studPurple); // Removes the studPurple object
         }
@@ -421,6 +409,7 @@ public class Player extends Actor
             } else if (player.getClass() == Ken.class) {
                 mainWorld.addKenLives(1);
             }
+            
             mainWorld.removeObject(heart); // Removes the heart object
         }
     }

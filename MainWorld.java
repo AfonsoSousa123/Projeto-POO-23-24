@@ -63,11 +63,34 @@ public class MainWorld extends World
     }
     
     /**
-     * Resizes the given background to the widht and height specified
+     * Resizes the given background to the width and height specified
      */
     public GreenfootImage resizeImage(GreenfootImage imageBackground, int width, int height) {
         imageBackground.scale(width, height);
         setBackground(imageBackground);
         return imageBackground;
+    }
+    
+    /**
+     * Resizes the given Image to a width and height times the percent specified 
+     */
+    public GreenfootImage redimencionaImg(GreenfootImage image, int percent) {
+        int wide = image.getWidth()*percent/100;
+        int high = image.getHeight()*percent/100;
+        image.scale(wide, high);
+        return image;
+    }
+
+    /**
+     * Resizes the given Gif to a width and height times the percent specified 
+     */
+    public GifImage redimencionaGif(GifImage gif, int percent) {
+        for (GreenfootImage image : gif.getImages())
+        {
+            int wide = image.getWidth()*percent/100;
+            int high = image.getHeight()*percent/100;
+            image.scale(wide, high);
+        }
+        return gif;
     }
 }

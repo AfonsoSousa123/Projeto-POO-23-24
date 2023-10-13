@@ -10,6 +10,8 @@ public class Enemy extends Mob
 {
     private int ImageSize;
     
+    private MainWorld main;
+    
     //Images Ken
     GreenfootImage enemyF = new GreenfootImage(getImage());
     
