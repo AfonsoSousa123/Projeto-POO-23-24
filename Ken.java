@@ -16,11 +16,11 @@ public class Ken extends Player
     GifImage kwalkingR = new GifImage("ken_walking_right.gif");
     GifImage kwalkingL = new GifImage("ken_walking_left.gif");
     
-    class KenKeys { // Class to store the values of the Keys for Ken
-        public static final String UP = "up";
-        public static final String DOWN = "down";
-        public static final String LEFT = "left";
-        public static final String RIGHT = "right";
+    public class KenKeys { // Class to store the values of the Keys for Ken
+        private static final String UP = "up";
+        private static final String DOWN = "down";
+        private static final String LEFT = "left";
+        private static final String RIGHT = "right";
     }
     
     /**

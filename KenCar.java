@@ -13,6 +13,13 @@ public class KenCar extends Vehicle
     //Images Ken
     GreenfootImage kenCar = new GreenfootImage(getImage());
     
+    class KenKeys { // Class to store the values of the Keys for Ken
+        private static final String UP = "up";
+        private static final String DOWN = "down";
+        private static final String LEFT = "left";
+        private static final String RIGHT = "right";
+    }
+    
     public KenCar() {
         redimencionaImg(kenCar, 50);
         setImage(kenCar);
@@ -24,6 +31,13 @@ public class KenCar extends Vehicle
      */
     public void act()
     {
-        // Add your action code here.
+        moveVehicle(
+            KenKeys.UP,
+            KenKeys.DOWN, 
+            KenKeys.LEFT, 
+            KenKeys.RIGHT, 
+            getX(), 
+            getY()
+        );
     }
 }

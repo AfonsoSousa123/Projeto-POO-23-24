@@ -45,7 +45,7 @@ public class Mob extends Actor
     ) {
         if(getWorld() instanceof  MarioStyleWorld) {
             if(onGround(this)) {
-                moveAround(x, y);
+                moveAround(imageLeft, imageRight, x, y);
             }
         } else if (getWorld() instanceof PacmanWorld) {
             // if(Greenfoot.isKeyDown(up)) {
@@ -65,18 +65,29 @@ public class Mob extends Actor
     /**
      * Moves the Mob to the right and the left
      */
-    public void moveAround(int x, int y) {
+    public void moveAround(GifImage imageLeft, GifImage imageRight, int x, int y) {
         // Check if the Mob is colliding with any walls or cliffs.
         Actor wall = getOneObjectAtOffset(lookForWalls, 0, Ground.class);
         Actor cliff = getOneObjectAtOffset(lookForEdge, lookForGround, Ground.class);
-        // If the Mob is colliding with a wall or cliff, reverse its direction.
+        
+        // If the Mob is colliding with a wall or cliff, reverse its direction
         if (wall != null || cliff != null) {
             SPEED *= -1;
             lookForWalls *= -1;
             lookForEdge *= -1;
         }
-        // Move the Mob according to its speed.
-        move(SPEED);
+    
+        // // Check if the Mob is turning left or right
+        // if (x > 0) {
+            // // Turning right.
+            // setImage(imageRight.getCurrentImage());
+        // } else if (x < 0) {
+            // // Turning left.
+            // setImage(imageLeft.getCurrentImage());
+        // }
+    
+        // Move the Mob according to its speed
+        setLocation(x + SPEED, y);
     }
 
     /**
