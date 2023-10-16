@@ -48,7 +48,7 @@ public class Player extends Actor
     }
     
     /**
-     * Moves the Player
+     * Moves the Player / Move o Player
      */
     public void movePlayer(
         String up, 
@@ -62,52 +62,82 @@ public class Player extends Actor
         GreenfootImage imageFront
     ) {
         if(getWorld() instanceof MarioStyleWorld || getWorld() instanceof PlanetaTerra) {
-            if(Greenfoot.isKeyDown(up) && onGround(this)) {
-                jump(x,y);
-            } else if(Greenfoot.isKeyDown(down)) {
-                //fall(x,y);
-            } else if(Greenfoot.isKeyDown(left)) {
-                setImage(imageLeft.getCurrentImage());
-                moveLeft(x,y);
-            } else if(Greenfoot.isKeyDown(right)) {
-                setImage(imageRight.getCurrentImage());
-                moveRight(x,y);
-            } else {
-                setImage(imageFront);
-            }
+            movePlayerMarioWorld(up, left, right, x, y, imageLeft, imageRight, imageFront);
         } else if (getWorld() instanceof PacmanWorld) {
-            if(Greenfoot.isKeyDown(up)) {
-                moveUp(x,y);
-            } else if(Greenfoot.isKeyDown(down)) {
-                moveDown(x,y);
-            } else if(Greenfoot.isKeyDown(left)) {
-                setImage(imageLeft.getCurrentImage());
-                moveLeft(x,y);
-            } else if(Greenfoot.isKeyDown(right)) {
-                setImage(imageRight.getCurrentImage());
-                moveRight(x,y);
-            } else {
-                setImage(imageFront);
-            }
+            movePlayerPacmanWorld(up, down, left, right, x, y, imageLeft, imageRight, imageFront);
+        }
+    }
+    
+    /**
+     * Moves the Player in the MarioStyleWorld / Move o Player no MarioStyleWorld
+     */
+    private void movePlayerMarioWorld(
+        String up,  
+        String left, 
+        String right, 
+        int x, 
+        int y, 
+        GifImage imageLeft,
+        GifImage imageRight,
+        GreenfootImage imageFront
+    ) {
+        if(Greenfoot.isKeyDown(up) && onGround(this)) {
+            jump(x,y);
+        } else if(Greenfoot.isKeyDown(left)) {
+            setImage(imageLeft.getCurrentImage());
+            moveLeft(x,y);
+        } else if(Greenfoot.isKeyDown(right)) {
+            setImage(imageRight.getCurrentImage());
+            moveRight(x,y);
+        } else {
+            setImage(imageFront);
+        }
+    }
+    
+    /**
+     * Moves the Player in the PacmanWorld / Move o Player no PacmanWorld
+     */
+    private void movePlayerPacmanWorld(
+        String up,  
+        String down,
+        String left, 
+        String right, 
+        int x, 
+        int y, 
+        GifImage imageLeft,
+        GifImage imageRight,
+        GreenfootImage imageFront
+    ) {
+        if(Greenfoot.isKeyDown(up)) {
+            moveUp(x,y);
+        } else if(Greenfoot.isKeyDown(down)) {
+            moveDown(x,y);
+        } else if(Greenfoot.isKeyDown(left)) {
+            setImage(imageLeft.getCurrentImage());
+            moveLeft(x,y);
+        } else if(Greenfoot.isKeyDown(right)) {
+            setImage(imageRight.getCurrentImage());
+            moveRight(x,y);
+        } else {
+            setImage(imageFront);
         }
     }
     
     /**
      * Checks if the Player is out of the boundaries of the MarioStyleWorld and if so removes one live
      */
-    public void checkBounds(Player player) {
+    public void checkBounds(Player player) { // Verifica as bordas do 
         if(getWorld() instanceof MarioStyleWorld) {
             if (player.getY() > getWorld().getHeight() + 120) {
-                fallingSound.setVolume(volume);
-                fallingSound.play();
+                playFallingSound();
                 
                 if (player.getClass() == Barbie.class) {
                     mainWorld.removeBarbieLives(1);
-                    player.setLocation(300,300);
                 } else if (player.getClass() == Ken.class) {
                     mainWorld.removeKenLives(1);
-                    player.setLocation(300,300);
                 }
+                
+                player.setLocation(300,300);
             }
         }
     }
@@ -148,7 +178,7 @@ public class Player extends Actor
     /**
      * Simulates the gravity of the Player
      */
-    public void fall(int x,int y) {
+    public void fall(int x,int y) { // cai
         setLocation(x, y + VSPEED);
         VSPEED += acceleration;
     }
@@ -156,7 +186,7 @@ public class Player extends Actor
     /**
      * Simulates the jump of the Player
      */
-    public void jump(int x,int y) {
+    public void jump(int x,int y) { // salta
         VSPEED = -jumpStrenght;
         fall(x,y);
     }
@@ -164,7 +194,7 @@ public class Player extends Actor
     /**
      *  Checks if the Player is falling
      */
-    public void checkFall(Player player, int x,int y) {
+    public void checkFall(Player player, int x,int y) { // verifica se o player a cair
         if(getWorld() instanceof  MarioStyleWorld){
             if(!onGround(player)) {
                 fall(x,y);
@@ -177,7 +207,7 @@ public class Player extends Actor
     /**
      *  Checks if the Player is on the Ground
      */    
-    public boolean onGround(Player player) {
+    public boolean onGround(Player player) { // verifica se o player está a tocar no chão
         Actor ground = getOneObjectAtOffset(0, getImage().getHeight()/3, Ground.class);
         return ground != null;
     }
@@ -185,7 +215,7 @@ public class Player extends Actor
     /**
      * Checks if the Player is touching the above platform
      */
-    public boolean platformAbove(Actor player) {
+    public boolean platformAbove(Actor player) { // palataforma em cima
         int spriteHeight = getImage().getHeight();
         int yDistance = spriteHeight/-4;
         Actor ceiling = getOneObjectAtOffset(0, yDistance, Ground.class);
@@ -207,6 +237,10 @@ public class Player extends Actor
         int newY = ceiling.getY() + (ceilingHeight + getImage().getHeight())/3;
         setLocation(getX(), newY);
     }
+    
+    /**
+     * PacmanWorld code begin
+     */
     
     /**
      * Checks if the player is touching the right wall
@@ -234,7 +268,7 @@ public class Player extends Actor
     public void StopByTherWall(Actor rWall) {
         int wallWidth = rWall.getImage().getWidth();
         int newX = rWall.getX() - (wallWidth + getImage().getWidth())/2;
-        setLocation(newX, getY());
+        setLocation(newX, rWall.getY());
     }
     
     /**
@@ -263,7 +297,7 @@ public class Player extends Actor
     private void StopByTheLWall(Actor lWall) {
         int wallWidth = lWall.getImage().getWidth();
         int newX = lWall.getX() + (wallWidth + getImage().getHeight())/3;
-        setLocation(newX, getY());
+        setLocation(newX, lWall.getY());
     }
     
     public boolean cubeAbove(Actor player) {
@@ -285,9 +319,12 @@ public class Player extends Actor
     public void bateUpCube(Actor upCube) {
         int upCubeHeight = upCube.getImage().getHeight();
         int newY = upCube.getY() + (upCubeHeight + getImage().getHeight())/2;
-        setLocation(getX(), newY);
+        setLocation(upCube.getX(), newY);
     }
     
+    /**
+     *  Checks is the Player has a cube under it
+     */
     public boolean cubeUnder(Actor player) {
         int spriteHeight = getImage().getHeight();
         int yDistance = spriteHeight/3;
@@ -307,21 +344,25 @@ public class Player extends Actor
     private void bateDownCube(Actor downCube) {
         int downCubeHeight = downCube.getImage().getHeight();
         int newY = downCube.getY() - (downCubeHeight + getImage().getHeight())/2;
-        setLocation(getX(), newY);
+        setLocation(downCube.getX(), newY);
     }
+    
+    /**
+     * PacmanWorld code end
+     */
     
     /**
      * Moves the Player to the right
      */
     private void moveRight(int x,int y) {
-        setLocation( x + SPEED, y);
+        setLocation(x + SPEED, y);
     }
     
     /**
      * Moves the Player to the left
      */
     private void moveLeft(int x,int y) {
-        setLocation( x - SPEED, y);
+        setLocation(x - SPEED, y);
     }
     
     /**
@@ -371,9 +412,28 @@ public class Player extends Actor
         return offset + adjustAmount;
     }
     
+    /**
+     * Plays the OneUpSound
+     */
     private void playOneUpSound() {
+        oneUpSound.setVolume(oneUpVolume); // Sets the volume of the oneUpSound
+        oneUpSound.play(); // Plays the oneUpSound
+    }
+    
+    /**
+     * Plays the CoinSound
+     */
+    private void playCoinSound() {
         coinSound.setVolume(volume); // Sets the volume of the coinSound
         coinSound.play(); // Plays the coinSound
+    }
+    
+    /**
+     * Plays the FallingSound
+     */
+    private void playFallingSound() {
+        fallingSound.setVolume(volume); // Sets the volume of the fallingSound
+        fallingSound.play(); // Plays the fallingSound
     }
     
     /**
@@ -384,12 +444,12 @@ public class Player extends Actor
         Actor studPurple = getOneIntersectingObject(StudPurple.class);
         
         if(studBlue != null && player.getClass() == Ken.class) {
-            playOneUpSound();
             mainWorld.addScore(20); // Adds 20 score to the main score
+            playCoinSound(); // Plays the coinSound
             mainWorld.removeObject(studBlue); // Removes the studBlue object
         } else if (studPurple != null && player.getClass() == Barbie.class) {
-            playOneUpSound();
             mainWorld.addScore(20); // Adds 20 score to the main score
+            playCoinSound(); // Plays the coinSound
             mainWorld.removeObject(studPurple); // Removes the studPurple object
         }
     }
@@ -400,16 +460,14 @@ public class Player extends Actor
     public void collectHearts(Actor player) {
         Actor heart = getOneIntersectingObject(Heart.class);
         
-        if(heart!= null) {
-            oneUpSound.setVolume(oneUpVolume); // Sets the volume of the oneUpSound
-            oneUpSound.play(); // Plays the oneUpSound
-            
+        if(heart != null) {
             if (player.getClass() == Barbie.class) {
                 mainWorld.addBarbieLives(1); // Adds one live to the livesCounter
             } else if (player.getClass() == Ken.class) {
                 mainWorld.addKenLives(1);
             }
             
+            playOneUpSound(); // Plays the oneUpSound
             mainWorld.removeObject(heart); // Removes the heart object
         }
     }
