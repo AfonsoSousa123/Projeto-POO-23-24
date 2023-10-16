@@ -46,12 +46,44 @@ public class Vehicle extends Actor
         int y 
     ) {
         if(getWorld() instanceof RaceWorld) {
-            if(Greenfoot.isKeyDown(right)) {
-                setLocation(x + SPEED, y);
+            if(Greenfoot.isKeyDown(up)) {
+                moveUp(x, y);
+            } else if(Greenfoot.isKeyDown(down)) {
+                moveDown(x, y);
+            } else if(Greenfoot.isKeyDown(right)) {
+                moveRight(x, y);
             } else if(Greenfoot.isKeyDown(left)) {
-                setLocation(x - SPEED, y);
+                moveLeft(x, y);
             } 
         } 
+    }
+    
+    /**
+     * Moves the Vehicle to the right
+     */
+    private void moveRight(int x,int y) {
+        setLocation(x + SPEED, y);
+    }
+    
+    /**
+     * Moves the Vehicle to the left
+     */
+    private void moveLeft(int x,int y) {
+        setLocation(x - SPEED, y);
+    }
+    
+    /**
+     * Moves the Vehicle Down
+     */
+    private void moveDown(int x, int y) {
+        setLocation(x, y + SPEED);
+    }
+    
+    /**
+     * Moves the Vehicle Up
+     */
+    private void moveUp(int x, int y) {
+        setLocation(x, y - SPEED);
     }
     
     // private void playOneUpSound() {

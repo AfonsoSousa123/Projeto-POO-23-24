@@ -12,8 +12,8 @@ public class RaceWorld extends MainWorld
     private int imageCount = 0;
     private int imageSize = 60;
     
-    private Ken ken;
-    private Barbie barbie;
+    private KenCar ken;
+    private BarbieCar barbie;
     
     /**
      * Constructor for objects of class RaceWorld.

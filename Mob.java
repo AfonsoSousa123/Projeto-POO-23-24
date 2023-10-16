@@ -139,8 +139,7 @@ public class Mob extends Actor
     /**
      * Checks if the Mob is touching the right wall
      */
-    public boolean checkRightWall(Actor Mob)
-    {
+    public boolean checkRightWall(Actor Mob) { // verifica se está em contacto com a parede da direita
         int spriteWidth = getImage().getWidth();
         int xDistance = spriteWidth/2;
         
@@ -159,7 +158,7 @@ public class Mob extends Actor
     /**
      *  Mob stops when reaches a wall on the right
      */
-    public void StopByTherWall(Actor rWall) {
+    public void StopByTherWall(Actor rWall) { // para quando está em contacto na parede da esquerda
         int wallWidth = rWall.getImage().getWidth();
         int newX = rWall.getX() - (wallWidth + getImage().getWidth())/2;
         setLocation(newX, getY());
@@ -168,8 +167,7 @@ public class Mob extends Actor
     /**
      *  Checks if the Mob is thoucing the left wall
      */
-    public boolean checkLeftWall(Actor Mob)
-    {
+    public boolean checkLeftWall(Actor Mob) { // verifica se está em contacto com a parede da esquerda
         int spriteWidth = getImage().getWidth();
         int xDistance = spriteWidth/-3;
         
@@ -186,9 +184,9 @@ public class Mob extends Actor
     }
     
     /**
-     *  Mob stops when reaches a wall on the left
+     *  Mob stops when it reaches a wall on the left
      */
-    public void StopByTheLWall(Actor lWall) {
+    public void StopByTheLWall(Actor lWall) { // para quando está em contacto na parede da esquerda
         int wallWidth = lWall.getImage().getWidth();
         int newX = lWall.getX() + (wallWidth + getImage().getHeight())/3;
         setLocation(newX, getY());
