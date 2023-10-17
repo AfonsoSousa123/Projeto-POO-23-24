@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Actor
 {
-    // Local variables
+    // Local variables | Variaveis locais
     private int SPEED = 2;
     private int VSPEED = 0;
     private int acceleration = 2;
@@ -19,12 +19,12 @@ public class Player extends Actor
     private int imageSize = 30;
     private int level;
 
-    // Initializes the sounds
+    // Initializes the sounds | Inicializa os sons
     GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
     GreenfootSound coinSound = new GreenfootSound("8bit-coin-sound-effect.mp3");
     GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
 
-    // World variables
+    // World variables | Variaveis World
     MainWorld mainWorld;
     
     // class Direction { // Class to store the values of the rotation for each movement
@@ -48,7 +48,8 @@ public class Player extends Actor
     }
     
     /**
-     * Moves the Player / Move o Player
+     * Moves the Player
+     * Move o Player
      */
     public void movePlayer(
         String up, 
@@ -69,7 +70,8 @@ public class Player extends Actor
     }
     
     /**
-     * Moves the Player in the MarioStyleWorld / Move o Player no MarioStyleWorld
+     * Moves the Player in the MarioStyleWorld
+     * Move o Player no MarioStyleWorld
      */
     private void movePlayerMarioWorld(
         String up,  
@@ -95,7 +97,8 @@ public class Player extends Actor
     }
     
     /**
-     * Moves the Player in the PacmanWorld / Move o Player no PacmanWorld
+     * Moves the Player in the PacmanWorld 
+     * Move o Player no PacmanWorld
      */
     private void movePlayerPacmanWorld(
         String up,  
@@ -125,8 +128,9 @@ public class Player extends Actor
     
     /**
      * Checks if the Player is out of the boundaries of the MarioStyleWorld and if so removes one live
+     * Verifica se o Player está fora das bordas do MarioStyleWorld e assim sendo remove uma vida
      */
-    public void checkBounds(Player player) { // Verifica as bordas do 
+    public void checkBounds(Player player) {
         if(getWorld() instanceof MarioStyleWorld) {
             if (player.getY() > getWorld().getHeight() + 120) {
                 playFallingSound();
@@ -158,6 +162,10 @@ public class Player extends Actor
         // }
     // }
     
+    /**
+     * Resizes the given Image to a width and height times the percent specified 
+     * Redimensiona a Image dada para um comprimento e uma altura de acordo com a percentagem fornecida
+     */
     public GreenfootImage redimencionaImg(GreenfootImage image, int percent) {
         int wide = image.getWidth()*percent/100;
         int high = image.getHeight()*percent/100;
@@ -165,6 +173,10 @@ public class Player extends Actor
         return image;
     }
 
+    /**
+     * Resizes the given Gif to a width and height times the percent specified 
+     * Redimensiona o Gif dado para um comprimento e uma altura de acordo com a percentagem fornecida
+     */
     public GifImage redimencionaGif(GifImage gif, int percent) {
         for (GreenfootImage image : gif.getImages())
         {
@@ -177,24 +189,27 @@ public class Player extends Actor
 
     /**
      * Simulates the gravity of the Player
+     * Simula a gravidade do Player
      */
-    public void fall(int x,int y) { // cai
+    public void fall(int x,int y) {
         setLocation(x, y + VSPEED);
         VSPEED += acceleration;
     }
     
     /**
      * Simulates the jump of the Player
+     * Simula o salto do Player
      */
-    public void jump(int x,int y) { // salta
+    public void jump(int x,int y) {
         VSPEED = -jumpStrenght;
         fall(x,y);
     }
     
     /**
      *  Checks if the Player is falling
+     *  Verifica se o Player está a cair
      */
-    public void checkFall(Player player, int x,int y) { // verifica se o player a cair
+    public void checkFall(Player player, int x,int y) {
         if(getWorld() instanceof  MarioStyleWorld){
             if(!onGround(player)) {
                 fall(x,y);
@@ -353,6 +368,7 @@ public class Player extends Actor
     
     /**
      * Moves the Player to the right
+     * Move o Player para a direita
      */
     private void moveRight(int x,int y) {
         setLocation(x + SPEED, y);
@@ -360,6 +376,7 @@ public class Player extends Actor
     
     /**
      * Moves the Player to the left
+     * Move o Player para a esquerda
      */
     private void moveLeft(int x,int y) {
         setLocation(x - SPEED, y);
@@ -367,6 +384,7 @@ public class Player extends Actor
     
     /**
      * Moves the Player Down
+     * Move o Player para baixo
      */
     private void moveDown(int x, int y) {
         setLocation(x, y + SPEED);
@@ -374,6 +392,7 @@ public class Player extends Actor
     
     /**
      * Moves the Player Up
+     * Move o Player para cima
      */
     private void moveUp(int x, int y) {
         setLocation(x, y - SPEED);
@@ -405,6 +424,10 @@ public class Player extends Actor
         // return 0;
     // }
     
+    /**
+     * Sets an adjusted offset
+     * 
+     */
     private int adjustOffset(int offset) {
         int signOfOffset = (int)Math.signum(offset); // casting the offset to be int instead of double
         int distanceToFront = length/2;
@@ -414,6 +437,7 @@ public class Player extends Actor
     
     /**
      * Plays the OneUpSound
+     * Toca o OneUpSound
      */
     private void playOneUpSound() {
         oneUpSound.setVolume(oneUpVolume); // Sets the volume of the oneUpSound
@@ -422,6 +446,7 @@ public class Player extends Actor
     
     /**
      * Plays the CoinSound
+     * Toca o CoinSound
      */
     private void playCoinSound() {
         coinSound.setVolume(volume); // Sets the volume of the coinSound
@@ -430,6 +455,7 @@ public class Player extends Actor
     
     /**
      * Plays the FallingSound
+     * Toca o FallingSound
      */
     private void playFallingSound() {
         fallingSound.setVolume(volume); // Sets the volume of the fallingSound
@@ -438,6 +464,7 @@ public class Player extends Actor
     
     /**
      * Collects the studs and adds points to the Scoreboard
+     * Apanha as studs e adiciona os respetivos pontos ao Scoreboard
      */
     public void collectStuds(Actor player) {
         Actor studBlue = getOneIntersectingObject(StudBlue.class);
@@ -455,7 +482,8 @@ public class Player extends Actor
     }
     
     /**
-     * Collects the studs and adds points to the Scoreboard
+     * Collects the Hearts and adds lives to the Player
+     * Apanha os Hearts e adiciona as vidas do Player
      */
     public void collectHearts(Actor player) {
         Actor heart = getOneIntersectingObject(Heart.class);
@@ -469,6 +497,20 @@ public class Player extends Actor
             
             playOneUpSound(); // Plays the oneUpSound
             mainWorld.removeObject(heart); // Removes the heart object
+        }
+    }
+    
+    /**
+     * Collects the star
+     * Apanha a estrela
+     */
+    public void collectStars(Actor player) {
+        Actor star = getOneIntersectingObject(Star.class);
+        
+        if(star != null) {
+            playOneUpSound(); // Plays the oneUpSound
+            Greenfoot.setWorld(new PacmanWorld()); // Sends the Players to a new world | Manda os Players para um novo world
+            mainWorld.removeObject(star); // Removes the Star object
         }
     }
 }

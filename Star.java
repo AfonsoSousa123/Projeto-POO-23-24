@@ -8,12 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Star extends Target
 {
+    public Star() {
+        resizeImage(getImage(), getImage().getWidth()/4, getImage().getHeight()/4);
+    }
+    
     /**
      * Act - do whatever the Stud wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
-        // Add your action code here.
+        moveTarget();
     }
 }

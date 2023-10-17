@@ -9,7 +9,7 @@ public class Vehicle extends Actor
     private int jumpStrenght = 50;
     private int length;
     private int volume = 20;
-    private int oneUpVolume = 70;
+    private int oneUpVolume = 70;   
     private int imageSize = 30;
     
     private MainWorld main;

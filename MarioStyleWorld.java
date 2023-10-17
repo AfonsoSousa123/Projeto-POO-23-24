@@ -262,5 +262,8 @@ public class MarioStyleWorld extends MainWorld
         addObject(studBlue36,940,707);
         StudPurple studPurple28 = new StudPurple();
         addObject(studPurple28,841,705);
+        Star star = new Star();
+        addObject(star,5148,243);
+        star.setLocation(5149,241);
     }
 }
