@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class PlanetaTerra extends MainWorld
 {
+    private int playerSize = 80;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -26,10 +28,10 @@ public class PlanetaTerra extends MainWorld
      */
     private void populateWorld()
     {
-        Barbie barbie = new Barbie();
+        Barbie barbie = new Barbie(playerSize);
         addObject(barbie,570, 591);
 
-        Ken ken = new Ken();
+        Ken ken = new Ken(playerSize);
         addObject(ken,750, 591);
         
         Ground ground = new Ground();
@@ -50,17 +52,6 @@ public class PlanetaTerra extends MainWorld
      */
     private void prepare()
     {
-        StudBlue studBlue = new StudBlue();
-        addObject(studBlue,1112,601);
-        StudBlue studBlue2 = new StudBlue();
-        addObject(studBlue2,1057,669);
-        StudBlue studBlue3 = new StudBlue();
-        addObject(studBlue3,124,651);
-        StudPurple studPurple = new StudPurple();
-        addObject(studPurple,291,325);
-        StudPurple studPurple2 = new StudPurple();
-        addObject(studPurple2,847,216);
-        StudPurple studPurple3 = new StudPurple();
-        addObject(studPurple3,1125,180);
+        
     }
 }

@@ -8,25 +8,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Barbie extends Player
 {
+    private int ImageSize;
+    
     GreenfootImage barbieF = new GreenfootImage("Barbie_front.png");
     
     GifImage bwalkingR = new GifImage("barbie_walking_right.gif");
     GifImage bwalkingL = new GifImage("barbie_walking_left.gif");
     
     class BarbieKeys { // Class to store the values of the Keys for Barbie
-        public static final String UP = "W";
-        public static final String DOWN = "S";
-        public static final String LEFT = "A";
-        public static final String RIGHT = "D";
+        private static final String UP = "W";
+        private static final String DOWN = "S";
+        private static final String LEFT = "A";
+        private static final String RIGHT = "D";
     }
     
     /**
      * Constructor for the Barbie Class.
      * 
      */
-    public Barbie()
+    public Barbie(int imageSize)
     {
-        
+        this.ImageSize = imageSize;
+        redimencionaGif(bwalkingL, ImageSize);
+        redimencionaGif(bwalkingR, ImageSize);
+        setImage(redimencionaImg(barbieF, ImageSize));
     }
     
     public void act()
@@ -38,15 +43,20 @@ public class Barbie extends Player
             BarbieKeys.RIGHT, 
             getX(), 
             getY(), 
-            bwalkingL.getCurrentImage(), 
-            bwalkingR.getCurrentImage(),
+            bwalkingL, 
+            bwalkingR,
             barbieF
         );
         checkBounds(this);
-        checkFall(this, getX(), getY(), 1);
+        checkFall(this, getX(), getY());
         onGround(this);
         platformAbove(this);
-        collectStuds();
+        collectStuds(this);
         collectHearts(this);
+        collectStars(this);
+        checkRightWall(this);
+        checkLeftWall(this);
+        cubeAbove(this);
+        cubeUnder(this);
     }
 }

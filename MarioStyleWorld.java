@@ -8,8 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MarioStyleWorld extends MainWorld
 {
-    private int imageCount = 0;
     private GreenfootImage bgImage = new GreenfootImage("Clouds.jpg");
+    private int imageCount;
+    private int imageSize = 60;
+    
+    private Ken ken;
+    private Barbie barbie;
 
     /**
      * Constructor for objects of class MarioStyleWorld.
@@ -43,10 +47,18 @@ public class MarioStyleWorld extends MainWorld
      */
     private void populateWorld()
     {
-        Barbie barbie = new Barbie();
+        Barbie barbie = new Barbie(imageSize);
         addObject(barbie,241,600);
-        Ken ken = new Ken();
+        
+        Ken ken = new Ken(imageSize);
         addObject(ken,423,604);
+        
+        Enemy enemy = new Enemy(40);
+        addObject(enemy,1199,416);
+        Enemy enemy1 = new Enemy(40);
+        addObject(enemy1,2256,596);
+        Enemy enemy2 = new Enemy(40);
+        addObject(enemy2,3886,596);
     }
     
     /**
@@ -196,9 +208,62 @@ public class MarioStyleWorld extends MainWorld
         addObject(heart,5114,131);
         heart.setLocation(5152,128);
         Heart heart2 = new Heart();
-        addObject(heart2,1963,97);
-        heart2.setLocation(1962,82);
-        heart2.setLocation(2069,156);
-        heart2.setLocation(2065,160);
+        addObject(heart2,2065,160);
+        StudPurple studPurple9 = new StudPurple();
+        addObject(studPurple9,1032,225);
+        StudPurple studPurple10 = new StudPurple();
+        addObject(studPurple10,875,228);
+        StudPurple studPurple11 = new StudPurple();
+        addObject(studPurple11,227,146);
+        StudPurple studPurple12 = new StudPurple();
+        addObject(studPurple12,48,142);
+        studPurple.setLocation(142,142);
+        StudPurple studPurple13 = new StudPurple();
+        addObject(studPurple13,1554,258);
+        StudPurple studPurple14 = new StudPurple();
+        addObject(studPurple14,1910,555);
+        StudPurple studPurple15 = new StudPurple();
+        addObject(studPurple15,2340,724);
+        StudPurple studPurple16 = new StudPurple();
+        addObject(studPurple16,2164,721);
+        studBlue5.setLocation(341,309);
+        StudPurple studPurple17 = new StudPurple();
+        addObject(studPurple17,426,312);
+        removeObject(studBlue);
+        StudPurple studPurple18 = new StudPurple();
+        addObject(studPurple18,1197,552);
+        StudPurple studPurple19 = new StudPurple();
+        addObject(studPurple19,1871,176);
+        StudPurple studPurple20 = new StudPurple();
+        addObject(studPurple20,2706,533);
+        StudPurple studPurple21 = new StudPurple();
+        addObject(studPurple21,2801,534);
+        StudPurple studPurple22 = new StudPurple();
+        addObject(studPurple22,3210,448);
+        StudPurple studPurple23 = new StudPurple();
+        addObject(studPurple23,3036,450);
+        removeObject(studBlue14);
+        removeObject(studBlue17);
+        StudPurple studPurple24 = new StudPurple();
+        addObject(studPurple24,4262,597);
+        StudPurple studPurple25 = new StudPurple();
+        addObject(studPurple25,4692,402);
+        StudPurple studPurple26 = new StudPurple();
+        addObject(studPurple26,3887,724);
+        StudPurple studPurple27 = new StudPurple();
+        addObject(studPurple27,1559,681);
+        StudBlue studBlue34 = new StudBlue();
+        addObject(studBlue34,185,89);
+        StudBlue studBlue35 = new StudBlue();
+        addObject(studBlue35,90,87);
+        Heart heart3 = new Heart();
+        addObject(heart3,3866,156);
+        StudBlue studBlue36 = new StudBlue();
+        addObject(studBlue36,940,707);
+        StudPurple studPurple28 = new StudPurple();
+        addObject(studPurple28,841,705);
+        Star star = new Star();
+        addObject(star,5148,243);
+        star.setLocation(5149,241);
     }
 }

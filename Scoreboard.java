@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Scoreboard extends Actor
 {
     MainWorld myWorld;
-    private final int LIVES = 2;
+    private static final int LIVES = 2;
     private int width;
     private int height = 60;
     public int score = 0;
@@ -30,7 +30,6 @@ public class Scoreboard extends Actor
         boardImage.setColor(Color.BLACK);
         boardImage.fillRect(0,0,width,height);
         boardImage.setTransparency(100);
-        // boardImage.drawImage(heart, 1200, 60);
         setImage(boardImage);
     }
     
@@ -39,12 +38,8 @@ public class Scoreboard extends Actor
     }
     
     /**
-     * Increments the score with the given amount
+     * Draws the score onto the 
      */
-    public void addScore(int amount) {
-        score += amount;
-    }
-    
     public void drawScore() {
         boardImage.setColor(Color.BLACK);
         boardImage.fillRect(0,0,width,height);
@@ -54,6 +49,13 @@ public class Scoreboard extends Actor
         boardImage.drawString("Lives: ", 965, 40);
         boardImage.drawString("Barbie: "+ barbieLives, 1065, 40);
         boardImage.drawString("Ken: "+ kenLives, 1200, 40);
+    }
+    
+    /**
+     * Increments the score with the given amount
+     */
+    public void addScore(int amount) {
+        score += amount;
     }
 
     public void addBarbieLives(int amount) {
