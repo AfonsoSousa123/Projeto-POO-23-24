@@ -258,7 +258,8 @@ public class Player extends Actor
      */
     
     /**
-     * Checks if the player is touching the right wall
+     * Checks if the Player is touching the right wall
+     * Verifica se o Player está em contacto com a parede da direita
      */
     public boolean checkRightWall(Actor player)
     {
@@ -279,6 +280,7 @@ public class Player extends Actor
     
     /**
      *  Player stops when it reaches a wall on the right
+     *  O Player para na parede da direita
      */
     public void StopByTherWall(Actor rWall) {
         int wallWidth = rWall.getImage().getWidth();

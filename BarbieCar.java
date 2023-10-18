@@ -10,6 +10,8 @@ public class BarbieCar extends Vehicle
 {
     private int ImageSize;
     
+    Player player;
+    
     //Images Ken
     GreenfootImage barbieCar = new GreenfootImage(getImage());
     
@@ -36,8 +38,11 @@ public class BarbieCar extends Vehicle
             BarbieKeys.DOWN, 
             BarbieKeys.LEFT, 
             BarbieKeys.RIGHT, 
-            getX(), 
+            getX(),
             getY()
         );
+        collectStuds(this);
+        collectHearts(this);
+        collectStars(this);
     }
 }

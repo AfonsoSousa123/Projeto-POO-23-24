@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Vehicle extends Actor
 {
-    // Local variables
+    // Local variables | variaveis locais
     private int SPEED = 2;
     private int VSPEED = 0;
     private int acceleration = 2;
@@ -12,18 +12,23 @@ public class Vehicle extends Actor
     private int oneUpVolume = 70;   
     private int imageSize = 30;
     
-    private MainWorld main;
+    // Initializes the sounds | Inicializa os sons
+    GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
+    GreenfootSound coinSound = new GreenfootSound("8bit-coin-sound-effect.mp3");
+    GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
+
+    // World variables | Variaveis World
+    MainWorld mainWorld;
     
     public Vehicle() {
-        
+          
     }
     
     public void addedToWorld(World w) {
-        main = (MainWorld)w;
+        mainWorld = (MainWorld)w;
     }
     
-    public void act()
-    {
+    public void act() {
         
     }
     
@@ -36,6 +41,7 @@ public class Vehicle extends Actor
     
     /**
      * Moves the Car
+     * Move o Car
      */
     public void moveVehicle(
         String up, 
@@ -60,6 +66,7 @@ public class Vehicle extends Actor
     
     /**
      * Moves the Vehicle to the right
+     * Move o Vehicle para a direita
      */
     private void moveRight(int x,int y) {
         setLocation(x + SPEED, y);
@@ -67,6 +74,7 @@ public class Vehicle extends Actor
     
     /**
      * Moves the Vehicle to the left
+     * Move o Vehicle para a esquerda
      */
     private void moveLeft(int x,int y) {
         setLocation(x - SPEED, y);
@@ -74,6 +82,7 @@ public class Vehicle extends Actor
     
     /**
      * Moves the Vehicle Down
+     * Move o Vehicle para a baixo
      */
     private void moveDown(int x, int y) {
         setLocation(x, y + SPEED);
@@ -81,51 +90,88 @@ public class Vehicle extends Actor
     
     /**
      * Moves the Vehicle Up
+     * Move o Vehicle para a cima
      */
     private void moveUp(int x, int y) {
         setLocation(x, y - SPEED);
     }
     
-    // private void playOneUpSound() {
-        // coinSound.setVolume(volume); // Sets the volume of the coinSound
-        // coinSound.play(); // Plays the coinSound
-    // }
+    /**
+     * Plays the OneUpSound
+     * Toca o OneUpSound
+     */
+    private void playOneUpSound() {
+        oneUpSound.setVolume(oneUpVolume); // Sets the volume of the oneUpSound
+        oneUpSound.play(); // Plays the oneUpSound
+    }
     
-    // /**
-     // * Collects the studs and adds points to the Scoreboard
-     // */
-    // public void collectStuds(Actor player) {
-        // Actor studBlue = getOneIntersectingObject(StudBlue.class);
-        // Actor studPurple = getOneIntersectingObject(StudPurple.class);
-        
-        // if(studBlue != null && player.getClass() == Ken.class) {
-            // playOneUpSound();
-            // mainWorld.addScore(20); // Adds 20 score to the main score
-            // mainWorld.removeObject(studBlue); // Removes the studBlue object
-        // } else if (studPurple != null && player.getClass() == Barbie.class) {
-            // playOneUpSound();
-            // mainWorld.addScore(20); // Adds 20 score to the main score
-            // mainWorld.removeObject(studPurple); // Removes the studPurple object
-        // }
-    // }
+    /**
+     * Plays the CoinSound
+     * Toca o CoinSound
+     */
+    private void playCoinSound() {
+        coinSound.setVolume(volume); // Sets the volume of the coinSound
+        coinSound.play(); // Plays the coinSound
+    }
     
-    // /**
-     // * Collects the studs and adds points to the Scoreboard
-     // */
-    // public void collectHearts(Actor player) {
-        // Actor heart = getOneIntersectingObject(Heart.class);
+    /**
+     * Plays the FallingSound
+     * Toca o FallingSound
+     */
+    private void playFallingSound() {
+        fallingSound.setVolume(volume); // Sets the volume of the fallingSound
+        fallingSound.play(); // Plays the fallingSound
+    }
+    
+    /**
+     * Collects the studs and adds points to the Scoreboard
+     * Apanha as studs e adiciona os respetivos pontos ao Scoreboard
+     */
+    public void collectStuds(Actor player) {
+        Actor studBlue = getOneIntersectingObject(StudBlue.class);
+        Actor studPurple = getOneIntersectingObject(StudPurple.class);
         
-        // if(heart!= null) {
-            // oneUpSound.setVolume(oneUpVolume); // Sets the volume of the oneUpSound
-            // oneUpSound.play(); // Plays the oneUpSound
+        if(studBlue != null && player.getClass() == Ken.class) {
+            mainWorld.addScore(20); // Adds 20 score to the main score
+            playCoinSound(); // Plays the coinSound
+            mainWorld.removeObject(studBlue); // Removes the studBlue object
+        } else if (studPurple != null && player.getClass() == Barbie.class) {
+            mainWorld.addScore(20); // Adds 20 score to the main score
+            playCoinSound(); // Plays the coinSound
+            mainWorld.removeObject(studPurple); // Removes the studPurple object
+        }
+    }
+    
+    /**
+     * Collects the Hearts and adds lives to the Player
+     * Apanha os Hearts e adiciona as vidas do Player
+     */
+    public void collectHearts(Actor player) {
+        Actor heart = getOneIntersectingObject(Heart.class);
+        
+        if(heart != null) {
+            if (player.getClass() == Barbie.class) {
+                mainWorld.addBarbieLives(1); // Adds one live to the livesCounter
+            } else if (player.getClass() == Ken.class) {
+                mainWorld.addKenLives(1);
+            }
             
-            // if (player.getClass() == Barbie.class) {
-                // mainWorld.addBarbieLives(1); // Adds one live to the livesCounter
-            // } else if (player.getClass() == Ken.class) {
-                // mainWorld.addKenLives(1);
-            // }
-            
-            // mainWorld.removeObject(heart); // Removes the heart object
-        // }
-    // }
+            playOneUpSound(); // Plays the oneUpSound
+            mainWorld.removeObject(heart); // Removes the heart object
+        }
+    }
+    
+    /**
+     * Collects the star
+     * Apanha a estrela
+     */
+    public void collectStars(Actor player) {
+        Actor star = getOneIntersectingObject(Star.class);
+        
+        if(star != null) {
+            playOneUpSound(); // Plays the oneUpSound
+            Greenfoot.setWorld(new PacmanWorld()); // Sends the Players to a new world | Manda os Players para um novo world
+            mainWorld.removeObject(star); // Removes the Star object
+        }
+    }
 }
