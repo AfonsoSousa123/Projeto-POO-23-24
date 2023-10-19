@@ -3,14 +3,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Vehicle extends Actor
 {
     // Local variables | variaveis locais
-    private int SPEED = 2;
-    private int VSPEED = 0;
-    private int acceleration = 2;
-    private int jumpStrenght = 50;
-    private int length;
-    private int volume = 20;
-    private int oneUpVolume = 70;   
-    private int imageSize = 30;
+    private int SPEED = 2; // velocidade
+    private int VSPEED = 0; // velocidade vertical
+    private int acceleration = 2; // aceleração
+    private int jumpStrenght = 50; // força do salto
+    private int length; // largura
+    private int volume = 20; // volume geral
+    private int oneUpVolume = 70; // volume geral
+    private int imageSize = 30; // tamanho das imagens
     
     // Initializes the sounds | Inicializa os sons
     GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
@@ -21,7 +21,7 @@ public class Vehicle extends Actor
     MainWorld mainWorld;
     
     public Vehicle() {
-          
+        
     }
     
     public void addedToWorld(World w) {
@@ -44,7 +44,7 @@ public class Vehicle extends Actor
      * Move o Car
      */
     public void moveVehicle(
-        String up, 
+        String up,
         String down,
         String left, 
         String right, 
@@ -169,7 +169,12 @@ public class Vehicle extends Actor
         Actor star = getOneIntersectingObject(Star.class);
         
         if(star != null) {
-            playOneUpSound(); // Plays the oneUpSound
+            if (player.getClass() == Barbie.class) {
+                mainWorld.addBarbieLives(1); // Adds one live to the livesCounter
+            } else if (player.getClass() == Ken.class) {
+                mainWorld.addKenLives(1);
+            }
+            
             Greenfoot.setWorld(new PacmanWorld()); // Sends the Players to a new world | Manda os Players para um novo world
             mainWorld.removeObject(star); // Removes the Star object
         }

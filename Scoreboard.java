@@ -13,6 +13,7 @@ public class Scoreboard extends Actor
     private int width;
     private int height = 60;
     public int score = 0;
+    public int starCount = 0;
     public int barbieLives = LIVES;
     public int kenLives = LIVES;
 
@@ -84,6 +85,14 @@ public class Scoreboard extends Actor
         } else if(kenLives == 0) {
             reset();
         }
+    }
+    
+    /**
+     * Counts the stars
+     * Conta as estrelas
+     */
+    public void countStars(int amount) {
+        starCount += amount;
     }
     
     public void reset() {

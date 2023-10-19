@@ -8,16 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Actor
 {
-    // Local variables | Variaveis locais
-    private int SPEED = 2;
-    private int VSPEED = 0;
-    private int acceleration = 2;
-    private int jumpStrenght = 50;
-    private int length;
-    private int volume = 20;
-    private int oneUpVolume = 70;
-    private int imageSize = 30;
-    private int level;
+    // Local variables | variaveis locais
+    private int SPEED = 2; // velocidade
+    private int VSPEED = 0; // velocidade vertical
+    private int acceleration = 2; // aceleração
+    private int jumpStrenght = 50; // força do salto
+    private int length; // largura
+    private int volume = 20; // volume geral
+    private int oneUpVolume = 70; // volume geral
+    private int imageSize = 30; // tamanho das imagens
+    private int starCount = 0; // numero de estrelas
 
     // Initializes the sounds | Inicializa os sons
     GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
@@ -510,9 +510,9 @@ public class Player extends Actor
         Actor star = getOneIntersectingObject(Star.class);
         
         if(star != null) {
-            playOneUpSound(); // Plays the oneUpSound
-            Greenfoot.setWorld(new PacmanWorld()); // Sends the Players to a new world | Manda os Players para um novo world
-            mainWorld.removeObject(star); // Removes the Star object
+            playOneUpSound(); // Plays the oneUpSound | Toca o oneUpSound
+            mainWorld.countStars(1); // Counts the collected stars | Conta as estrelas apanhadas
+            mainWorld.removeObject(star); // Removes the Star object | Remove o objeto Star
         }
     }
 }

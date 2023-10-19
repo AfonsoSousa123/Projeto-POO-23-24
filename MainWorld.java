@@ -30,7 +30,7 @@ public class MainWorld extends World
      */
     public void act()
     {
-        
+        checkStarCount();
     }
     
     /**
@@ -71,6 +71,25 @@ public class MainWorld extends World
      */
     public void removeKenLives(int amount) { 
         sb.removeKenLives(amount);
+    }
+    
+    /**
+     * Counts the stars
+     * Conta as estrelas
+     */
+    public void countStars(int amount) {
+        sb.countStars(amount);
+    }
+    
+    /**
+     * Counts the stars
+     * Conta as estrelas
+     */
+    public void checkStarCount() {
+        if (sb.starCount >= 2)
+            Greenfoot.setWorld(new PacmanWorld()); // Sends the Players to a new world | Manda os Players para um novo world
+        else if (sb.starCount >= 4)
+            Greenfoot.setWorld(new RaceWorld()); // Sends the Players to a new world | Manda os Players para um novo world
     }
     
     /**

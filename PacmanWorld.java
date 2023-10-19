@@ -10,14 +10,14 @@ public class PacmanWorld extends MainWorld
 {
     String[] textMap = {
         "****b******p***",
-        "phpbbpbpbpbbpbb",
+        "phpbbpbpbpbspbb",
         "*p**p*p******p*",
         "*b*pbpbbpbpbpb*",
         "*p*b*B*b*p*K*p*",
         "*b*p*p*p*b*b*p*",
         "*p*bpbpbpbpbpb*",
         "*b*b**b*b****h*",
-        "bpbpbpb*ppbpbpb",
+        "bpbsbpb*ppbpbpb",
         "****p******b***",
     };
     
@@ -57,6 +57,9 @@ public class PacmanWorld extends MainWorld
                         break;
                     case 'b':
                         addObject(new StudBlue(),x,y);
+                        break;
+                    case 's':
+                        addObject(new Star(),x,y);
                         break;
                     case 'B':
                         addObject(new Barbie(playerSize),x,y);
