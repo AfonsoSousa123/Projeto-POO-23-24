@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class RaceWorld extends MainWorld
 {
     private GreenfootImage bgImage = new GreenfootImage(getBackground());
-    private int imageCount = 0;
+    private int imageCount = -600;
     private int imageSize = 60;
     
     private KenCar ken;
