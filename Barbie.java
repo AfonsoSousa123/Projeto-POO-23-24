@@ -15,11 +15,11 @@ public class Barbie extends Player
     GifImage bwalkingR = new GifImage("barbie_walking_right.gif");
     GifImage bwalkingL = new GifImage("barbie_walking_left.gif");
     
-    class BarbieKeys { // Class to store the values of the Keys for Barbie
-        private static final String UP = "W";
-        private static final String DOWN = "S";
-        private static final String LEFT = "A";
-        private static final String RIGHT = "D";
+    public class BarbieKeys { // Class to store the values of the Keys for Barbie
+        public static final String UP = "W";
+        public static final String DOWN = "S";
+        public static final String LEFT = "A";
+        public static final String RIGHT = "D";
     }
     
     /**

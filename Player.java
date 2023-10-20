@@ -14,16 +14,8 @@ public class Player extends Actor
     private int acceleration = 2; // aceleração
     private int jumpStrenght = 50; // força do salto
     private int length; // largura
-    private int volume = 20; // volume geral
-    private int oneUpVolume = 70; // volume geral
     private int imageSize = 30; // tamanho das imagens
-    private int starCount = 0; // numero de estrelas
-
-    // Initializes the sounds | Inicializa os sons
-    GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
-    GreenfootSound coinSound = new GreenfootSound("8bit-coin-sound-effect.mp3");
-    GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
-
+    
     // World variables | Variaveis World
     MainWorld mainWorld;
     
@@ -44,8 +36,10 @@ public class Player extends Actor
     
     public void act()
     {
-        
+        mainWorld.checkStarCount();
     }
+    
+    // BEGIN Player Movement -------------------------------------------------------
     
     /**
      * Moves the Player
@@ -133,7 +127,7 @@ public class Player extends Actor
     public void checkBounds(Player player) {
         if(getWorld() instanceof MarioStyleWorld) {
             if (player.getY() > getWorld().getHeight() + 120) {
-                playFallingSound();
+                // mainWorld.playFallingSound();
                 
                 if (player.getClass() == Barbie.class) {
                     mainWorld.removeBarbieLives(1);
@@ -141,10 +135,12 @@ public class Player extends Actor
                     mainWorld.removeKenLives(1);
                 }
                 
-                player.setLocation(300,300);
+                player.setLocation(300,300); // Spawns the player into the coordinates
             }
         }
     }
+    
+    // END Player Movement -------------------------------------------------------
     
     // public void moveTopView(int x, int y, int rotation) {
         // int currentX = x;
@@ -368,6 +364,8 @@ public class Player extends Actor
      * PacmanWorld code end
      */
     
+    // BEGIN Player Movement -------------------------------------------------------
+    
     /**
      * Moves the Player to the right
      * Move o Player para a direita
@@ -400,6 +398,8 @@ public class Player extends Actor
         setLocation(x, y - SPEED);
     }
     
+    // END Player Movement -------------------------------------------------------
+    
     // /**
      // * Moves the Player into the X direction
      // */
@@ -427,41 +427,14 @@ public class Player extends Actor
     // }
     
     /**
-     * Sets an adjusted offset
-     * 
+     * Sets an adjusted offset with the given value
+     * Calcula um offset com o valor fornecido
      */
     private int adjustOffset(int offset) {
         int signOfOffset = (int)Math.signum(offset); // casting the offset to be int instead of double
         int distanceToFront = length/2;
         int adjustAmount = distanceToFront * signOfOffset;
         return offset + adjustAmount;
-    }
-    
-    /**
-     * Plays the OneUpSound
-     * Toca o OneUpSound
-     */
-    private void playOneUpSound() {
-        oneUpSound.setVolume(oneUpVolume); // Sets the volume of the oneUpSound
-        oneUpSound.play(); // Plays the oneUpSound
-    }
-    
-    /**
-     * Plays the CoinSound
-     * Toca o CoinSound
-     */
-    private void playCoinSound() {
-        coinSound.setVolume(volume); // Sets the volume of the coinSound
-        coinSound.play(); // Plays the coinSound
-    }
-    
-    /**
-     * Plays the FallingSound
-     * Toca o FallingSound
-     */
-    private void playFallingSound() {
-        fallingSound.setVolume(volume); // Sets the volume of the fallingSound
-        fallingSound.play(); // Plays the fallingSound
     }
     
     /**
@@ -474,11 +447,11 @@ public class Player extends Actor
         
         if(studBlue != null && player.getClass() == Ken.class) {
             mainWorld.addScore(20); // Adds 20 score to the main score
-            playCoinSound(); // Plays the coinSound
+            mainWorld.playCoinSound(); // Plays the coinSound
             mainWorld.removeObject(studBlue); // Removes the studBlue object
         } else if (studPurple != null && player.getClass() == Barbie.class) {
             mainWorld.addScore(20); // Adds 20 score to the main score
-            playCoinSound(); // Plays the coinSound
+            mainWorld.playCoinSound(); // Plays the coinSound
             mainWorld.removeObject(studPurple); // Removes the studPurple object
         }
     }
@@ -492,12 +465,12 @@ public class Player extends Actor
         
         if(heart != null) {
             if (player.getClass() == Barbie.class) {
-                mainWorld.addBarbieLives(1); // Adds one live to the livesCounter
+                mainWorld.addBarbieLives(1); // Adds one live to the livesCounter for Barbie
             } else if (player.getClass() == Ken.class) {
-                mainWorld.addKenLives(1);
+                mainWorld.addKenLives(1); // Adds one live to the livesCounter for Kem
             }
             
-            playOneUpSound(); // Plays the oneUpSound
+            mainWorld.playHealthSound(); // Plays the healthSound
             mainWorld.removeObject(heart); // Removes the heart object
         }
     }
@@ -510,7 +483,7 @@ public class Player extends Actor
         Actor star = getOneIntersectingObject(Star.class);
         
         if(star != null) {
-            playOneUpSound(); // Plays the oneUpSound | Toca o oneUpSound
+            mainWorld.playOneUpSound(); // Plays the oneUpSound | Toca o oneUpSound
             mainWorld.countStars(1); // Counts the collected stars | Conta as estrelas apanhadas
             mainWorld.removeObject(star); // Removes the Star object | Remove o objeto Star
         }

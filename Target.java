@@ -9,6 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Target extends Actor
 {
     private int SPEED = 8;
+    
+    public Ken ken;
+    public Barbie barbie;
 
     public void act()
     {

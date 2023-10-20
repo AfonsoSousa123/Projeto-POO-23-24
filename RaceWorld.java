@@ -12,6 +12,7 @@ public class RaceWorld extends MainWorld
     private int imageCount = -600;
     private int imageSize = 60;
     
+    
     private KenCar ken;
     private BarbieCar barbie;
     

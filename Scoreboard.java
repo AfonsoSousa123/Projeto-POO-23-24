@@ -8,17 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Scoreboard extends Actor
 {
+    // World variables | variaveis world
     MainWorld myWorld;
+    
+    // Static variables: they will keep the values | Variaveis estaticas: mantem os valores
+    public static int score = 0;
+    public static int starCount = 0;
     private static final int LIVES = 2;
+    
     private int width;
     private int height = 60;
-    public int score = 0;
-    public int starCount = 0;
     public int barbieLives = LIVES;
     public int kenLives = LIVES;
 
+    // Image variables | variaveis de imagem
     GreenfootImage boardImage;
-    // GreenfootImage heart = new GreenfootImage("heart.png");
 
     public Scoreboard() {
         
@@ -39,7 +43,24 @@ public class Scoreboard extends Actor
     }
     
     /**
-     * Draws the score onto the 
+     * Retrns the Score
+     * Retorna o Score
+     */
+    public int getScore() {
+        return score;
+    }
+    
+    /**
+     * Retrns the final Score
+     * Retorna o Score final
+     */
+    public void drawFinalScore() {
+        getScore();
+    }
+    
+    /**
+     * Draws the score onto the World
+     * Mostra o Score no World
      */
     public void drawScore() {
         boardImage.setColor(Color.BLACK);
@@ -47,6 +68,7 @@ public class Scoreboard extends Actor
         boardImage.setColor(Color.WHITE);
         boardImage.setFont(new Font("Arial", 30));
         boardImage.drawString("Score: "+ score, 20, 40);
+        boardImage.drawString("Stars: "+ starCount, 845, 40);
         boardImage.drawString("Lives: ", 965, 40);
         boardImage.drawString("Barbie: "+ barbieLives, 1065, 40);
         boardImage.drawString("Ken: "+ kenLives, 1200, 40);
@@ -54,17 +76,26 @@ public class Scoreboard extends Actor
     
     /**
      * Increments the score with the given amount
+     * Incrementa o amount dado, ao Score
      */
     public void addScore(int amount) {
         score += amount;
     }
 
+    /**
+     * Adds Barbie lives
+     * Adiciona vidas do Barbie    
+     */
     public void addBarbieLives(int amount) {
         if(barbieLives > 0) {
             barbieLives += amount; // increments the lives to the barbieLives
         }
     }
     
+    /**
+     * Removes Barbie lives
+     * Remove vidas do Barbie    
+     */
     public void removeBarbieLives(int amount) {
         if(barbieLives > 0) {
             barbieLives -= amount; // decrements the lives to the barbieLives
@@ -73,12 +104,20 @@ public class Scoreboard extends Actor
         }
     }
     
+    /**
+     * Adds Ken lives
+     * Adiciona vidas do Ken    
+     */
     public void addKenLives(int amount) {
         if(kenLives > 0) {
             kenLives += amount; // increments the lives to the kenLives
         }
     }
     
+    /**
+     * Removes Ken lives
+     * Remove vidas do Ken    
+     */
     public void removeKenLives(int amount) {
         if(kenLives > 0) {
             kenLives -= amount; // decrements the lives to the kenLives
@@ -89,7 +128,7 @@ public class Scoreboard extends Actor
     
     /**
      * Counts the stars
-     * Conta as estrelas
+     * Conta as estrelas    
      */
     public void countStars(int amount) {
         starCount += amount;
@@ -97,6 +136,7 @@ public class Scoreboard extends Actor
     
     public void reset() {
         Greenfoot.setWorld(new GameOver()); // sends the Player to the GameOver World
+        starCount = 0; // resets the score to its original value
         barbieLives = LIVES; // resets the counter to its original value
         kenLives = LIVES; // resets the counter to its original value
     }

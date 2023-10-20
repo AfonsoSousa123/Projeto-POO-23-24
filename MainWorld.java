@@ -10,6 +10,16 @@ public class MainWorld extends World
 {
     Scoreboard sb; // space variable
     
+    private int volume = 20; // volume geral dos .mp3
+    private int oneUpVolume = 70; // volume dos .wav
+    
+    // Initializes the sounds | Inicializa os sons
+    public GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
+    public GreenfootSound coinSound = new GreenfootSound("8bit-coin-sound-effect.mp3");
+    public GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
+    public GreenfootSound healthSound = new GreenfootSound("health_up.wav");
+    public GreenfootSound exitLevelSound = new GreenfootSound("exit_course.wav");
+    
     /**
      * Constructor for objects of class MainWorld.
      * Contrutor para os objetos da classe MainWorld.
@@ -26,11 +36,19 @@ public class MainWorld extends World
     
     /**
      * Act method
-     * 
+     * Metodo act
      */
     public void act()
     {
-        checkStarCount();
+        
+    }
+    
+    /**
+     * Returns the Score
+     * Retorna o Score
+     */
+    public int getScore() {
+        return sb.getScore();
     }
     
     /**
@@ -86,11 +104,63 @@ public class MainWorld extends World
      * Conta as estrelas
      */
     public void checkStarCount() {
-        if (sb.starCount >= 2)
+        if (sb.starCount == 2) {
             Greenfoot.setWorld(new PacmanWorld()); // Sends the Players to a new world | Manda os Players para um novo world
-        else if (sb.starCount >= 4)
+        }else if (sb.starCount == 4) {
             Greenfoot.setWorld(new RaceWorld()); // Sends the Players to a new world | Manda os Players para um novo world
+        } else if (sb.starCount == 6) {
+            Greenfoot.setWorld(new BarbieLand());  // Sends the Players to a new world | Manda os Players para um novo world
+        }
     }
+    
+    // BEGIN Sounds --------------------------------------------------------------------
+    
+    /**
+     * Plays the OneUpSound
+     * Toca o OneUpSound
+     */
+    public void playOneUpSound() {
+        oneUpSound.setVolume(oneUpVolume); // Sets the volume of the oneUpSound
+        oneUpSound.play(); // Plays the oneUpSound
+    }
+    
+    /**
+     * Plays the CoinSound
+     * Toca o CoinSound
+     */
+    public void playCoinSound() {
+        coinSound.setVolume(volume); // Sets the volume of the coinSound
+        coinSound.play(); // Plays the coinSound
+    }
+    
+    /**
+     * Plays the HealthSound
+     * Toca o HealthSound
+     */
+    public void playHealthSound() {
+        healthSound.setVolume(oneUpVolume); // Sets the volume of the healthSound
+        healthSound.play(); // Plays the healthSound
+    }
+    
+    /**
+     * Plays the ExitLevelSound
+     * Toca o ExitLevelSound
+     */
+    public void playExitLevelSound() {
+        exitLevelSound.setVolume(volume); // Sets the volume of the ExitLevelSound
+        exitLevelSound.play(); // Plays the ExitLevelSound
+    }
+    
+    /**
+     * Plays the FallingSound
+     * Toca o FallingSound
+     */
+    public void playFallingSound() {
+        fallingSound.setVolume(volume); // Sets the volume of the fallingSound
+        fallingSound.play(); // Plays the fallingSound
+    }
+    
+    // END Sounds -------------------------------------------------------
     
     /**
      * Resizes the given image to the width and height specified
