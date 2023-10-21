@@ -264,8 +264,8 @@ public class Player extends Actor
       int imageWidth = getImage().getWidth();
       int imageHeight = getImage().getHeight();
       
-      if(getOneObjectAtOffset(imageWidth/-2-3, imageHeight/-2, Block2x2.class) != null || 
-      getOneObjectAtOffset(imageWidth/-2-3, imageHeight/2-1, Block2x2.class) != null)
+      if(getOneObjectAtOffset(imageWidth/-2-1, imageHeight/-2, Block2x2.class) != null || 
+      getOneObjectAtOffset(imageWidth/-2-1, imageHeight/2-1, Block2x2.class) != null)
       {
           canMoveLeft = false;
       }
@@ -284,8 +284,8 @@ public class Player extends Actor
       int imageWidth = getImage().getWidth();
       int imageHeight = getImage().getHeight();
       
-      if(getOneObjectAtOffset(imageWidth/2+3, imageHeight/-2, Block2x2.class) != null || 
-      getOneObjectAtOffset(imageWidth/2+3, imageHeight/2-1, Block2x2.class) != null)
+      if(getOneObjectAtOffset(imageWidth/2+1, imageHeight/-2, Block2x2.class) != null || 
+      getOneObjectAtOffset(imageWidth/2+1, imageHeight/2-1, Block2x2.class) != null)
       {
           canMoveLeft = false;
       }
@@ -304,8 +304,8 @@ public class Player extends Actor
       int imageWidth = getImage().getWidth();
       int imageHeight = getImage().getHeight();
       
-      if(getOneObjectAtOffset(imageWidth/-2, imageHeight/-2-3, Block2x2.class) != null || 
-      getOneObjectAtOffset(imageWidth/2-1, imageHeight/-2-3, Block2x2.class) != null)
+      if(getOneObjectAtOffset(imageWidth/-2, imageHeight/-2-1, Block2x2.class) != null || 
+      getOneObjectAtOffset(imageWidth/2-1, imageHeight/-2-1, Block2x2.class) != null)
       {
           canMoveUp = false;
       }
@@ -324,8 +324,8 @@ public class Player extends Actor
       int imageWidth = getImage().getWidth();
       int imageHeight = getImage().getHeight();
       
-      if(getOneObjectAtOffset(imageWidth/-2, imageHeight/2+3, Block2x2.class) != null || 
-      getOneObjectAtOffset(imageWidth/2-1, imageHeight/2+3, Block2x2.class) != null)
+      if(getOneObjectAtOffset(imageWidth/-2, imageHeight/2+1, Block2x2.class) != null || 
+      getOneObjectAtOffset(imageWidth/2-1, imageHeight/2+1, Block2x2.class) != null)
       {
           canMoveDown = false;
       }
