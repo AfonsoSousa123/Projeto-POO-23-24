@@ -105,14 +105,14 @@ public class Player extends Actor
         GifImage imageRight,
         GreenfootImage imageFront
     ) {
-        if(Greenfoot.isKeyDown(up)) {
+        if(Greenfoot.isKeyDown(up) && canMoveUp()) {
             moveUp(x,y);
-        } else if(Greenfoot.isKeyDown(down)) {
+        } else if(Greenfoot.isKeyDown(down) && canMoveDown()) {
             moveDown(x,y);
-        } else if(Greenfoot.isKeyDown(left)) {
+        } else if(Greenfoot.isKeyDown(left) && canMoveLeft()) {
             setImage(imageLeft.getCurrentImage());
             moveLeft(x,y);
-        } else if(Greenfoot.isKeyDown(right)) {
+        } else if(Greenfoot.isKeyDown(right) && canMoveRight()) {
             setImage(imageRight.getCurrentImage());
             moveRight(x,y);
         } else {
@@ -254,110 +254,83 @@ public class Player extends Actor
      */
     
     /**
-     * Checks if the Player is touching the right wall
-     * Verifica se o Player está em contacto com a parede da direita
+     * Checks if the player can move left
+     * Verifica se o jogador consegue se mover para a esquerda
      */
-    public boolean checkRightWall(Actor player)
+    public boolean canMoveLeft()
     {
-        int spriteWidth = getImage().getWidth();
-        int xDistance = spriteWidth/2;
-        
-        Actor rWall = getOneObjectAtOffset(xDistance, 0, Block2x2.class);
-        
-        if(rWall == null)
-        {
-            return false;
-        }
-        else {
-            StopByTherWall(rWall);
-            return true;
-        }
+      boolean canMoveLeft = true;
+      
+      int imageWidth = getImage().getWidth();
+      int imageHeight = getImage().getHeight();
+      
+      if(getOneObjectAtOffset(imageWidth/-2-3, imageHeight/-2, Block2x2.class) != null || 
+      getOneObjectAtOffset(imageWidth/-2-3, imageHeight/2-1, Block2x2.class) != null)
+      {
+          canMoveLeft = false;
+      }
+      
+      return canMoveLeft;
     }
     
     /**
-     *  Player stops when it reaches a wall on the right
-     *  O Player para na parede da direita
+     * Checks if the player can move right
+     * Verifica se o jogador consegue se mover para a direita
      */
-    public void StopByTherWall(Actor rWall) {
-        int wallWidth = rWall.getImage().getWidth();
-        int newX = rWall.getX() - (wallWidth + getImage().getWidth())/2;
-        setLocation(newX, rWall.getY());
-    }
-    
-    /**
-     *  Checks if the player is thoucing the left wall
-     */
-    public boolean checkLeftWall(Actor player)
+    public boolean canMoveRight()
     {
-        int spriteWidth = getImage().getWidth();
-        int xDistance = spriteWidth/-3;
-        
-        Actor lWall = getOneObjectAtOffset(xDistance, 0, Block2x2.class);
-        
-        if(lWall != null)
-        {
-            StopByTheLWall(lWall);
-            return true;
-        }
-        else {
-            return false;
-        }
+      boolean canMoveLeft = true;
+      
+      int imageWidth = getImage().getWidth();
+      int imageHeight = getImage().getHeight();
+      
+      if(getOneObjectAtOffset(imageWidth/2+3, imageHeight/-2, Block2x2.class) != null || 
+      getOneObjectAtOffset(imageWidth/2+3, imageHeight/2-1, Block2x2.class) != null)
+      {
+          canMoveLeft = false;
+      }
+      
+      return canMoveLeft;
     }
     
     /**
-     *  Player stops when reaches a wall on the left
+     * Checks if the player can move up
+     * Verifica se o jogador consegue se mover para cima
      */
-    private void StopByTheLWall(Actor lWall) {
-        int wallWidth = lWall.getImage().getWidth();
-        int newX = lWall.getX() + (wallWidth + getImage().getHeight())/3;
-        setLocation(newX, lWall.getY());
-    }
-    
-    public boolean cubeAbove(Actor player) {
-        int spriteHeight = getImage().getHeight();
-        int yDistance = spriteHeight/-3;
-        Actor upCube = getOneObjectAtOffset(0, yDistance, Block2x2.class);
-        
-        if(upCube != null) {
-            bateUpCube(upCube);
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-    /**
-     *  Adds an offset to the height of the Player
-     */
-    public void bateUpCube(Actor upCube) {
-        int upCubeHeight = upCube.getImage().getHeight();
-        int newY = upCube.getY() + (upCubeHeight + getImage().getHeight())/2;
-        setLocation(upCube.getX(), newY);
+    public boolean canMoveUp()
+    {
+        boolean canMoveUp = true;
+      
+      int imageWidth = getImage().getWidth();
+      int imageHeight = getImage().getHeight();
+      
+      if(getOneObjectAtOffset(imageWidth/-2, imageHeight/-2-3, Block2x2.class) != null || 
+      getOneObjectAtOffset(imageWidth/2-1, imageHeight/-2-3, Block2x2.class) != null)
+      {
+          canMoveUp = false;
+      }
+      
+      return canMoveUp;
     }
     
     /**
-     *  Checks is the Player has a cube under it
+     * Checks if the player can move down
+     * Verifica se o jogador consegue se mover para baixo
      */
-    public boolean cubeUnder(Actor player) {
-        int spriteHeight = getImage().getHeight();
-        int yDistance = spriteHeight/3;
-        Actor downCube = getOneObjectAtOffset(0, yDistance, Block2x2.class);
-        
-        if(downCube == null) {
-            return true;
-        } else {
-            bateUpCube(downCube);
-            return true;
-        }
-    }
-    
-    /**
-     *  Adds an offset to the height of the Player
-     */
-    private void bateDownCube(Actor downCube) {
-        int downCubeHeight = downCube.getImage().getHeight();
-        int newY = downCube.getY() - (downCubeHeight + getImage().getHeight())/2;
-        setLocation(downCube.getX(), newY);
+    public boolean canMoveDown()
+    {
+        boolean canMoveDown = true;
+      
+      int imageWidth = getImage().getWidth();
+      int imageHeight = getImage().getHeight();
+      
+      if(getOneObjectAtOffset(imageWidth/-2, imageHeight/2+3, Block2x2.class) != null || 
+      getOneObjectAtOffset(imageWidth/2-1, imageHeight/2+3, Block2x2.class) != null)
+      {
+          canMoveDown = false;
+      }
+      
+      return canMoveDown;
     }
     
     /**

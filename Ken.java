@@ -55,9 +55,5 @@ public class Ken extends Player
         collectStuds(this);
         collectHearts(this);
         collectStars(this);
-        checkRightWall(this);
-        checkLeftWall(this);
-        cubeAbove(this);
-        cubeUnder(this);
     }
 }

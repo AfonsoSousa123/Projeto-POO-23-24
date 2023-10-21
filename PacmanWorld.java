@@ -25,7 +25,7 @@ public class PacmanWorld extends MainWorld
     private int BlockOffsetY = 10; // Y Offset of the block
     private int BlockOffsetX = 40; // X Offset of the block
     private int mobSize = 30; // Size of the mob 
-    private int playerSize = 30; // Size of the player
+    private int playerSize = 24; // Size of the player
 
     /**
      * Constructor for objects of class PacmanWorld.
