@@ -11,16 +11,20 @@ public class Scoreboard extends Actor
     // World variables | variaveis world
     MainWorld mainWorld;
     
+    // Constant variables: they will always be the setted value | Variaveis constantes: vao sempre ser o valor definido
+    private final int LIVES = 2;
+    
     // Static variables: they will keep the values | Variaveis estaticas: mantem os valores
     public static int score = 0;
     public static int starCount = 0;
-    private static final int LIVES = 2;
+    public static int level = 1;
+    public static int barbieLives = 2;
+    public static int kenLives = 2;
     
     private int width;
     private int height = 60;
     private int drawHeight = 40;
-    public int barbieLives = LIVES;
-    public int kenLives = LIVES;
+    
 
     // Image variables | variaveis de imagem
     GreenfootImage boardImage;
@@ -68,7 +72,7 @@ public class Scoreboard extends Actor
         boardImage.fillRect(0,0,width,height);
         boardImage.setColor(Color.WHITE);
         boardImage.setFont(new Font("Arial", 30));
-        boardImage.drawString("Level: "+ mainWorld.level, 15, drawHeight);
+        boardImage.drawString("Level: "+ level, 15, drawHeight);
         boardImage.drawString("Score: "+ score, 140, drawHeight);
         boardImage.drawString("Stars: "+ starCount, 845, drawHeight);
         boardImage.drawString("Lives: ", 965, drawHeight);
@@ -82,6 +86,14 @@ public class Scoreboard extends Actor
      */
     public void addScore(int amount) {
         score += amount;
+    }
+    
+    /**
+     * Adds the stars
+     * Adiciona as estrelas    
+     */
+    public void addStars(int amount) {
+        starCount += amount;
     }
 
     /**
@@ -102,7 +114,7 @@ public class Scoreboard extends Actor
         if(barbieLives > 0) {
             barbieLives -= amount; // decrements the lives to the barbieLives
         } else if(barbieLives == 0) {
-            reset();
+            GameOver();
         }
     }
     
@@ -124,22 +136,19 @@ public class Scoreboard extends Actor
         if(kenLives > 0) {
             kenLives -= amount; // decrements the lives to the kenLives
         } else if(kenLives == 0) {
-            reset();
+            GameOver();
         }
     }
     
-    /**
-     * Counts the stars
-     * Conta as estrelas    
-     */
-    public void countStars(int amount) {
-        starCount += amount;
+    public void GameOver() {
+        Greenfoot.setWorld(new GameOver()); // sends the Player to the GameOver World
     }
     
-    public void reset() {
-        Greenfoot.setWorld(new GameOver()); // sends the Player to the GameOver World
+    public static void resetVariables() {
+        score = 0; // resets the score to its original value
         starCount = 0; // resets the starSount to its original value
-        barbieLives = LIVES; // resets the counter to its original value
-        kenLives = LIVES; // resets the counter to its original value
+        level = 1; // resets the level to its original value
+        barbieLives = 2; // resets the counter to its original value
+        kenLives = 2; // resets the counter to its original value
     }
 }

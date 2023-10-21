@@ -12,7 +12,6 @@ public class MainWorld extends World
     
     private int volume = 10; // volume geral dos .mp3
     private int volumeWav = 70; // volume dos .wav
-    public int level = 1;
     
     // Initializes the sounds | Inicializa os sons
     public GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
@@ -21,6 +20,8 @@ public class MainWorld extends World
     public GreenfootSound healthSound = new GreenfootSound("red_coin.wav");
     public GreenfootSound exitLevelSound = new GreenfootSound("exit_course.wav");
     public GreenfootSound victorySound =  new GreenfootSound("Retro-winning-sound-effect.mp3");
+    public GreenfootSound gameOverSound = new GreenfootSound("game_over.wav");
+    public GreenfootSound startGameSound = new GreenfootSound("press_start.wav");
     
     /**
      * Constructor for objects of class MainWorld.
@@ -94,11 +95,11 @@ public class MainWorld extends World
     }
     
     /**
-     * Counts the stars
-     * Conta as estrelas
+     * Adds the stars
+     * Adiciona as estrelas
      */
-    public void countStars(int amount) {
-        sb.countStars(amount);
+    public void addStars(int amount) {
+        sb.addStars(amount);
     }
     
     /**
@@ -106,16 +107,16 @@ public class MainWorld extends World
      * Conta as estrelas
      */
     public void checkStarCount() {
-        if (sb.starCount == 2 && level == 1 && getClass() == MarioStyleWorld.class) {
+        if (sb.starCount == 2 && sb.level == 1 && getClass() == MarioStyleWorld.class) {
             playExitLevelSound(); // Plays the exitLevelSound
-            level = 2; // sets the level to 2
+            sb.level++; // sets the level to 2
             levelTwo(); // Teleports the player to the level 2
-        } else if (sb.starCount == 4 && level == 2 && getClass() == PacmanWorld.class) {
+        } else if (sb.starCount == 4 && sb.level == 2 && getClass() == PacmanWorld.class) {
             playExitLevelSound(); // Plays the exitLevelSound
-            level = 3; // sets the level to 3
+            sb.level++; // sets the level to 3
             levelThree(); // Teleports the player to the level 2
-        } else if (sb.starCount == 6 && level == 3 && getClass() == RaceWorld.class) {
-            end(); // Teleports the player to the End
+        } else if (sb.starCount == 6 && sb.level == 3 && getClass() == RaceWorld.class) {
+            theEnd(); // Teleports the player to the End
             playVictorySound(); // Plays the exitLevelSound
         }
     }
@@ -132,7 +133,7 @@ public class MainWorld extends World
         Greenfoot.setWorld(new RaceWorld()); // Sends the Players to a new world | Manda os Players para um novo world
     }
     
-    public void end() {
+    public void theEnd() {
         Greenfoot.setWorld(new BarbieLand());  // Sends the Players to a new world | Manda os Players para um novo world
     }
     
@@ -145,6 +146,24 @@ public class MainWorld extends World
     public void playOneUpSound() {
         oneUpSound.setVolume(volumeWav); // Sets the volume of the oneUpSound
         oneUpSound.play(); // Plays the oneUpSound
+    }
+    
+    /**
+     * Plays the GameOverSound
+     * Toca o GameOverSound
+     */
+    public void playGameOverSound() {
+        gameOverSound.setVolume(volumeWav); // Sets the volume of the gameOverSound
+        gameOverSound.play(); // Plays the gameOverSound
+    }
+    
+    /**
+     * Plays the StartGameSound
+     * Toca o StartGameSound
+     */
+    public void playStartGameSound() {
+        startGameSound.setVolume(volumeWav); // Sets the volume of the startGameSound
+        startGameSound.play(); // Plays the startGameSound
     }
     
     /**

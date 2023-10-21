@@ -484,7 +484,7 @@ public class Player extends Actor
         
         if(star != null) {
             mainWorld.playOneUpSound(); // Plays the oneUpSound | Toca o oneUpSound
-            mainWorld.countStars(1); // Counts the collected stars | Conta as estrelas apanhadas
+            mainWorld.addStars(1); // Counts the collected stars | Conta as estrelas apanhadas
             mainWorld.removeObject(star); // Removes the Star object | Remove o objeto Star
         }
     }
