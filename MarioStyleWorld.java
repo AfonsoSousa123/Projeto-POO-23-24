@@ -30,6 +30,7 @@ public class MarioStyleWorld extends MainWorld
     public void act() {
         // imageCount -= 1; //(or any other value; small -> slow moving, big -> fast movement)
         // drawBackgroundImage();
+        checkStarCount();
     }
 
     public void drawBackgroundImage() {

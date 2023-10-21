@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Botao extends Actor
 {
+    MainWorld mainWorld;
+    
     /**
      * Act - do whatever the Botao wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -25,7 +27,7 @@ public class Botao extends Actor
     private void play()
     {
         if (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("enter")) {
-            Greenfoot.setWorld(new MarioStyleWorld());
+            mainWorld.levelOne();
         }
     }
 }

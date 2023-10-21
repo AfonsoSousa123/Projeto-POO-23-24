@@ -37,6 +37,10 @@ public class PacmanWorld extends MainWorld
         setPaintOrder(Scoreboard.class, Player.class, Target.class);
     }
     
+    public void act() {
+        checkStarCount();
+    }
+    
     /**
      * Draws world map for the program using the textMap String Array.
      */

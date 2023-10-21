@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Scoreboard extends Actor
 {
     // World variables | variaveis world
-    MainWorld myWorld;
+    MainWorld mainWorld;
     
     // Static variables: they will keep the values | Variaveis estaticas: mantem os valores
     public static int score = 0;
@@ -18,6 +18,7 @@ public class Scoreboard extends Actor
     
     private int width;
     private int height = 60;
+    private int drawHeight = 40;
     public int barbieLives = LIVES;
     public int kenLives = LIVES;
 
@@ -29,8 +30,8 @@ public class Scoreboard extends Actor
     }
     
     public void addedToWorld(World w) {
-        myWorld = (MainWorld)w;
-        width = myWorld.getWidth();
+        mainWorld = (MainWorld)w;
+        width = mainWorld.getWidth();
         boardImage = new GreenfootImage(width, height);
         boardImage.setColor(Color.BLACK);
         boardImage.fillRect(0,0,width,height);
@@ -67,11 +68,12 @@ public class Scoreboard extends Actor
         boardImage.fillRect(0,0,width,height);
         boardImage.setColor(Color.WHITE);
         boardImage.setFont(new Font("Arial", 30));
-        boardImage.drawString("Score: "+ score, 20, 40);
-        boardImage.drawString("Stars: "+ starCount, 845, 40);
-        boardImage.drawString("Lives: ", 965, 40);
-        boardImage.drawString("Barbie: "+ barbieLives, 1065, 40);
-        boardImage.drawString("Ken: "+ kenLives, 1200, 40);
+        boardImage.drawString("Level: "+ mainWorld.level, 15, drawHeight);
+        boardImage.drawString("Score: "+ score, 140, drawHeight);
+        boardImage.drawString("Stars: "+ starCount, 845, drawHeight);
+        boardImage.drawString("Lives: ", 965, drawHeight);
+        boardImage.drawString("Barbie: "+ barbieLives, 1065, drawHeight);
+        boardImage.drawString("Ken: "+ kenLives, 1200, drawHeight);
     }
     
     /**
@@ -136,7 +138,7 @@ public class Scoreboard extends Actor
     
     public void reset() {
         Greenfoot.setWorld(new GameOver()); // sends the Player to the GameOver World
-        starCount = 0; // resets the score to its original value
+        starCount = 0; // resets the starSount to its original value
         barbieLives = LIVES; // resets the counter to its original value
         kenLives = LIVES; // resets the counter to its original value
     }

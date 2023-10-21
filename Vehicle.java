@@ -97,33 +97,6 @@ public class Vehicle extends Actor
     }
     
     /**
-     * Plays the OneUpSound
-     * Toca o OneUpSound
-     */
-    private void playOneUpSound() {
-        oneUpSound.setVolume(oneUpVolume); // Sets the volume of the oneUpSound
-        oneUpSound.play(); // Plays the oneUpSound
-    }
-    
-    /**
-     * Plays the CoinSound
-     * Toca o CoinSound
-     */
-    private void playCoinSound() {
-        coinSound.setVolume(volume); // Sets the volume of the coinSound
-        coinSound.play(); // Plays the coinSound
-    }
-    
-    /**
-     * Plays the FallingSound
-     * Toca o FallingSound
-     */
-    private void playFallingSound() {
-        fallingSound.setVolume(volume); // Sets the volume of the fallingSound
-        fallingSound.play(); // Plays the fallingSound
-    }
-    
-    /**
      * Collects the studs and adds points to the Scoreboard
      * Apanha as studs e adiciona os respetivos pontos ao Scoreboard
      */
@@ -133,11 +106,11 @@ public class Vehicle extends Actor
         
         if(studBlue != null && player.getClass() == Ken.class) {
             mainWorld.addScore(20); // Adds 20 score to the main score
-            playCoinSound(); // Plays the coinSound
+            mainWorld.playCoinSound(); // Plays the coinSound
             mainWorld.removeObject(studBlue); // Removes the studBlue object
         } else if (studPurple != null && player.getClass() == Barbie.class) {
             mainWorld.addScore(20); // Adds 20 score to the main score
-            playCoinSound(); // Plays the coinSound
+            mainWorld.playCoinSound(); // Plays the coinSound
             mainWorld.removeObject(studPurple); // Removes the studPurple object
         }
     }
@@ -156,7 +129,7 @@ public class Vehicle extends Actor
                 mainWorld.addKenLives(1);
             }
             
-            playOneUpSound(); // Plays the oneUpSound
+            mainWorld.playHealthSound(); // Plays the healthSound
             mainWorld.removeObject(heart); // Removes the heart object
         }
     }
@@ -175,7 +148,7 @@ public class Vehicle extends Actor
                 mainWorld.addKenLives(1);
             }
             
-            Greenfoot.setWorld(new PacmanWorld()); // Sends the Players to a new world | Manda os Players para um novo world
+            mainWorld.playOneUpSound();
             mainWorld.removeObject(star); // Removes the Star object
         }
     }

@@ -10,15 +10,17 @@ public class MainWorld extends World
 {
     Scoreboard sb; // space variable
     
-    private int volume = 20; // volume geral dos .mp3
-    private int oneUpVolume = 70; // volume dos .wav
+    private int volume = 10; // volume geral dos .mp3
+    private int volumeWav = 70; // volume dos .wav
+    public int level = 1;
     
     // Initializes the sounds | Inicializa os sons
     public GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
     public GreenfootSound coinSound = new GreenfootSound("8bit-coin-sound-effect.mp3");
     public GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
-    public GreenfootSound healthSound = new GreenfootSound("health_up.wav");
+    public GreenfootSound healthSound = new GreenfootSound("red_coin.wav");
     public GreenfootSound exitLevelSound = new GreenfootSound("exit_course.wav");
+    public GreenfootSound victorySound =  new GreenfootSound("Retro-winning-sound-effect.mp3");
     
     /**
      * Constructor for objects of class MainWorld.
@@ -104,13 +106,34 @@ public class MainWorld extends World
      * Conta as estrelas
      */
     public void checkStarCount() {
-        if (sb.starCount == 2) {
-            Greenfoot.setWorld(new PacmanWorld()); // Sends the Players to a new world | Manda os Players para um novo world
-        }else if (sb.starCount == 4) {
-            Greenfoot.setWorld(new RaceWorld()); // Sends the Players to a new world | Manda os Players para um novo world
-        } else if (sb.starCount == 6) {
-            Greenfoot.setWorld(new BarbieLand());  // Sends the Players to a new world | Manda os Players para um novo world
+        if (sb.starCount == 2 && level == 1 && getClass() == MarioStyleWorld.class) {
+            playExitLevelSound(); // Plays the exitLevelSound
+            level = 2; // sets the level to 2
+            levelTwo(); // Teleports the player to the level 2
+        } else if (sb.starCount == 4 && level == 2 && getClass() == PacmanWorld.class) {
+            playExitLevelSound(); // Plays the exitLevelSound
+            level = 3; // sets the level to 3
+            levelThree(); // Teleports the player to the level 2
+        } else if (sb.starCount == 6 && level == 3 && getClass() == RaceWorld.class) {
+            end(); // Teleports the player to the End
+            playVictorySound(); // Plays the exitLevelSound
         }
+    }
+    
+    public void levelOne() {
+        Greenfoot.setWorld(new MarioStyleWorld()); // Sends the Players to a new world | Manda os Players para um novo world
+    }
+    
+    public void levelTwo() {
+        Greenfoot.setWorld(new PacmanWorld()); // Sends the Players to a new world | Manda os Players para um novo world
+    }
+    
+    public void levelThree() {
+        Greenfoot.setWorld(new RaceWorld()); // Sends the Players to a new world | Manda os Players para um novo world
+    }
+    
+    public void end() {
+        Greenfoot.setWorld(new BarbieLand());  // Sends the Players to a new world | Manda os Players para um novo world
     }
     
     // BEGIN Sounds --------------------------------------------------------------------
@@ -120,7 +143,7 @@ public class MainWorld extends World
      * Toca o OneUpSound
      */
     public void playOneUpSound() {
-        oneUpSound.setVolume(oneUpVolume); // Sets the volume of the oneUpSound
+        oneUpSound.setVolume(volumeWav); // Sets the volume of the oneUpSound
         oneUpSound.play(); // Plays the oneUpSound
     }
     
@@ -138,7 +161,7 @@ public class MainWorld extends World
      * Toca o HealthSound
      */
     public void playHealthSound() {
-        healthSound.setVolume(oneUpVolume); // Sets the volume of the healthSound
+        healthSound.setVolume(volumeWav); // Sets the volume of the healthSound
         healthSound.play(); // Plays the healthSound
     }
     
@@ -147,8 +170,17 @@ public class MainWorld extends World
      * Toca o ExitLevelSound
      */
     public void playExitLevelSound() {
-        exitLevelSound.setVolume(volume); // Sets the volume of the ExitLevelSound
-        exitLevelSound.play(); // Plays the ExitLevelSound
+        exitLevelSound.setVolume(volumeWav); // Sets the volume of the exitLevelSound
+        exitLevelSound.play(); // Plays the exitLevelSound
+    }
+    
+    /**
+     * Plays the VictorySound
+     * Toca o VictorySound
+     */
+    public void playVictorySound() {
+        victorySound.setVolume(volume); // Sets the volume of the victorySound
+        victorySound.play(); // Plays the victorySound
     }
     
     /**
