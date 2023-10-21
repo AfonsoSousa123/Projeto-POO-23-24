@@ -6,6 +6,7 @@ public class Vehicle extends Actor
     private int SPEED = 2; // velocidade
     private int VSPEED = 0; // velocidade vertical
     private int acceleration = 2; // aceleração
+    private int colide = 120;
 
     // World variables | Variaveis World
     MainWorld mainWorld;
@@ -41,15 +42,20 @@ public class Vehicle extends Actor
         int x, 
         int y 
     ) {
-        if(Greenfoot.isKeyDown(up)) {
-            moveUp(x, y);
-        } else if(Greenfoot.isKeyDown(down)) {
-            moveDown(x, y);
-        } else if(Greenfoot.isKeyDown(right)) {
-            moveRight(x, y);
-        } else if(Greenfoot.isKeyDown(left)) {
-            moveLeft(x, y);
-        } 
+        if(getWorld() instanceof RaceWorld) {
+            if(Greenfoot.isKeyDown(up)) {
+                moveUp(x, y);
+            } else if(Greenfoot.isKeyDown(down)) {
+                moveDown(x, y);
+            } else if(Greenfoot.isKeyDown(right)) {
+                if(getX()<932)
+                    moveRight(x, y);
+            } else if(Greenfoot.isKeyDown(left)) {
+                if(getX()>300)
+                    moveLeft(x, y);
+            } 
+       } 
+        
     }
     
     /**
@@ -133,6 +139,21 @@ public class Vehicle extends Actor
             mainWorld.playOneUpSound(); // Plays the oneUpSound | Toca o oneUpSound
             mainWorld.addStars(1); // Counts the collected stars | Conta as estrelas apanhadas
             mainWorld.removeObject(star); // Removes the Star object | Remove o objeto Star
+        }
+    }
+    
+    public void isTouching(Vehicle vehicle,int x, int y) {
+        Actor BarbieCar = getOneIntersectingObject(BarbieCar.class);
+        Actor KenCar = getOneIntersectingObject(KenCar.class);
+        if(BarbieCar != null){
+            int newX = x - colide;
+            int newY = BarbieCar.getY();
+            BarbieCar.setLocation(newX,newY);
+        }
+        if(KenCar!= null){
+            int newX = x + colide;
+            int newY = KenCar.getY();
+            KenCar.setLocation(newX,newY);
         }
     }
 }
