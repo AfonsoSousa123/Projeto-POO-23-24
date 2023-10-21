@@ -2,13 +2,13 @@
 comment0.target=Vehicle
 comment1.params=
 comment1.target=Vehicle()
-comment10.params=player
+comment10.params=vehicle
 comment10.target=void\ collectStuds(greenfoot.Actor)
 comment10.text=\r\n\ Collects\ the\ studs\ and\ adds\ points\ to\ the\ Scoreboard\r\n\ Apanha\ as\ studs\ e\ adiciona\ os\ respetivos\ pontos\ ao\ Scoreboard\r\n
-comment11.params=player
+comment11.params=vehicle
 comment11.target=void\ collectHearts(greenfoot.Actor)
-comment11.text=\r\n\ Collects\ the\ Hearts\ and\ adds\ lives\ to\ the\ Player\r\n\ Apanha\ os\ Hearts\ e\ adiciona\ as\ vidas\ do\ Player\r\n
-comment12.params=player
+comment11.text=\r\n\ Collects\ the\ Hearts\ and\ adds\ lives\ to\ the\ Vehicle\r\n\ Apanha\ os\ Hearts\ e\ adiciona\ as\ vidas\ do\ Vehicle\r\n
+comment12.params=vehicle
 comment12.target=void\ collectStars(greenfoot.Actor)
 comment12.text=\r\n\ Collects\ the\ star\r\n\ Apanha\ a\ estrela\r\n
 comment2.params=w

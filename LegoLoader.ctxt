@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=LegoLoader
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ LegoLoader\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=LegoLoader()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ LegoLoader\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=image\ percent
+comment3.target=greenfoot.GreenfootImage\ redimencionaImg(greenfoot.GreenfootImage,\ int)
+comment3.text=\r\n\ Resizes\ the\ given\ Image\ to\ a\ width\ and\ height\ times\ the\ percent\ specified\ \r\n\ Redimensiona\ a\ Image\ dada\ para\ um\ comprimento\ e\ uma\ altura\ de\ acordo\ com\ a\ percentagem\ fornecida\r\n
+comment4.params=gif\ percent
+comment4.target=GifImage\ redimencionaGif(GifImage,\ int)
+comment4.text=\r\n\ Resizes\ the\ given\ Gif\ to\ a\ width\ and\ height\ times\ the\ percent\ specified\ \r\n\ Redimensiona\ o\ Gif\ dado\ para\ um\ comprimento\ e\ uma\ altura\ de\ acordo\ com\ a\ percentagem\ fornecida\r\n
+numComments=5

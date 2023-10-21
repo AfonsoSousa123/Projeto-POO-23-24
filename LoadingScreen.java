@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class LoadingScreen extends MainWorld
 {
     private GreenfootImage bgImage = new GreenfootImage(getBackground());
-    
+
     /**
      * Constructor for objects of class LoadingScreen.
      * 
@@ -17,5 +17,15 @@ public class LoadingScreen extends MainWorld
     public LoadingScreen() {
         super();
         setBackground(resizeImage(bgImage, 1300, 800)); // Scales the image to the desired width and height 
+        prepare();
+    }
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        LegoLoader legoLoader = new LegoLoader();
+        addObject(legoLoader,642,414);
     }
 }

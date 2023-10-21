@@ -127,7 +127,7 @@ public class Player extends Actor
     public void checkBounds(Player player) {
         if(getWorld() instanceof MarioStyleWorld) {
             if (player.getY() > getWorld().getHeight() + 120) {
-                // mainWorld.playFallingSound();
+                mainWorld.playFallingSound();
                 
                 if (player.getClass() == Barbie.class) {
                     mainWorld.removeBarbieLives(1);

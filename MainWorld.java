@@ -108,16 +108,16 @@ public class MainWorld extends World
      */
     public void checkStarCount() {
         if (sb.starCount == 2 && sb.level == 1 && getClass() == MarioStyleWorld.class) {
-            playExitLevelSound(); // Plays the exitLevelSound
-            sb.level++; // sets the level to 2
-            levelTwo(); // Teleports the player to the level 2
+            playExitLevelSound(); // Plays the exitLevelSound | Toca o exitLevelSound
+            sb.level++; // Increments one level | Incrementa um nivel
+            levelTwo(); // Teleports the player to the level 2 | Teleporta o player para o nivel 2
         } else if (sb.starCount == 4 && sb.level == 2 && getClass() == PacmanWorld.class) {
             playExitLevelSound(); // Plays the exitLevelSound
-            sb.level++; // sets the level to 3
-            levelThree(); // Teleports the player to the level 2
+            sb.level++; // Increments one level | Incrementa um nivel
+            levelThree(); // Teleports the player to the level 3 | Teleporta o player para o nivel 3
         } else if (sb.starCount == 6 && sb.level == 3 && getClass() == RaceWorld.class) {
-            theEnd(); // Teleports the player to the End
-            playVictorySound(); // Plays the exitLevelSound
+            barbieLand(); // Teleports the player to the End
+            playVictorySound(); // Plays the VictorySound | Toca o VictorySound
         }
     }
     
@@ -133,8 +133,8 @@ public class MainWorld extends World
         Greenfoot.setWorld(new RaceWorld()); // Sends the Players to a new world | Manda os Players para um novo world
     }
     
-    public void theEnd() {
-        Greenfoot.setWorld(new BarbieLand());  // Sends the Players to a new world | Manda os Players para um novo world
+    public void barbieLand() {
+        Greenfoot.setWorld(new BarbieLand());  // Sends the Players to the Barbie Land | Manda os Players para Barbie Land
     }
     
     // BEGIN Sounds --------------------------------------------------------------------

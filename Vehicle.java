@@ -6,16 +6,6 @@ public class Vehicle extends Actor
     private int SPEED = 2; // velocidade
     private int VSPEED = 0; // velocidade vertical
     private int acceleration = 2; // aceleração
-    private int jumpStrenght = 50; // força do salto
-    private int length; // largura
-    private int volume = 20; // volume geral
-    private int oneUpVolume = 70; // volume geral
-    private int imageSize = 30; // tamanho das imagens
-    
-    // Initializes the sounds | Inicializa os sons
-    GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
-    GreenfootSound coinSound = new GreenfootSound("8bit-coin-sound-effect.mp3");
-    GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
 
     // World variables | Variaveis World
     MainWorld mainWorld;
@@ -51,16 +41,14 @@ public class Vehicle extends Actor
         int x, 
         int y 
     ) {
-        if(getWorld() instanceof RaceWorld) {
-            if(Greenfoot.isKeyDown(up)) {
-                moveUp(x, y);
-            } else if(Greenfoot.isKeyDown(down)) {
-                moveDown(x, y);
-            } else if(Greenfoot.isKeyDown(right)) {
-                moveRight(x, y);
-            } else if(Greenfoot.isKeyDown(left)) {
-                moveLeft(x, y);
-            } 
+        if(Greenfoot.isKeyDown(up)) {
+            moveUp(x, y);
+        } else if(Greenfoot.isKeyDown(down)) {
+            moveDown(x, y);
+        } else if(Greenfoot.isKeyDown(right)) {
+            moveRight(x, y);
+        } else if(Greenfoot.isKeyDown(left)) {
+            moveLeft(x, y);
         } 
     }
     
@@ -100,15 +88,15 @@ public class Vehicle extends Actor
      * Collects the studs and adds points to the Scoreboard
      * Apanha as studs e adiciona os respetivos pontos ao Scoreboard
      */
-    public void collectStuds(Actor player) {
+    public void collectStuds(Actor vehicle) {
         Actor studBlue = getOneIntersectingObject(StudBlue.class);
         Actor studPurple = getOneIntersectingObject(StudPurple.class);
         
-        if(studBlue != null && player.getClass() == Ken.class) {
+        if(studBlue != null && vehicle.getClass() == KenCar.class) {
             mainWorld.addScore(20); // Adds 20 score to the main score
             mainWorld.playCoinSound(); // Plays the coinSound
             mainWorld.removeObject(studBlue); // Removes the studBlue object
-        } else if (studPurple != null && player.getClass() == Barbie.class) {
+        } else if (studPurple != null && vehicle.getClass() == BarbieCar.class) {
             mainWorld.addScore(20); // Adds 20 score to the main score
             mainWorld.playCoinSound(); // Plays the coinSound
             mainWorld.removeObject(studPurple); // Removes the studPurple object
@@ -116,17 +104,17 @@ public class Vehicle extends Actor
     }
     
     /**
-     * Collects the Hearts and adds lives to the Player
-     * Apanha os Hearts e adiciona as vidas do Player
+     * Collects the Hearts and adds lives to the Vehicle
+     * Apanha os Hearts e adiciona as vidas do Vehicle
      */
-    public void collectHearts(Actor player) {
+    public void collectHearts(Actor vehicle) {
         Actor heart = getOneIntersectingObject(Heart.class);
         
         if(heart != null) {
-            if (player.getClass() == Barbie.class) {
-                mainWorld.addBarbieLives(1); // Adds one live to the livesCounter
-            } else if (player.getClass() == Ken.class) {
-                mainWorld.addKenLives(1);
+            if (vehicle.getClass() == BarbieCar.class) {
+                mainWorld.addBarbieLives(1); // Adds one live to the livesCounter for Barbie
+            } else if (vehicle.getClass() == BarbieCar.class) {
+                mainWorld.addKenLives(1); // Adds one live to the livesCounter for Kem
             }
             
             mainWorld.playHealthSound(); // Plays the healthSound
@@ -138,18 +126,13 @@ public class Vehicle extends Actor
      * Collects the star
      * Apanha a estrela
      */
-    public void collectStars(Actor player) {
+    public void collectStars(Actor vehicle) {
         Actor star = getOneIntersectingObject(Star.class);
         
         if(star != null) {
-            if (player.getClass() == Barbie.class) {
-                mainWorld.addBarbieLives(1); // Adds one live to the livesCounter
-            } else if (player.getClass() == Ken.class) {
-                mainWorld.addKenLives(1);
-            }
-            
-            mainWorld.playOneUpSound();
-            mainWorld.removeObject(star); // Removes the Star object
+            mainWorld.playOneUpSound(); // Plays the oneUpSound | Toca o oneUpSound
+            mainWorld.addStars(1); // Counts the collected stars | Conta as estrelas apanhadas
+            mainWorld.removeObject(star); // Removes the Star object | Remove o objeto Star
         }
     }
 }
