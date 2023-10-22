@@ -39,7 +39,7 @@ public class LoadingScreen extends MainWorld
     private void changeWorld() {
         playExitLevelSound(); // Plays the exitLevelSound | Toca o VictorySound
 
-        if (timer > 60) {
+        if (timer > 90) {
             switch(sb.level) {
                 case 1:
                     levelOne();

@@ -38,15 +38,15 @@ public class Player extends Actor
      * Move o Player
      */
     public void movePlayer(
-    String up, 
-    String down, 
-    String left, 
-    String right, 
-    int x, 
-    int y, 
-    GifImage imageLeft,
-    GifImage imageRight,
-    GreenfootImage imageFront
+        String up, 
+        String down, 
+        String left, 
+        String right, 
+        int x, 
+        int y, 
+        GifImage imageLeft,
+        GifImage imageRight,
+        GreenfootImage imageFront
     ) {
         if(getWorld() instanceof MarioStyleWorld || getWorld() instanceof PlanetaTerra) {
             movePlayerMarioWorld(up, left, right, x, y, imageLeft, imageRight, imageFront);
@@ -60,14 +60,14 @@ public class Player extends Actor
      * Move o Player no MarioStyleWorld
      */
     private void movePlayerMarioWorld(
-    String up,  
-    String left, 
-    String right, 
-    int x, 
-    int y, 
-    GifImage imageLeft,
-    GifImage imageRight,
-    GreenfootImage imageFront
+        String up,  
+        String left, 
+        String right, 
+        int x, 
+        int y, 
+        GifImage imageLeft,
+        GifImage imageRight,
+        GreenfootImage imageFront
     ) {
         if(Greenfoot.isKeyDown(up) && onGround(this)) {
             jump(x,y);
@@ -87,15 +87,15 @@ public class Player extends Actor
      * Move o Player no PacmanWorld
      */
     private void movePlayerPacmanWorld(
-    String up,  
-    String down,
-    String left, 
-    String right, 
-    int x, 
-    int y, 
-    GifImage imageLeft,
-    GifImage imageRight,
-    GreenfootImage imageFront
+        String up,
+        String down,
+        String left,
+        String right,
+        int x,
+        int y,
+        GifImage imageLeft,
+        GifImage imageRight,
+        GreenfootImage imageFront
     ) {
         if(Greenfoot.isKeyDown(up) && canMoveUp()) {
             moveUp(x,y);
@@ -134,22 +134,6 @@ public class Player extends Actor
 
     // END Player Movement -------------------------------------------------------
 
-    // public void moveTopView(int x, int y, int rotation) {
-    // int currentX = x;
-    // int currentY = y;
-    // int direction = rotation; // getRotation()
-    // int changeX = getChangeX(direction);
-    // int changeY = getChangeY(direction);
-    // int adjustedChangeX = adjustOffset(changeX);
-    // int adjustedChangeY = adjustOffset(changeY);
-
-    // Actor block = getOneObjectAtOffset(adjustedChangeX, adjustedChangeY, Block2x2.class);
-    // // if the block is null then we can move
-    // if(block==null) { 
-    // setLocation(currentX + changeX, currentY + changeY);
-    // }
-    // }
-
     /**
      * Resizes the given Image to a width and height times the percent specified 
      * Redimensiona a Image dada para um comprimento e uma altura de acordo com a percentagem fornecida
@@ -166,8 +150,7 @@ public class Player extends Actor
      * Redimensiona o Gif dado para um comprimento e uma altura de acordo com a percentagem fornecida
      */
     public GifImage redimencionaGif(GifImage gif, int percent) {
-        for (GreenfootImage image : gif.getImages())
-        {
+        for (GreenfootImage image : gif.getImages()) {
             int wide = image.getWidth()*percent/100;
             int high = image.getHeight()*percent/100;
             image.scale(wide, high);
@@ -357,32 +340,6 @@ public class Player extends Actor
 
     // END Player Movement -------------------------------------------------------
 
-    // /**
-    // * Moves the Player into the X direction
-    // */
-    // public int getChangeX(int direction) {
-    // if(direction == Direction.RIGHT) {
-    // return SPEED;
-    // } 
-    // if(direction == Direction.LEFT) {
-    // return -SPEED;
-    // }
-    // return 0;
-    // }
-
-    // /**
-    // * Moves the Player into the Y direction
-    // */
-    // public int getChangeY(int direction) {
-    // if(direction == Direction.DOWN) {
-    // return SPEED;
-    // } 
-    // if(direction == Direction.UP) {
-    // return -SPEED;
-    // }
-    // return 0;
-    // }
-
     /**
      * Sets an adjusted offset with the given value
      * Calcula um offset com o valor fornecido
@@ -455,15 +412,12 @@ public class Player extends Actor
 
         if(enemy != null) {
             if (player.getClass() == Barbie.class) {
-                
                 mainWorld.removeBarbieLives(1); // Removes one live for Barbie
                 barbieSpawnLocation();
             } else if (player.getClass() == Ken.class) {
-                
                 mainWorld.removeKenLives(1); // Removes one live for Ken
                 kenSpawnLocation();
             }
-            
             mainWorld.playDeathSound(); // Plays the healthSound
         }
     }
