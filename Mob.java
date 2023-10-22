@@ -21,8 +21,22 @@ public class Mob extends Actor
     private int lookForEdge = width/5; 
     private int lookForGround = height/2;
     
+    // class Direction { // Class to store the values of the rotation for each movement
+        // public static final int UP = 270;
+        // public static final int DOWN = 90;
+        // public static final int LEFT = 180;
+        // public static final int RIGHT = 0;
+    // }
+    
+    // World variables | Variaveis World
+    MainWorld mainWorld;
+    
     public Mob() {
         
+    }
+    
+    public void addedToWorld(World w) {
+        mainWorld = (MainWorld)w;
     }
     
     /**

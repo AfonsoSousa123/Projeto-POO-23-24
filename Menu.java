@@ -9,9 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Menu extends MainWorld
 {
     Scoreboard sb;
+    
     /**
-     * Constructor for objects of class Menu.
-     * 
+     * Constructor of Menu class.
+     * Contrutor da classe Menu
      */
     public Menu() {    
         populateWorld();
@@ -31,6 +32,6 @@ public class Menu extends MainWorld
     }
     
     public void act() {
-        // pressStartSound();
+        
     }
 }

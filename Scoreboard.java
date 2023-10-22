@@ -45,6 +45,7 @@ public class Scoreboard extends Actor
     
     public void act() {
         drawScore();
+        manualReset();
     }
     
     /**
@@ -114,7 +115,7 @@ public class Scoreboard extends Actor
         if(barbieLives > 0) {
             barbieLives -= amount; // decrements the lives to the barbieLives
         } else if(barbieLives == 0) {
-            GameOver();
+            mainWorld.gameOver();
         }
     }
     
@@ -136,12 +137,17 @@ public class Scoreboard extends Actor
         if(kenLives > 0) {
             kenLives -= amount; // decrements the lives to the kenLives
         } else if(kenLives == 0) {
-            GameOver();
+            mainWorld.gameOver();
         }
     }
     
-    public void GameOver() {
-        Greenfoot.setWorld(new GameOver()); // sends the Player to the GameOver World
+    /**
+     * Manualy resets the Score by clicking shift + R 
+     * Reseta manualmente o Score ao clicar shift + R   
+     */
+    public void manualReset() {
+        if (Greenfoot.isKeyDown("shift") && Greenfoot.isKeyDown("R")) 
+            resetVariables();
     }
     
     public static void resetVariables() {

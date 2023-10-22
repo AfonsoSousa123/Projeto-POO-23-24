@@ -27,7 +27,7 @@ public class Botao extends Actor
     private void play()
     {
         if (Greenfoot.mouseClicked(this) || Greenfoot.isKeyDown("enter")) {
-            Greenfoot.setWorld(new MarioStyleWorld());
+            Greenfoot.setWorld(new LoadingScreen());
         }
     }
 }
