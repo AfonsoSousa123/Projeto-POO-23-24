@@ -1,4 +1,4 @@
-    import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Enemy here.
@@ -9,22 +9,22 @@
 public class Enemy extends Mob
 {
     private int ImageSize;
-    
+
     private MainWorld main;
-    
+
     //Images Ken
     GreenfootImage enemyF = new GreenfootImage(getImage());
-    
-    GifImage ewalkingR = new GifImage("ken_walking_right.gif");
-    GifImage ewalkingL = new GifImage("ken_walking_left.gif");
-    
+
+    GifImage eWalkingR = new GifImage("enemy_walking_R.gif");
+    GifImage eWalkingL = new GifImage("enemy_walking_L.gif");
+
     public Enemy(int imageSize) {
         this.ImageSize = imageSize;
-        redimencionaGif(ewalkingL, ImageSize);
-        redimencionaGif(ewalkingR, ImageSize);
+        redimencionaGif(eWalkingL, ImageSize);
+        redimencionaGif(eWalkingR, ImageSize);
         setImage(redimencionaImg(enemyF, ImageSize));
     }
-    
+
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -32,10 +32,10 @@ public class Enemy extends Mob
     public void act()
     {
         moveMob(
-             getX(), 
-             getY(), 
-             ewalkingL,
-             ewalkingR
+            getX(), 
+            getY(), 
+            eWalkingR,
+            eWalkingL
         );
         fall(getX(), getY());
         checkFall(this, getX(), getY());

@@ -16,34 +16,34 @@ public class MainWorld extends World
     // Initializes the sounds | Inicializa os sons
     private GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
     private GreenfootSound coinSound = new GreenfootSound("8bit-coin-sound-effect.mp3");
+    private GreenfootSound deathSound = new GreenfootSound("Pacman-death-sound.mp3");
     private GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
     private GreenfootSound healthSound = new GreenfootSound("red_coin.wav");
     private GreenfootSound exitLevelSound = new GreenfootSound("exit_course.wav");
     private GreenfootSound victorySound =  new GreenfootSound("Retro-winning-sound-effect.mp3");
     private GreenfootSound gameOverSound = new GreenfootSound("game_over.wav");
     private GreenfootSound startGameSound = new GreenfootSound("press_start.wav");
+    
 
     /**
      * Constructor for objects of class MainWorld.
      * Contrutor para os objetos da classe MainWorld.
      * 
      */
-    public MainWorld()
-    {    
+    public MainWorld() {    
         // Create a new world with 1300x800 cells with a cell size of 1x1 pixels. | Cria um novo mundo com 1300x800 células, com um tamanho de célula de 1x1 pixeis
         super(1300, 800, 1, false); // The boolean atribute, is to set the world with bounds | O atributo boolean, define se o mundo tem ou não bordas
         spawnScore();
     }
-
-    /**
-     * Act method
-     * Metodo act
-     */
-    public void act()
-    {
-
+    
+    public void act() {
+        
     }
 
+    /**
+     * Spawns the Scoreboard Object onto the World
+     * Imprime o Objeto do Scoreboard no World
+     */
     private void spawnScore() {
         sb = new Scoreboard(); // Initializes the Scoreboard object | Inicializa o objeto Scoreboard
         if (getClass() != Menu.class) // all worlds but not the Menu
@@ -120,7 +120,8 @@ public class MainWorld extends World
             // levelThree(); // Teleports the player to the level 3 | Teleporta o player para o nivel 3
             loadingScreen();
         } else if (sb.starCount == 6 && sb.level == 3 && getClass() == RaceWorld.class) {
-            barbieLand(); // Teleports the player to the End
+            sb.level++; // Increments one level | Incrementa um nivel
+            barbieLand(); // Teleports the player to the BarbieLand (the End) | Teleporta o player para a BarbieLand (O Fim)
             loadingScreen();
         }
     }
@@ -129,7 +130,7 @@ public class MainWorld extends World
     public void loadingScreen() {
         Greenfoot.setWorld(new LoadingScreen()); 
     }
-    
+
     // Sends the Players to the GameOver World | Manda os Players para o GameOver World
     public void gameOver() {
         Greenfoot.setWorld(new GameOver());  
@@ -227,6 +228,15 @@ public class MainWorld extends World
     public void playFallingSound() {
         fallingSound.setVolume(volume); // Sets the volume of the fallingSound
         fallingSound.play(); // Plays the fallingSound
+    }
+    
+    /**
+     * Plays the DeathSound
+     * Toca o DeathSound
+     */
+    public void playDeathSound() {
+        deathSound.setVolume(volume); // Sets the volume of the deathSound
+        deathSound.play(); // Plays the deathSound
     }
 
     // END Sounds -------------------------------------------------------

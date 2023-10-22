@@ -13,13 +13,13 @@ public class Target extends Actor
 
     public Ken ken;
     public Barbie barbie;
-    
+
     /**
      * Constructor for the Target class.
      * Contrutor da classe Target.
      */
     public Target() {
-
+        
     }
 
     public void act() {
@@ -37,7 +37,7 @@ public class Target extends Actor
             moveTargetRW(x, y);
         }
     }
-    
+
     /**
      * Movement for the Targets in the MarioStyleWorld
      * Movimento para os Targets no MarioStyleWorld
@@ -49,7 +49,7 @@ public class Target extends Actor
             move(-SPEED);
         }
     }
-    
+
     /**
      * Movement for the Targets in the RaceWorld
      * Movimento para os Targets no RaceWorld

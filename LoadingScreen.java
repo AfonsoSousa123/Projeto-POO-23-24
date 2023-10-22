@@ -21,7 +21,7 @@ public class LoadingScreen extends MainWorld
         prepare();
         drawBackground();
     }
-    
+
     public void act() {
         timer++;
         changeWorld();
@@ -32,13 +32,13 @@ public class LoadingScreen extends MainWorld
         GreenfootImage bgImage = new GreenfootImage(1,1);
         Color color = new Color(244,216,0); // color to match the yellow of the loader | cor amarela para ser igual à do loader
         bgImage.setColor(color); // sets the color | define a cor
-        bgImage.drawRect(0,0,1,1); // draws a rectangle | 
+        bgImage.drawRect(0,0,1,1); // draws a rectangle | desenha um quadrado
         setBackground(bgImage); // sets the background | define a imagem criada como o fundo
     }
-    
+
     private void changeWorld() {
-        playExitLevelSound(); // Plays the exitLevelSound | Toca o exitLevelSound
-        
+        playExitLevelSound(); // Plays the exitLevelSound | Toca o VictorySound
+
         if (timer > 60) {
             switch(sb.level) {
                 case 1:
@@ -60,7 +60,7 @@ public class LoadingScreen extends MainWorld
             }
         }
     }
-    
+
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.

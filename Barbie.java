@@ -54,5 +54,6 @@ public class Barbie extends Player
         collectStuds(this);
         collectHearts(this);
         collectStars(this);
+        touchEnemy(this);
     }
 }

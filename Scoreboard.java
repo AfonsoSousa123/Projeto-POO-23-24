@@ -10,29 +10,28 @@ public class Scoreboard extends Actor
 {
     // World variables | variaveis world
     MainWorld mainWorld;
-    
+
     // Constant variables: they will always be the setted value | Variaveis constantes: vao sempre ser o valor definido
     private final int LIVES = 2;
-    
+
     // Static variables: they will keep the values | Variaveis estaticas: mantem os valores
     public static int score = 0;
     public static int starCount = 0;
     public static int level = 1;
     public static int barbieLives = 2;
     public static int kenLives = 2;
-    
+
     private int width;
     private int height = 60;
     private int drawHeight = 40;
-    
 
     // Image variables | variaveis de imagem
     GreenfootImage boardImage;
 
     public Scoreboard() {
-        
+
     }
-    
+
     public void addedToWorld(World w) {
         mainWorld = (MainWorld)w;
         width = mainWorld.getWidth();
@@ -42,12 +41,12 @@ public class Scoreboard extends Actor
         boardImage.setTransparency(100);
         setImage(boardImage);
     }
-    
+
     public void act() {
         drawScore();
         manualReset();
     }
-    
+
     /**
      * Retrns the Score
      * Retorna o Score
@@ -55,7 +54,7 @@ public class Scoreboard extends Actor
     public int getScore() {
         return score;
     }
-    
+
     /**
      * Retrns the final Score
      * Retorna o Score final
@@ -63,7 +62,7 @@ public class Scoreboard extends Actor
     public void drawFinalScore() {
         getScore();
     }
-    
+
     /**
      * Draws the score onto the World
      * Mostra o Score no World
@@ -80,7 +79,7 @@ public class Scoreboard extends Actor
         boardImage.drawString("Barbie: "+ barbieLives, 1065, drawHeight);
         boardImage.drawString("Ken: "+ kenLives, 1200, drawHeight);
     }
-    
+
     /**
      * Increments the score with the given amount
      * Incrementa o amount dado, ao Score
@@ -88,7 +87,7 @@ public class Scoreboard extends Actor
     public void addScore(int amount) {
         score += amount;
     }
-    
+
     /**
      * Adds the stars
      * Adiciona as estrelas    
@@ -106,7 +105,7 @@ public class Scoreboard extends Actor
             barbieLives += amount; // increments the lives to the barbieLives
         }
     }
-    
+
     /**
      * Removes Barbie lives
      * Remove vidas do Barbie    
@@ -118,7 +117,7 @@ public class Scoreboard extends Actor
             mainWorld.gameOver();
         }
     }
-    
+
     /**
      * Adds Ken lives
      * Adiciona vidas do Ken    
@@ -128,7 +127,7 @@ public class Scoreboard extends Actor
             kenLives += amount; // increments the lives to the kenLives
         }
     }
-    
+
     /**
      * Removes Ken lives
      * Remove vidas do Ken    
@@ -140,7 +139,7 @@ public class Scoreboard extends Actor
             mainWorld.gameOver();
         }
     }
-    
+
     /**
      * Manualy resets the Score by clicking shift + R 
      * Reseta manualmente o Score ao clicar shift + R   
@@ -149,7 +148,7 @@ public class Scoreboard extends Actor
         if (Greenfoot.isKeyDown("shift") && Greenfoot.isKeyDown("R")) 
             resetVariables();
     }
-    
+
     public static void resetVariables() {
         score = 0; // resets the score to its original value
         starCount = 0; // resets the starSount to its original value
