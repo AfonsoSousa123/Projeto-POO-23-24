@@ -2,28 +2,24 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Vehicle extends Actor
 {
-    // Local variables
-    private int SPEED = 2;
-    private int VSPEED = 0;
-    private int acceleration = 2;
-    private int jumpStrenght = 50;
-    private int length;
-    private int volume = 20;
-    private int oneUpVolume = 70;   
-    private int imageSize = 30;
-    
-    private MainWorld main;
+    // Local variables | variaveis locais
+    private int SPEED = 2; // velocidade
+    private int VSPEED = 0; // velocidade vertical
+    private int acceleration = 2; // aceleração
+    private int colide = 120;
+
+    // World variables | Variaveis World
+    MainWorld mainWorld;
     
     public Vehicle() {
         
     }
     
     public void addedToWorld(World w) {
-        main = (MainWorld)w;
+        mainWorld = (MainWorld)w;
     }
     
-    public void act()
-    {
+    public void act() {
         
     }
     
@@ -36,9 +32,10 @@ public class Vehicle extends Actor
     
     /**
      * Moves the Car
+     * Move o Car
      */
     public void moveVehicle(
-        String up, 
+        String up,
         String down,
         String left, 
         String right, 
@@ -51,15 +48,19 @@ public class Vehicle extends Actor
             } else if(Greenfoot.isKeyDown(down)) {
                 moveDown(x, y);
             } else if(Greenfoot.isKeyDown(right)) {
-                moveRight(x, y);
+                if(getX()<932)
+                    moveRight(x, y);
             } else if(Greenfoot.isKeyDown(left)) {
-                moveLeft(x, y);
+                if(getX()>300)
+                    moveLeft(x, y);
             } 
-        } 
+       } 
+        
     }
     
     /**
      * Moves the Vehicle to the right
+     * Move o Vehicle para a direita
      */
     private void moveRight(int x,int y) {
         setLocation(x + SPEED, y);
@@ -67,6 +68,7 @@ public class Vehicle extends Actor
     
     /**
      * Moves the Vehicle to the left
+     * Move o Vehicle para a esquerda
      */
     private void moveLeft(int x,int y) {
         setLocation(x - SPEED, y);
@@ -74,6 +76,7 @@ public class Vehicle extends Actor
     
     /**
      * Moves the Vehicle Down
+     * Move o Vehicle para a baixo
      */
     private void moveDown(int x, int y) {
         setLocation(x, y + SPEED);
@@ -81,51 +84,76 @@ public class Vehicle extends Actor
     
     /**
      * Moves the Vehicle Up
+     * Move o Vehicle para a cima
      */
     private void moveUp(int x, int y) {
         setLocation(x, y - SPEED);
     }
     
-    // private void playOneUpSound() {
-        // coinSound.setVolume(volume); // Sets the volume of the coinSound
-        // coinSound.play(); // Plays the coinSound
-    // }
-    
-    // /**
-     // * Collects the studs and adds points to the Scoreboard
-     // */
-    // public void collectStuds(Actor player) {
-        // Actor studBlue = getOneIntersectingObject(StudBlue.class);
-        // Actor studPurple = getOneIntersectingObject(StudPurple.class);
+    /**
+     * Collects the studs and adds points to the Scoreboard
+     * Apanha as studs e adiciona os respetivos pontos ao Scoreboard
+     */
+    public void collectStuds(Actor vehicle) {
+        Actor studBlue = getOneIntersectingObject(StudBlue.class);
+        Actor studPurple = getOneIntersectingObject(StudPurple.class);
         
-        // if(studBlue != null && player.getClass() == Ken.class) {
-            // playOneUpSound();
-            // mainWorld.addScore(20); // Adds 20 score to the main score
-            // mainWorld.removeObject(studBlue); // Removes the studBlue object
-        // } else if (studPurple != null && player.getClass() == Barbie.class) {
-            // playOneUpSound();
-            // mainWorld.addScore(20); // Adds 20 score to the main score
-            // mainWorld.removeObject(studPurple); // Removes the studPurple object
-        // }
-    // }
+        if(studBlue != null && vehicle.getClass() == KenCar.class) {
+            mainWorld.addScore(20); // Adds 20 score to the main score
+            mainWorld.playCoinSound(); // Plays the coinSound
+            mainWorld.removeObject(studBlue); // Removes the studBlue object
+        } else if (studPurple != null && vehicle.getClass() == BarbieCar.class) {
+            mainWorld.addScore(20); // Adds 20 score to the main score
+            mainWorld.playCoinSound(); // Plays the coinSound
+            mainWorld.removeObject(studPurple); // Removes the studPurple object
+        }
+    }
     
-    // /**
-     // * Collects the studs and adds points to the Scoreboard
-     // */
-    // public void collectHearts(Actor player) {
-        // Actor heart = getOneIntersectingObject(Heart.class);
+    /**
+     * Collects the Hearts and adds lives to the Vehicle
+     * Apanha os Hearts e adiciona as vidas do Vehicle
+     */
+    public void collectHearts(Actor vehicle) {
+        Actor heart = getOneIntersectingObject(Heart.class);
         
-        // if(heart!= null) {
-            // oneUpSound.setVolume(oneUpVolume); // Sets the volume of the oneUpSound
-            // oneUpSound.play(); // Plays the oneUpSound
+        if(heart != null) {
+            if (vehicle.getClass() == BarbieCar.class) {
+                mainWorld.addBarbieLives(1); // Adds one live to the livesCounter for Barbie
+            } else if (vehicle.getClass() == BarbieCar.class) {
+                mainWorld.addKenLives(1); // Adds one live to the livesCounter for Kem
+            }
             
-            // if (player.getClass() == Barbie.class) {
-                // mainWorld.addBarbieLives(1); // Adds one live to the livesCounter
-            // } else if (player.getClass() == Ken.class) {
-                // mainWorld.addKenLives(1);
-            // }
-            
-            // mainWorld.removeObject(heart); // Removes the heart object
-        // }
-    // }
+            mainWorld.playHealthSound(); // Plays the healthSound
+            mainWorld.removeObject(heart); // Removes the heart object
+        }
+    }
+    
+    /**
+     * Collects the star
+     * Apanha a estrela
+     */
+    public void collectStars(Actor vehicle) {
+        Actor star = getOneIntersectingObject(Star.class);
+        
+        if(star != null) {
+            mainWorld.playOneUpSound(); // Plays the oneUpSound | Toca o oneUpSound
+            mainWorld.addStars(1); // Counts the collected stars | Conta as estrelas apanhadas
+            mainWorld.removeObject(star); // Removes the Star object | Remove o objeto Star
+        }
+    }
+    
+    public void isTouching(Vehicle vehicle,int x, int y) {
+        Actor BarbieCar = getOneIntersectingObject(BarbieCar.class);
+        Actor KenCar = getOneIntersectingObject(KenCar.class);
+        if(BarbieCar != null){
+            int newX = x - colide;
+            int newY = BarbieCar.getY();
+            BarbieCar.setLocation(newX,newY);
+        }
+        if(KenCar!= null){
+            int newX = x + colide;
+            int newY = KenCar.getY();
+            KenCar.setLocation(newX,newY);
+        }
+    }
 }

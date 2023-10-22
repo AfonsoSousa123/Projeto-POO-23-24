@@ -14,4 +14,6 @@ comment4.text=\r\n\ Populate\ the\ world\ for\ the\ start\ of\ the\ program.\r\n
 comment5.params=
 comment5.target=void\ prepare()
 comment5.text=\r\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\r\n\ That\ is\:\ create\ the\ initial\ objects\ and\ add\ them\ to\ the\ world.\r\n
-numComments=6
+comment6.params=
+comment6.target=void\ moedas()
+numComments=7

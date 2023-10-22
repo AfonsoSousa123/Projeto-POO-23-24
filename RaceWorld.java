@@ -9,8 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class RaceWorld extends MainWorld
 {
     private GreenfootImage bgImage = new GreenfootImage(getBackground());
-    private int imageCount = 0;
+    private int imageCount = -600;
     private int imageSize = 60;
+    
     
     private KenCar ken;
     private BarbieCar barbie;
@@ -23,11 +24,14 @@ public class RaceWorld extends MainWorld
     {
         populateWorld();
         prepare();
+         moedas();
+        //setPaintOrder(Scoreboard.class,BabieCar.class,KenCar.class,StudBlue.class,StudPurple.class,Heart.class,Star.class);
     }
 
     public void act() {
         imageCount += 1; //(small -> slow moving, big -> fast movement)
         drawBackgroundImage();
+        checkStarCount();
     }
 
     public void drawBackgroundImage() {
@@ -46,10 +50,10 @@ public class RaceWorld extends MainWorld
     private void populateWorld()
     {
         BarbieCar barbieCar = new BarbieCar();
-        addObject(barbieCar,458,629);
+        addObject(barbieCar,432,629);
 
         KenCar kenCar = new KenCar();
-        addObject(kenCar,870,631);
+        addObject(kenCar,802,631);
     }
     
     /**
@@ -59,5 +63,12 @@ public class RaceWorld extends MainWorld
     private void prepare()
     {
         
+    }
+    
+     private void moedas(){
+        for(int i = 0; i<Greenfoot.getRandomNumber(5)+10;i++){
+            addObject(new StudBlue(),Greenfoot.getRandomNumber(630)+300,Greenfoot.getRandomNumber(630));
+            addObject(new StudPurple(),Greenfoot.getRandomNumber(630)+300,Greenfoot.getRandomNumber(630));
+        }
     }
 }

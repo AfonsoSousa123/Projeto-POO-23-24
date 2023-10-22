@@ -39,5 +39,9 @@ public class KenCar extends Vehicle
             getX(), 
             getY()
         );
+        collectStuds(this);
+        collectHearts(this);
+        collectStars(this);
+        isTouching(this, getX(), getY());
     }
 }

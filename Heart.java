@@ -18,6 +18,6 @@ public class Heart extends Target
      */
     public void act()
     {
-        moveTarget();
+        moveTarget(getX(), getY());
     }
 }

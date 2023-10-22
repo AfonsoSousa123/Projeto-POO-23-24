@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=LegoLoader
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ LegoLoader\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=LegoLoader()
+comment1.text=\r\n\ Constructor\ of\ LegoLoader\ Class\r\n\ Contrutor\ da\ Classe\ LegoLoader\r\n
+comment2.params=
+comment2.target=void\ runLoading()
+comment2.text=\r\n\ Sets\ the\ current\ image\ of\ the\ Gif\r\n\ Define\ a\ imagem\ atual\ do\ gif\r\n
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ LegoLoader\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=4

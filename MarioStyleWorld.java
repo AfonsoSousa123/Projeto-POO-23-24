@@ -30,6 +30,7 @@ public class MarioStyleWorld extends MainWorld
     public void act() {
         // imageCount -= 1; //(or any other value; small -> slow moving, big -> fast movement)
         // drawBackgroundImage();
+        checkStarCount();
     }
 
     public void drawBackgroundImage() {
@@ -265,5 +266,7 @@ public class MarioStyleWorld extends MainWorld
         Star star = new Star();
         addObject(star,5148,243);
         star.setLocation(5149,241);
+        Star star2 = new Star();
+        addObject(star2,2549,151);
     }
 }

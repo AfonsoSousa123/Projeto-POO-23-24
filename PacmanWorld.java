@@ -10,22 +10,22 @@ public class PacmanWorld extends MainWorld
 {
     String[] textMap = {
         "****b******p***",
-        "phpbbpbpbpbbpbb",
+        "phpbEpbpbpbspbb",
         "*p**p*p******p*",
-        "*b*pbpbbpbpbpb*",
+        "*b*pbpbEpbpbpb*",
         "*p*b*B*b*p*K*p*",
         "*b*p*p*p*b*b*p*",
-        "*p*bpbpbpbpbpb*",
+        "*p*bpbpEpbpbpb*",
         "*b*b**b*b****h*",
-        "bpbpbpb*ppbpbpb",
+        "bpEsbpb*ppbEbpb",
         "****p******b***",
     };
     
     private int BlockSize = 87; // Size of the block
     private int BlockOffsetY = 10; // Y Offset of the block
     private int BlockOffsetX = 40; // X Offset of the block
-    private int mobSize = 30; // Size of the mob 
-    private int playerSize = 30; // Size of the player
+    private int mobSize = 13; // Size of the mob 
+    private int playerSize = 24; // Size of the player
 
     /**
      * Constructor for objects of class PacmanWorld.
@@ -34,7 +34,11 @@ public class PacmanWorld extends MainWorld
     public PacmanWorld()
     {
         drawMap();
-        setPaintOrder(Scoreboard.class, Player.class, Target.class);
+        setPaintOrder(Scoreboard.class, Mob.class, Player.class, Target.class);
+    }
+    
+    public void act() {
+        checkStarCount();
     }
     
     /**
@@ -43,6 +47,7 @@ public class PacmanWorld extends MainWorld
     public void drawMap() {
         for(int i=0; i<textMap.length; i++) {
             String mapLine = textMap[i];
+            
             for(int j=0; j<mapLine.length(); j++) {
                 char mapChar = mapLine.charAt(j);
                 int y = i * BlockSize + BlockOffsetY; // x position times the size of the Block plus the offset
@@ -58,17 +63,20 @@ public class PacmanWorld extends MainWorld
                     case 'b':
                         addObject(new StudBlue(),x,y);
                         break;
+                    case 's':
+                        addObject(new Star(),x,y);
+                        break;
                     case 'B':
                         addObject(new Barbie(playerSize),x,y);
                         break;
                     case 'K':
                         addObject(new Ken(playerSize),x,y);
                         break;
-                    case 'h':
-                        addObject(new Heart(),x,y);
-                        break;
                     case 'E':
                         addObject(new Enemy(mobSize),x,y);
+                        break;
+                    case 'h':
+                        addObject(new Heart(),x,y);
                         break;
                     default:
                         break;
