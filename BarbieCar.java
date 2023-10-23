@@ -44,6 +44,7 @@ public class BarbieCar extends Vehicle
         collectStuds(this);
         collectHearts(this);
         collectStars(this);
-        isTouching(this, getX(), getY());
+        isTouchingVehicle(this, getX(), getY());
+        isTouchingObject(this, getX(), getY());
     }
 }

@@ -28,7 +28,7 @@ public class Player extends Actor
     }
 
     public void act() {
-        mainWorld.checkStarCount();
+        
     }
 
     // BEGIN Player Movement -------------------------------------------------------

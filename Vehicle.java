@@ -6,7 +6,7 @@ public class Vehicle extends Actor
     private int SPEED = 2; // velocidade
     private int VSPEED = 0; // velocidade vertical
     private int acceleration = 2; // aceleração
-    private int colide = 120;
+    private int colide = 120; // variavel para o offset do caro
 
     // World variables | Variaveis World
     MainWorld mainWorld;
@@ -43,19 +43,38 @@ public class Vehicle extends Actor
         int y 
     ) {
         if(getWorld() instanceof RaceWorld) {
-            if(Greenfoot.isKeyDown(up)) {
+             if(Greenfoot.isKeyDown(up)) {
                 moveUp(x, y);
-            } else if(Greenfoot.isKeyDown(down)) {
+            } 
+            if(Greenfoot.isKeyDown(down)) {
                 moveDown(x, y);
-            } else if(Greenfoot.isKeyDown(right)) {
+            } 
+            if(Greenfoot.isKeyDown(right)) {
                 if(getX()<932)
                     moveRight(x, y);
-            } else if(Greenfoot.isKeyDown(left)) {
+            } 
+            if(Greenfoot.isKeyDown(left)) {
                 if(getX()>300)
                     moveLeft(x, y);
             } 
-       } 
-        
+            
+            if(Greenfoot.isKeyDown(right) && Greenfoot.isKeyDown(up)) {
+                if(getX()<932)
+                    moveUpAndRight(x, y);
+            } 
+            if(Greenfoot.isKeyDown(left) && Greenfoot.isKeyDown(up)) {
+                if(getX()<932)
+                    moveUpAndLeft(x, y);
+            } 
+            if(Greenfoot.isKeyDown(right) && Greenfoot.isKeyDown(down)) {
+                if(getX()<932)
+                    moveDownAndRight(x, y);
+            } 
+            if(Greenfoot.isKeyDown(left) && Greenfoot.isKeyDown(down)) {
+                if(getX()<932)
+                    moveDownAndLeft(x, y);
+            }
+       }
     }
     
     /**
@@ -88,6 +107,38 @@ public class Vehicle extends Actor
      */
     private void moveUp(int x, int y) {
         setLocation(x, y - SPEED);
+    }
+    
+    /**
+     * Moves the Vehicle Up and Right
+     * Move o Vehicle para a cima e para a direita
+     */
+    private void moveUpAndRight(int x, int y) {
+        setLocation(x + SPEED, y - SPEED);
+    }
+    
+    /**
+     * Moves the Vehicle Up and Left
+     * Move o Vehicle para a cima e para a esquerda
+     */
+    private void moveUpAndLeft(int x, int y) {
+        setLocation(x - SPEED, y - SPEED);
+    }
+    
+    /**
+     * Moves the Vehicle Down and Right
+     * Move o Vehicle para a baixo e para a direita
+     */
+    private void moveDownAndRight(int x, int y) {
+        setLocation(x + SPEED, y + SPEED);
+    }
+    
+    /**
+     * Moves the Vehicle Down and Left
+     * Move o Vehicle para a baixo e para a esquerda
+     */
+    private void moveDownAndLeft(int x, int y) {
+        setLocation(x - SPEED, y + SPEED);
     }
     
     /**
@@ -142,9 +193,10 @@ public class Vehicle extends Actor
         }
     }
     
-    public void isTouching(Vehicle vehicle,int x, int y) {
+    public void isTouchingVehicle(Vehicle vehicle,int x, int y) {
         Actor BarbieCar = getOneIntersectingObject(BarbieCar.class);
         Actor KenCar = getOneIntersectingObject(KenCar.class);
+        
         if(BarbieCar != null){
             int newX = x - colide;
             int newY = BarbieCar.getY();
@@ -154,6 +206,25 @@ public class Vehicle extends Actor
             int newX = x + colide;
             int newY = KenCar.getY();
             KenCar.setLocation(newX,newY);
+        }
+    }
+    
+    public void isTouchingObject(Vehicle vehicle,int x, int y) {
+        Actor ground = getOneIntersectingObject(Ground.class);
+        Actor block2x2 = getOneIntersectingObject(Block2x2.class);
+        
+        if(ground != null || block2x2!= null){
+            int newX = 550;
+            int newY = 631;
+            
+            if (vehicle.getClass() == BarbieCar.class) {
+                mainWorld.removeBarbieLives(1);
+            } else if (vehicle.getClass() == KenCar.class) {
+                mainWorld.removeKenLives(1);
+            }
+            
+            mainWorld.playExplosionSound();
+            vehicle.setLocation(newX,newY);
         }
     }
 }

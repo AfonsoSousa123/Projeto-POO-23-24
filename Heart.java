@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Heart extends Target
 {
     public Heart() {
-        resizeImage(getImage(), getImage().getWidth()/6, getImage().getHeight()/6);
+        resizeImage(getImage(), getImage().getWidth()/7, getImage().getHeight()/7);
     }
     
     /**

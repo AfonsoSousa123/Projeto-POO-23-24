@@ -17,10 +17,11 @@ public class MainWorld extends World
     private GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
     private GreenfootSound coinSound = new GreenfootSound("8bit-coin-sound-effect.mp3");
     private GreenfootSound deathSound = new GreenfootSound("Pacman-death-sound.mp3");
+    private GreenfootSound victorySound =  new GreenfootSound("Retro-winning-sound-effect.mp3");
+    private GreenfootSound explosionSound =  new GreenfootSound("explosion.mp3");
     private GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
     private GreenfootSound healthSound = new GreenfootSound("red_coin.wav");
     private GreenfootSound exitLevelSound = new GreenfootSound("exit_course.wav");
-    private GreenfootSound victorySound =  new GreenfootSound("Retro-winning-sound-effect.mp3");
     private GreenfootSound gameOverSound = new GreenfootSound("game_over.wav");
     private GreenfootSound startGameSound = new GreenfootSound("press_start.wav");
     
@@ -237,6 +238,15 @@ public class MainWorld extends World
     public void playDeathSound() {
         deathSound.setVolume(volume); // Sets the volume of the deathSound
         deathSound.play(); // Plays the deathSound
+    }
+    
+    /**
+     * Plays the ExplosionSound
+     * Toca o ExplosionSound
+     */
+    public void playExplosionSound() {
+        explosionSound.setVolume(volume); // Sets the volume of the explosionSound
+        explosionSound.play(); // Plays the explosionSound
     }
 
     // END Sounds -------------------------------------------------------
