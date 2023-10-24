@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class RaceWorld extends MainWorld
 {
     private GreenfootImage bgImage = new GreenfootImage(getBackground());
-    private int imageCount = -600;
+    private int imageCount = 0;
     private int imageSize = 60;
     
     private int randomY = 5000;
@@ -40,13 +40,24 @@ public class RaceWorld extends MainWorld
      * Desenha o fundo do mundo
      */
     public void drawBackgroundImage() {
-        if (imageCount < -bgImage.getHeight()) {
+        /*if (imageCount < -bgImage.getHeight()) {
             imageCount += bgImage.getHeight();
         }
         
         int temp = imageCount;
         getBackground().drawImage(bgImage, 0, temp);
         getBackground().drawImage(bgImage, 0, temp + bgImage.getHeight());
+        */
+        int temp = imageCount % bgImage.getHeight();
+        
+        while (temp > -bgImage.getHeight()) {
+            temp -= bgImage.getHeight();
+        }
+        // Desenha instâncias da imagem de fundo
+        while (temp < getHeight()) {
+            getBackground().drawImage(bgImage, 0, temp);
+            temp += bgImage.getHeight();
+        }
     }
     
     /**
