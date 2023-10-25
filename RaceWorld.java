@@ -108,9 +108,12 @@ public class RaceWorld extends MainWorld
      * Adiciona as Objetos no mundo
      */
     private void spawnObjects() {
+        int max = 5000;
+        int min = 900;
+        
         for (int i = 0; i < Greenfoot.getRandomNumber(5)+5; i++) {            
-            addObject(new Ground(), Greenfoot.getRandomNumber(630)+300, Greenfoot.getRandomNumber(5000)-2000);
-            addObject(new Block2x2(), Greenfoot.getRandomNumber(630)+300, Greenfoot.getRandomNumber(5000)-1000);
+            addObject(new Ground(), Greenfoot.getRandomNumber(630)+300, Greenfoot.getRandomNumber(max-min)-min);
+            addObject(new Block2x2(), Greenfoot.getRandomNumber(630)+300, Greenfoot.getRandomNumber(max-min)-min);
             // addObject(new Block2x4(), Greenfoot.getRandomNumber(630)+300, Greenfoot.getRandomNumber(5000)-1000);
         }
     }  

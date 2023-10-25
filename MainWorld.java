@@ -18,7 +18,7 @@ public class MainWorld extends World
     private GreenfootSound coinSound = new GreenfootSound("8bit-coin-sound-effect.mp3");
     private GreenfootSound deathSound = new GreenfootSound("Pacman-death-sound.mp3");
     private GreenfootSound victorySound =  new GreenfootSound("Retro-winning-sound-effect.mp3");
-    private GreenfootSound explosionSound =  new GreenfootSound("explosion.mp3");
+    private GreenfootSound explosionSound =  new GreenfootSound("Cartoon-explosion.mp3");
     private GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
     private GreenfootSound healthSound = new GreenfootSound("red_coin.wav");
     private GreenfootSound exitLevelSound = new GreenfootSound("exit_course.wav");
@@ -114,15 +114,12 @@ public class MainWorld extends World
     public void checkStarCount() {
         if (sb.starCount == 2 && sb.level == 1 && getClass() == MarioStyleWorld.class) {
             sb.level++; // Increments one level | Incrementa um nivel
-            // levelTwo(); // Teleports the player to the level 2 | Teleporta o player para o nivel 2
-            loadingScreen();
+            loadingScreen(); // Teleports the player to LoadingScreen | Teleporta o player para o LoadingScreen
         } else if (sb.starCount == 4 && sb.level == 2 && getClass() == PacmanWorld.class) {
             sb.level++; // Increments one level | Incrementa um nivel
-            // levelThree(); // Teleports the player to the level 3 | Teleporta o player para o nivel 3
-            loadingScreen();
+            loadingScreen(); 
         } else if (sb.starCount == 6 && sb.level == 3 && getClass() == RaceWorld.class) {
             sb.level++; // Increments one level | Incrementa um nivel
-            barbieLand(); // Teleports the player to the BarbieLand (the End) | Teleporta o player para a BarbieLand (O Fim)
             loadingScreen();
         }
     }

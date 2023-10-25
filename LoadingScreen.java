@@ -39,23 +39,23 @@ public class LoadingScreen extends MainWorld
     private void changeWorld() {
         playExitLevelSound(); // Plays the exitLevelSound | Toca o VictorySound
 
-        if (timer > 90) {
+        if (timer > 100) {
             switch(sb.level) {
                 case 1:
-                    levelOne();
+                    levelOne(); // Teleports the player to the Level One | Teleporta o player para a BarbieLand (O Fim)
                     break;
                 case 2:
-                    levelTwo();
+                    levelTwo(); // Teleports the player to the Level Two | Teleporta o player para a BarbieLand (O Fim)
                     break;
                 case 3:
-                    levelThree();
+                    levelThree(); // Teleports the player to the Level Three | Teleporta o player para a BarbieLand (O Fim)
                     break;
                 case 4:
-                    barbieLand();
+                    barbieLand(); // Teleports the player to the BarbieLand (the End) | Teleporta o player para a BarbieLand (O Fim)
                     playVictorySound(); // Plays the VictorySound | Toca o VictorySound
                     break;
                 default:
-                    Greenfoot.setWorld(new GameOver());
+                    Greenfoot.setWorld(new GameOver()); // 
                     break;
             }
         }

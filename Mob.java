@@ -140,20 +140,13 @@ public class Mob extends Actor
         } else {
             setImage(imageLeft.getCurrentImage()); // Set the Mob's image to the left-facing image.
         }
-        
-        // timer++; // Increment the timer.
+
         setLocation(x + SPEED, y); // Move the Mob.
 
-        // if (timer >= 200) { // Check if the timer has reached the maximum value.
-            // timer = 0; // Reset the timer.
-            // SPEED *= -1; // Reverse the Mob's direction.
-        // }
-        
         if (isAtEdge()) { // Check if the Mob has reached the edge of the world.
             setImage(imageLeft.getCurrentImage()); // Reset the Mob's image.
             SPEED *= -1; // Reverse the Mob's direction.
         }
-        
         if (!canMoveLeft() || !canMoveRight()) { // Check if the Mob has reached the edge of the world.
             setImage(imageLeft.getCurrentImage()); // Reset the Mob's image.
             SPEED *= -1; // Reverse the Mob's direction.

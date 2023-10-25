@@ -12,7 +12,7 @@ public class Player extends Actor
     private int SPEED = 2; // velocidade
     private int VSPEED = 0; // velocidade vertical
     private int acceleration = 2; // aceleração
-    private int jumpStrenght = 50; // força do salto
+    private int jumpStrenght = 40; // força do salto
     private int length; // largura
     private int imageSize = 30; // tamanho das imagens
 
