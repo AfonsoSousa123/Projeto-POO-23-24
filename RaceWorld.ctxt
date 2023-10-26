@@ -25,6 +25,6 @@ comment8.params=
 comment8.target=void\ spawnObjects()
 comment8.text=\r\n\ Populates\ the\ Objects\ in\ the\ world\r\n\ Adiciona\ as\ Objetos\ no\ mundo\r\n
 comment9.params=
-comment9.target=void\ moedas()
+comment9.target=void\ spawnMoedas()
 comment9.text=\r\n\ Populates\ the\ Studs\ in\ the\ world\r\n\ Adiciona\ as\ stud\ no\ mundo\r\n
 numComments=10

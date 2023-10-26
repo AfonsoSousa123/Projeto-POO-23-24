@@ -13,6 +13,8 @@ public class Target extends Actor
 
     public Ken ken;
     public Barbie barbie;
+    
+    MainWorld mainworld;
 
     /**
      * Constructor for the Target class.
@@ -44,10 +46,20 @@ public class Target extends Actor
      */
     private void moveTargetMW() {
         if(Greenfoot.isKeyDown("A") || Greenfoot.isKeyDown("left")) {
-            move(SPEED);
+            move(getRandomSpeed());
         } else if(Greenfoot.isKeyDown("D") || Greenfoot.isKeyDown("right")) {
-            move(-SPEED);
+            move(-getRandomSpeed());
         }
+    }
+    
+    /**
+     * Generates random speed number
+     * Geraa um numero aleatório para a velocidade
+     */
+    public int getRandomSpeed() {
+        int max = 5;
+        int min = 1;
+        return Greenfoot.getRandomNumber(max) + min;
     }
 
     /**

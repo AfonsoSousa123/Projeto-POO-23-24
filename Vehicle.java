@@ -215,29 +215,27 @@ public class Vehicle extends Actor
         Actor block2x2 = getOneIntersectingObject(Block2x2.class);
         
         if(ground != null || block2x2!= null){
-            int newX = 550;
+            int newBarbieX = 432;
+            int newKenX = 802;
             int newY = 631;
             
             if (vehicle.getClass() == BarbieCar.class) {
                 mainWorld.removeBarbieLives(1);
+                vehicle.setLocation(newBarbieX, newY);
             } else if (vehicle.getClass() == KenCar.class) {
                 mainWorld.removeKenLives(1);
+                vehicle.setLocation(newKenX, newY);
             }
             
             mainWorld.playExplosionSound();
-            vehicle.setLocation(newX,newY);
         }
-
     }
     
     public void isAtEdge(Vehicle vehicle,int x, int y){
-       
         if(vehicle.isAtEdge()){
             vehicle.setLocation(x,y);
             vehicle.setLocation(vehicle.getX(), vehicle.getY() - 2);
             vehicle.setLocation(vehicle.getX(), vehicle.getY() + 2);
         }
-        
-    } 
-    
+    }
 }

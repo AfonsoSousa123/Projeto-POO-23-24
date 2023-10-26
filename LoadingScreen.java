@@ -55,7 +55,7 @@ public class LoadingScreen extends MainWorld
                     playVictorySound(); // Plays the VictorySound | Toca o VictorySound
                     break;
                 default:
-                    Greenfoot.setWorld(new GameOver()); // 
+                    gameOver(); // Its Game Over for the player || Fim do jogo para o player
                     break;
             }
         }
