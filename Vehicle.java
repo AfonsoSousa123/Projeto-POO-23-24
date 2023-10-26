@@ -43,7 +43,7 @@ public class Vehicle extends Actor
         int y 
     ) {
         if(getWorld() instanceof RaceWorld) {
-             if(Greenfoot.isKeyDown(up)) {
+            if(Greenfoot.isKeyDown(up)) {
                 moveUp(x, y);
             } 
             if(Greenfoot.isKeyDown(down)) {
@@ -57,24 +57,25 @@ public class Vehicle extends Actor
                 if(getX()>300)
                     moveLeft(x, y);
             } 
-            
+
             if(Greenfoot.isKeyDown(right) && Greenfoot.isKeyDown(up)) {
-                if(getX()<932)
+                if(getX()<932 && getX()>300 )
                     moveUpAndRight(x, y);
             } 
             if(Greenfoot.isKeyDown(left) && Greenfoot.isKeyDown(up)) {
-                if(getX()<932)
+                if(getX()<932 && getX()>300 )
                     moveUpAndLeft(x, y);
             } 
             if(Greenfoot.isKeyDown(right) && Greenfoot.isKeyDown(down)) {
-                if(getX()<932)
+                if(getX()<932 && getX()>300 )
                     moveDownAndRight(x, y);
             } 
             if(Greenfoot.isKeyDown(left) && Greenfoot.isKeyDown(down)) {
-                if(getX()<932)
+                if(getX()<932 && getX()>300 )
                     moveDownAndLeft(x, y);
             }
-       }
+
+        }
     }
     
     /**
@@ -226,5 +227,17 @@ public class Vehicle extends Actor
             mainWorld.playExplosionSound();
             vehicle.setLocation(newX,newY);
         }
+
     }
+    
+    public void isAtEdge(Vehicle vehicle,int x, int y){
+       
+        if(vehicle.isAtEdge()){
+            vehicle.setLocation(x,y);
+            vehicle.setLocation(vehicle.getX(), vehicle.getY() - 2);
+            vehicle.setLocation(vehicle.getX(), vehicle.getY() + 2);
+        }
+        
+    } 
+    
 }
