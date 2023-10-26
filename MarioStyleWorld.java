@@ -129,7 +129,7 @@ public class MarioStyleWorld extends MainWorld
         addObject(ground29,5159,742);
         Ground ground30 = new Ground();
         addObject(ground30,4934,740);
-        
+
         StudPurple studPurple = new StudPurple();
         addObject(studPurple,123,141);
         StudPurple studPurple2 = new StudPurple();
@@ -256,7 +256,7 @@ public class MarioStyleWorld extends MainWorld
         addObject(studBlue36,940,707);
         StudPurple studPurple28 = new StudPurple();
         addObject(studPurple28,841,705);
-        
+
         Heart heart = new Heart();
         addObject(heart,5114,131);
         heart.setLocation(5152,128);
@@ -264,8 +264,71 @@ public class MarioStyleWorld extends MainWorld
         addObject(heart2,2065,160);
         Heart heart3 = new Heart();
         addObject(heart3,3866,156);
-        
-        
+
         removeObject(studBlue);        
+        studBlue12.setLocation(5049,667);
+        studBlue12.setLocation(5046,680);
+        studBlue11.setLocation(5118,673);
+        studBlue10.setLocation(5238,657);
+        studPurple8.setLocation(4937,675);
+        studPurple8.setLocation(4944,679);
+        studBlue12.setLocation(5025,672);
+        studBlue11.setLocation(5120,672);
+        studBlue10.setLocation(5118,568);
+        studPurple7.setLocation(5188,478);
+        studPurple7.setLocation(5217,670);
+        studPurple7.setLocation(5195,681);
+        studBlue10.setLocation(5071,603);
+        heart.setLocation(5114,383);
+        studPurple6.setLocation(4944,360);
+        studPurple6.setLocation(4932,363);
+        studPurple6.setLocation(4976,590);
+        studPurple6.setLocation(4988,620);
+        studBlue9.setLocation(5054,532);
+        studBlue9.setLocation(5075,538);
+        studBlue9.setLocation(5065,529);
+        studBlue8.setLocation(5157,571);
+        removeObject(studBlue8);
+        heart.setLocation(5074,427);
+        studBlue10.setLocation(5074,609);
+        studBlue9.setLocation(5070,537);
+        studBlue10.setLocation(5073,600);
+        studPurple6.setLocation(5009,604);
+        studPurple8.setLocation(4964,676);
+        studPurple7.setLocation(5199,676);
+        studBlue11.setLocation(5118,672);
+        studBlue11.setLocation(5121,674);
+        StudPurple studPurple29 = new StudPurple();
+        addObject(studPurple29,5157,618);
+        studPurple29.setLocation(5154,609);
+        studBlue10.setLocation(5072,608);
+        studBlue12.setLocation(5043,670);
+        studPurple6.setLocation(4993,603);
+        studPurple29.setLocation(5149,609);
+        studPurple6.setLocation(4992,597);
+        studBlue12.setLocation(5035,670);
+        studBlue11.setLocation(5124,665);
+        studBlue9.setLocation(5077,511);
+        heart.setLocation(5068,397);
+        studBlue9.setLocation(5070,502);
+        StudPurple studPurple30 = new StudPurple();
+        addObject(studPurple30,5113,551);
+        StudPurple studPurple31 = new StudPurple();
+        addObject(studPurple31,5041,557);
+        studPurple31.setLocation(5038,549);
+        studPurple30.setLocation(5120,557);
+        studBlue11.setLocation(5117,661);
+        studPurple29.setLocation(5153,615);
+        studBlue10.setLocation(5078,615);
+        studBlue9.setLocation(5079,510);
+        heart.setLocation(5074,401);
+        studPurple6.setLocation(4993,608);
+        studPurple6.setLocation(5006,611);
+        studPurple31.setLocation(5034,561);
+        studBlue10.setLocation(5083,613);
+        studBlue11.setLocation(5118,670);
+        studPurple29.setLocation(5147,623);
+        studBlue12.setLocation(5034,668);
+        studBlue10.setLocation(5076,609);
     }
 }
