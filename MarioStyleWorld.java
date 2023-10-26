@@ -11,6 +11,7 @@ public class MarioStyleWorld extends MainWorld
     private GreenfootImage bgImage = new GreenfootImage("Clouds.jpg");
     private int imageCount;
     private int imageSize = 60;
+    private int enemySize = 35;
     
     private Ken ken;
     private Barbie barbie;
@@ -54,12 +55,12 @@ public class MarioStyleWorld extends MainWorld
         Ken ken = new Ken(imageSize);
         addObject(ken,423,676);
         
-        Enemy enemy = new Enemy(40);
-        addObject(enemy,1199,465);
-        Enemy enemy1 = new Enemy(40);
-        addObject(enemy1,2256,651);
-        Enemy enemy2 = new Enemy(40);
-        addObject(enemy2,3886,651);
+        Enemy enemy = new Enemy(enemySize);
+        addObject(enemy,1199,481);
+        Enemy enemy1 = new Enemy(enemySize);
+        addObject(enemy1,2256,635);
+        Enemy enemy2 = new Enemy(enemySize);
+        addObject(enemy2,3886,635);
     }
     
     /**
