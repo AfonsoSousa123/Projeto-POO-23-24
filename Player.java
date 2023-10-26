@@ -71,6 +71,7 @@ public class Player extends Actor
     ) {
         if(Greenfoot.isKeyDown(up) && onGround(this)) {
             jump(x,y);
+            mainWorld.playJumpSound();
         } else if(Greenfoot.isKeyDown(left)) {
             setImage(imageLeft.getCurrentImage());
             moveLeft(x,y);

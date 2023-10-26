@@ -15,15 +15,16 @@ public class MainWorld extends World
 
     // Initializes the sounds | Inicializa os sons
     private GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
-    private GreenfootSound coinSound = new GreenfootSound("8bit-coin-sound-effect.mp3");
+    private GreenfootSound coinSound = new GreenfootSound("coin.wav");
     private GreenfootSound deathSound = new GreenfootSound("Pacman-death-sound.mp3");
     private GreenfootSound victorySound =  new GreenfootSound("Retro-winning-sound-effect.mp3");
     private GreenfootSound explosionSound =  new GreenfootSound("Cartoon-explosion.mp3");
     private GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
-    private GreenfootSound healthSound = new GreenfootSound("red_coin.wav");
+    private GreenfootSound healthSound = new GreenfootSound("super_mushroom.wav");
     private GreenfootSound exitLevelSound = new GreenfootSound("exit_course.wav");
-    private GreenfootSound gameOverSound = new GreenfootSound("game_over.wav");
+    private GreenfootSound gameOverSound = new GreenfootSound("smb_gameover.wav");
     private GreenfootSound startGameSound = new GreenfootSound("press_start.wav");
+    private GreenfootSound jumpSound = new GreenfootSound("jump-super.wav");
     
 
     /**
@@ -164,6 +165,15 @@ public class MainWorld extends World
         oneUpSound.setVolume(volumeWav); // Sets the volume of the oneUpSound
         oneUpSound.play(); // Plays the oneUpSound
     }
+    
+    /**
+     * Plays the JumpSound
+     * Toca o JumpSound
+     */
+    public void playJumpSound() {
+        jumpSound.setVolume(volumeWav); // Sets the volume of the jumpSound
+        jumpSound.play(); // Plays the jumpSound
+    }
 
     /**
      * Plays the GameOverSound
@@ -188,7 +198,7 @@ public class MainWorld extends World
      * Toca o CoinSound
      */
     public void playCoinSound() {
-        coinSound.setVolume(volume); // Sets the volume of the coinSound
+        coinSound.setVolume(volumeWav); // Sets the volume of the coinSound
         coinSound.play(); // Plays the coinSound
     }
 

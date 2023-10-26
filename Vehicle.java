@@ -171,8 +171,8 @@ public class Vehicle extends Actor
         if(heart != null) {
             if (vehicle.getClass() == BarbieCar.class) {
                 mainWorld.addBarbieLives(1); // Adds one live to the livesCounter for Barbie
-            } else if (vehicle.getClass() == BarbieCar.class) {
-                mainWorld.addKenLives(1); // Adds one live to the livesCounter for Kem
+            } else if (vehicle.getClass() == KenCar.class) {
+                mainWorld.addKenLives(1); // Adds one live to the livesCounter for Ken
             }
             
             mainWorld.playHealthSound(); // Plays the healthSound
