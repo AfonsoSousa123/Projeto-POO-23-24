@@ -37,7 +37,8 @@ public class Enemy extends Mob
             eWalkingR,
             eWalkingL
         );
-        fall(getX(), getY());
-        checkFall(this, getX(), getY());
+        // fall(getX(), getY());
+        // checkFall(this, getX(), getY());
+        checkEdges(this, getX(), getY());
     }
 }

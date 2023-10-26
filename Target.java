@@ -46,9 +46,9 @@ public class Target extends Actor
      */
     private void moveTargetMW() {
         if(Greenfoot.isKeyDown("A") || Greenfoot.isKeyDown("left")) {
-            move(getRandomSpeed());
+            move(SPEED);
         } else if(Greenfoot.isKeyDown("D") || Greenfoot.isKeyDown("right")) {
-            move(-getRandomSpeed());
+            move(-SPEED);
         }
     }
     

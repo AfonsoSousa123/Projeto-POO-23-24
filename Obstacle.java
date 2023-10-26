@@ -24,8 +24,14 @@ public class Obstacle extends Actor
         if (getWorld() instanceof  MarioStyleWorld) {
             if(Greenfoot.isKeyDown("A") || Greenfoot.isKeyDown("left")) {
                 move(SPEED);
+                for (Object obj : getIntersectingObjects(Enemy.class)) {
+                    ((Actor) obj).setLocation(((Actor) obj).getX() + SPEED, ((Actor) obj).getY());
+                }
             } else if(Greenfoot.isKeyDown("D") || Greenfoot.isKeyDown("right")) {
                 move(-SPEED);
+                for (Object obj : getIntersectingObjects(Enemy.class)) {
+                    ((Actor) obj).setLocation(((Actor) obj).getX() - SPEED, ((Actor) obj).getY());
+                }
             }
         } else if (getWorld() instanceof RaceWorld) {
             setLocation(x, y + speedRaceWorld);

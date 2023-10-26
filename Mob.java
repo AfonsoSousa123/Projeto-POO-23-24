@@ -94,6 +94,17 @@ public class Mob extends Actor
             setLocation(x + SPEED, y);
         }
     }
+    
+    public void checkEdges(Mob enemy, int x,int y) {
+        if(getWorld() instanceof  MarioStyleWorld){
+            if(!onGround(enemy) && SPEED == SPEED){
+                setLocation(x + SPEED , y);
+            }
+            if(!onGround(enemy) && SPEED == -SPEED){
+                setLocation(x - SPEED , y);
+            }
+        }
+    }
 
     /**
      * Simulates the gravity of the Mob
