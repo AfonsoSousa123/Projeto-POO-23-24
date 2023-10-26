@@ -30,7 +30,7 @@ public class RaceWorld extends MainWorld
     }
 
     public void act() {
-        imageCount += 1; //(small -> slow moving, big -> fast movement)
+        imageCount += 3; //(small -> slow moving, big -> fast movement)
         drawBackgroundImage();
         checkStarCount();
     }
