@@ -11,6 +11,7 @@ public class MarioStyleWorld extends MainWorld
     private GreenfootImage bgImage = new GreenfootImage("Clouds.jpg");
     private int imageCount;
     private int imageSize = 60;
+    private int enemySize = 35;
     
     private Ken ken;
     private Barbie barbie;
@@ -54,12 +55,17 @@ public class MarioStyleWorld extends MainWorld
         Ken ken = new Ken(imageSize);
         addObject(ken,423,676);
         
-        Enemy enemy = new Enemy(40);
-        addObject(enemy,1199,465);
-        Enemy enemy1 = new Enemy(40);
-        addObject(enemy1,2256,651);
-        Enemy enemy2 = new Enemy(40);
-        addObject(enemy2,3886,651);
+        Enemy enemy = new Enemy(enemySize);
+        addObject(enemy,1199,481);
+        Enemy enemy1 = new Enemy(enemySize);
+        addObject(enemy1,2256,635);
+        Enemy enemy2 = new Enemy(enemySize);
+        addObject(enemy2,3886,635);
+        
+        Star star = new Star();
+        addObject(star,5149,241);
+        Star star2 = new Star();
+        addObject(star2,2549,151);
     }
     
     /**
@@ -107,6 +113,23 @@ public class MarioStyleWorld extends MainWorld
         addObject(ground21,3467,350);
         Ground ground22 = new Ground();
         addObject(ground22,3467,350);
+        Ground ground23 = new Ground();
+        addObject(ground23,3898,765);
+        Ground ground24 = new Ground();
+        addObject(ground24,4260,641);
+        Ground ground25 = new Ground();
+        addObject(ground25,4268,197);
+        Ground ground26 = new Ground();
+        addObject(ground26,4684,444);
+        Ground ground27 = new Ground();
+        addObject(ground27,5186,773);
+        Ground ground28 = new Ground();
+        addObject(ground28,4934,774);
+        Ground ground29 = new Ground();
+        addObject(ground29,5159,742);
+        Ground ground30 = new Ground();
+        addObject(ground30,4934,740);
+        
         StudPurple studPurple = new StudPurple();
         addObject(studPurple,123,141);
         StudPurple studPurple2 = new StudPurple();
@@ -125,22 +148,6 @@ public class MarioStyleWorld extends MainWorld
         addObject(studBlue6,1504,342);
         StudBlue studBlue7 = new StudBlue();
         addObject(studBlue7,1602,340);
-        Ground ground23 = new Ground();
-        addObject(ground23,3898,765);
-        Ground ground24 = new Ground();
-        addObject(ground24,4260,641);
-        Ground ground25 = new Ground();
-        addObject(ground25,4268,197);
-        Ground ground26 = new Ground();
-        addObject(ground26,4684,444);
-        Ground ground27 = new Ground();
-        addObject(ground27,5186,773);
-        Ground ground28 = new Ground();
-        addObject(ground28,4934,774);
-        Ground ground29 = new Ground();
-        addObject(ground29,5159,742);
-        Ground ground30 = new Ground();
-        addObject(ground30,4934,740);
         StudPurple studPurple3 = new StudPurple();
         addObject(studPurple3,1958,177);
         StudPurple studPurple4 = new StudPurple();
@@ -165,14 +172,10 @@ public class MarioStyleWorld extends MainWorld
         addObject(studBlue12,5255,668);
         StudBlue studBlue13 = new StudBlue();
         addObject(studBlue13,4612,407);
-        StudBlue studBlue14 = new StudBlue();
-        addObject(studBlue14,4693,411);
         StudBlue studBlue15 = new StudBlue();
         addObject(studBlue15,4769,410);
         StudBlue studBlue16 = new StudBlue();
         addObject(studBlue16,4183,601);
-        StudBlue studBlue17 = new StudBlue();
-        addObject(studBlue17,4281,603);
         StudBlue studBlue18 = new StudBlue();
         addObject(studBlue18,4349,606);
         StudBlue studBlue19 = new StudBlue();
@@ -205,11 +208,6 @@ public class MarioStyleWorld extends MainWorld
         addObject(studBlue32,3553,291);
         StudBlue studBlue33 = new StudBlue();
         addObject(studBlue33,2251,727);
-        Heart heart = new Heart();
-        addObject(heart,5114,131);
-        heart.setLocation(5152,128);
-        Heart heart2 = new Heart();
-        addObject(heart2,2065,160);
         StudPurple studPurple9 = new StudPurple();
         addObject(studPurple9,1032,225);
         StudPurple studPurple10 = new StudPurple();
@@ -230,7 +228,6 @@ public class MarioStyleWorld extends MainWorld
         studBlue5.setLocation(341,309);
         StudPurple studPurple17 = new StudPurple();
         addObject(studPurple17,426,312);
-        removeObject(studBlue);
         StudPurple studPurple18 = new StudPurple();
         addObject(studPurple18,1197,552);
         StudPurple studPurple19 = new StudPurple();
@@ -243,8 +240,6 @@ public class MarioStyleWorld extends MainWorld
         addObject(studPurple22,3210,448);
         StudPurple studPurple23 = new StudPurple();
         addObject(studPurple23,3036,450);
-        removeObject(studBlue14);
-        removeObject(studBlue17);
         StudPurple studPurple24 = new StudPurple();
         addObject(studPurple24,4262,597);
         StudPurple studPurple25 = new StudPurple();
@@ -257,16 +252,20 @@ public class MarioStyleWorld extends MainWorld
         addObject(studBlue34,185,89);
         StudBlue studBlue35 = new StudBlue();
         addObject(studBlue35,90,87);
-        Heart heart3 = new Heart();
-        addObject(heart3,3866,156);
         StudBlue studBlue36 = new StudBlue();
         addObject(studBlue36,940,707);
         StudPurple studPurple28 = new StudPurple();
         addObject(studPurple28,841,705);
-        Star star = new Star();
-        addObject(star,5148,243);
-        star.setLocation(5149,241);
-        Star star2 = new Star();
-        addObject(star2,2549,151);
+        
+        Heart heart = new Heart();
+        addObject(heart,5114,131);
+        heart.setLocation(5152,128);
+        Heart heart2 = new Heart();
+        addObject(heart2,2065,160);
+        Heart heart3 = new Heart();
+        addObject(heart3,3866,156);
+        
+        
+        removeObject(studBlue);        
     }
 }

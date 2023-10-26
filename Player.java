@@ -12,7 +12,7 @@ public class Player extends Actor
     private int SPEED = 2; // velocidade
     private int VSPEED = 0; // velocidade vertical
     private int acceleration = 2; // aceleração
-    private int jumpStrenght = 40; // força do salto
+    private int jumpStrenght = 45; // força do salto
     private int length; // largura
     private int imageSize = 30; // tamanho das imagens
 
@@ -413,10 +413,16 @@ public class Player extends Actor
         if(enemy != null) {
             if (player.getClass() == Barbie.class) {
                 mainWorld.removeBarbieLives(1); // Removes one live for Barbie
-                barbieSpawnLocation();
+                if(getWorld() instanceof PacmanWorld) 
+                    barbieSpawnLocation();
+                else
+                    marioWorldSpawnLocation();
             } else if (player.getClass() == Ken.class) {
                 mainWorld.removeKenLives(1); // Removes one live for Ken
-                kenSpawnLocation();
+                if(getWorld() instanceof PacmanWorld) 
+                    kenSpawnLocation();
+                else
+                    marioWorldSpawnLocation();
             }
             mainWorld.playDeathSound(); // Plays the healthSound
         }
@@ -428,5 +434,9 @@ public class Player extends Actor
 
     public void kenSpawnLocation() {
         setLocation(997, 358);
+    }
+    
+    public void marioWorldSpawnLocation() {
+        setLocation(300,300); // Spawns the player into the coordinates
     }
 }
