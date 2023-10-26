@@ -132,6 +132,46 @@ public class Player extends Actor
             }
         }
     }
+    
+    /**
+     * Teleports the Player through the passages in the boundaries of the PacmanWorld
+     * Teleporta o Player através das passagens nas bordas do PacmanWorld
+     */
+    public void teleportPlayer(Player player) {
+        // Vertical Lines
+        if (player.getY() > 800) {
+            // the upper left to the lower left passage | da passagem do canto superior esquerdo para a do inferior esquerdo
+            if (player.getX() > 345 && player.getX() < 433) {
+                player.setLocation(388, 0); // teleports the player directly above its position
+            } else if (player.getX() > 954 && player.getX() < 1042) {
+                player.setLocation(997, 0); // teleports the player directly above its position
+            }
+        } else if (player.getY() < 0) {
+            // the upper left to the lower left passage | da passagem do canto inferior esquerdo para a do superior esquerdo
+            if (player.getX() > 345 && player.getX() < 433) {
+                player.setLocation(388, 800); // teleports the player directly below its position
+            } else if (player.getX() > 954 && player.getX() < 1042) {
+                player.setLocation(997, 800); // teleports the player directly below its position
+            }
+        }
+        
+        // Horizontal Lines
+        if (player.getX() > 1300) {
+            // the upper left to the upper right passage | da passagem do canto superior esquerdo para a do superior direito
+            if (player.getY() > 74 && player.getY() < 162) { 
+                player.setLocation(0, 97); // teleports the player directly to its right position
+            } else if (player.getY() > 663 && player.getY() < 751) {
+                player.setLocation(0, 706); // teleports the player directly to its right position
+            }
+        } else if (player.getX() < 0) {
+            // the upper right to the upper left passage | da passagem do canto superior direito para a do superior esquerdo
+            if (player.getY() > 74 && player.getY() < 162) { // the upper right to the upper left passage
+                player.setLocation(1300, 97); // teleports the player directly to its left position
+            } else if (player.getY() > 663 && player.getY() < 751) {
+                player.setLocation(1300, 706); // teleports the player directly to its left position
+            }
+        }
+    }
 
     // END Player Movement -------------------------------------------------------
 

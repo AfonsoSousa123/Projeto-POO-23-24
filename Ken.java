@@ -56,5 +56,6 @@ public class Ken extends Player
         collectHearts(this);
         collectStars(this);
         touchEnemy(this);
+        teleportPlayer(this);
     }
 }
