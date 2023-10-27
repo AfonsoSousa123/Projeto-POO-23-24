@@ -10,7 +10,7 @@ public class RaceWorld extends MainWorld
 {
     private GreenfootImage bgImage = new GreenfootImage(getBackground());
     private int imageCount = 0;
-    private int imageSize = 60;
+    private int ImageSize = 60;
     private int timer = 0;
     private int heartsTimer = 0;
     private int objectsTimer = 0;
