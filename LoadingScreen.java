@@ -41,17 +41,21 @@ public class LoadingScreen extends MainWorld
 
         if (timer > 100) {
             switch(sb.level) {
+                case 0:
+                    planetaTerra(); // Teleports the player to the Level Zero | Teleporta o player para o Planeta Terra
+                    sb.level++;
+                    break;
                 case 1:
-                    levelOne(); // Teleports the player to the Level One | Teleporta o player para a BarbieLand (O Fim)
+                    levelOne(); // Teleports the player to the Level One | Teleporta o player para o nível um 
                     break;
                 case 2:
-                    levelTwo(); // Teleports the player to the Level Two | Teleporta o player para a BarbieLand (O Fim)
+                    levelTwo(); // Teleports the player to the Level Two | Teleporta o player para o nível dois 
                     break;
                 case 3:
-                    levelThree(); // Teleports the player to the Level Three | Teleporta o player para a BarbieLand (O Fim)
+                    levelThree(); // Teleports the player to the Level Three | Teleporta o player para o nível três
                     break;
                 case 4:
-                    planetaTerra(); // Teleports the player to the Level Three | Teleporta o player para a BarbieLand (O Fim)
+                    planetaTerra(); // Teleports the player to Planeta Terra | Teleporta o player para o Planeta Terra (O Fim)
                 break;
                 default:
                     gameOver(); // Its Game Over for the player || Fim do jogo para o player

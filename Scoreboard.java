@@ -17,7 +17,7 @@ public class Scoreboard extends Actor
     // Static variables: they will keep the values | Variaveis estaticas: mantem os valores
     public static int score = 0;
     public static int starCount = 0;
-    public static int level = 1;
+    public static int level = 0;
     public static int barbieLives = 2;
     public static int kenLives = 2;
 
@@ -153,7 +153,7 @@ public class Scoreboard extends Actor
     public static void resetVariables() {
         score = 0; // resets the score to its original value
         starCount = 0; // resets the starSount to its original value
-        level = 1; // resets the level to its original value
+        level = 0; // resets the level to its original value
         barbieLives = 2; // resets the counter to its original value
         kenLives = 2; // resets the counter to its original value
     }

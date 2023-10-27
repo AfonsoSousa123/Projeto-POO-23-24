@@ -96,29 +96,6 @@ public class Mob extends Actor
     }
 
     /**
-     * Simulates the gravity of the Mob
-     */
-    public void fall(int x,int y) {
-        if(getWorld() instanceof  MarioStyleWorld) {
-            setLocation(x, y + VSPEED);
-            VSPEED += acceleration;
-        }
-    }
-
-    /**
-     *  Checks if the Mob is falling
-     */
-    public void checkFall(Mob enemy, int x,int y) {
-        if(getWorld() instanceof  MarioStyleWorld){
-            if(!onGround(enemy)) {
-                fall(x,y);
-            } else if (onGround(enemy)) {
-                VSPEED = 0;
-            }
-        }
-    }
-
-    /**
      *  Checks if the Mob is on the Ground
      */    
     public boolean onGround(Mob enemy) {
@@ -190,42 +167,6 @@ public class Mob extends Actor
     }
 
     /**
-     * Checks if the Mob can move up
-     * Verifica se o jogador consegue se mover para cima
-     */
-    public boolean canMoveUp() {
-        boolean canMoveUp = true;
-
-        int imageWidth = getImage().getWidth();
-        int imageHeight = getImage().getHeight();
-
-        if(getOneObjectAtOffset(imageWidth/-2, imageHeight/-2-4, Block2x2.class) != null || 
-        getOneObjectAtOffset(imageWidth/2-1, imageHeight/-2-4, Block2x2.class) != null) {
-            canMoveUp = false;
-        }
-
-        return canMoveUp;
-    }
-
-    /**
-     * Checks if the Mob can move down
-     * Verifica se o jogador consegue se mover para baixo
-     */
-    public boolean canMoveDown() {
-        boolean canMoveDown = true;
-
-        int imageWidth = getImage().getWidth();
-        int imageHeight = getImage().getHeight();
-
-        if(getOneObjectAtOffset(imageWidth/-2, imageHeight/2+4, Block2x2.class) != null || 
-        getOneObjectAtOffset(imageWidth/2-1, imageHeight/2+4, Block2x2.class) != null) {
-            canMoveDown = false;
-        }
-
-        return canMoveDown;
-    }
-
-    /**
      * PacmanWorld code end
      */
 
@@ -243,57 +184,5 @@ public class Mob extends Actor
             image.scale(wide, high);
         }
         return gif;
-    }
-
-    /**
-     * Checks if the Mob is touching the right wall
-     */
-    public boolean checkRightWall(Actor Mob) { // verifica se está em contacto com a parede da direita
-        int spriteWidth = getImage().getWidth();
-        int xDistance = spriteWidth/2;
-
-        Actor rWall = getOneObjectAtOffset(xDistance, 0, Block2x2.class);
-
-        if(rWall == null) {
-            return false;
-        } else {
-            StopByTherWall(rWall);
-            return true;
-        }
-    }
-
-    /**
-     *  Mob stops when reaches a wall on the right
-     */
-    public void StopByTherWall(Actor rWall) { // para quando está em contacto na parede da esquerda
-        int wallWidth = rWall.getImage().getWidth();
-        int newX = rWall.getX() - (wallWidth + getImage().getWidth())/2;
-        setLocation(newX, getY());
-    }
-
-    /**
-     *  Checks if the Mob is thoucing the left wall
-     */
-    public boolean checkLeftWall(Actor Mob) { // verifica se está em contacto com a parede da esquerda
-        int spriteWidth = getImage().getWidth();
-        int xDistance = spriteWidth/-3;
-
-        Actor lWall = getOneObjectAtOffset(xDistance, 0, Block2x2.class);
-
-        if(lWall != null) {
-            StopByTheLWall(lWall);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     *  Mob stops when it reaches a wall on the left
-     */
-    public void StopByTheLWall(Actor lWall) { // para quando está em contacto na parede da esquerda
-        int wallWidth = lWall.getImage().getWidth();
-        int newX = lWall.getX() + (wallWidth + getImage().getHeight())/3;
-        setLocation(newX, getY());
     }
 }
