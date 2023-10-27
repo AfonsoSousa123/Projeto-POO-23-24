@@ -54,6 +54,7 @@ public class Player extends Actor
             movePlayerPacmanWorld(up, down, left, right, x, y, imageLeft, imageRight, imageFront);
         }
         else if (getWorld() instanceof PlanetaTerra) {
+            SPEED = 4;
             movePlayerPlanetaTerra(left, right, x, y, imageLeft, imageRight, imageFront);
         }
     }

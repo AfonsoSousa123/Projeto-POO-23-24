@@ -44,6 +44,11 @@ public class PlanetaTerra extends MainWorld
         addObject(ground4,384,753);
         Ground ground5 = new Ground();
         addObject(ground5,115,754);
+        
+        Portal portal = new Portal();
+        addObject(portal,1111,645);
+        
+        setPaintOrder(Player.class, Portal.class);
     }
     
     /**
