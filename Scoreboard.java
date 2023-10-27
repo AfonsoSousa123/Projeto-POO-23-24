@@ -24,6 +24,7 @@ public class Scoreboard extends Actor
     private int width;
     private int height = 60;
     private int drawHeight = 40;
+    private int transparency = 120;
 
     // Image variables | variaveis de imagem
     GreenfootImage boardImage;
@@ -38,7 +39,7 @@ public class Scoreboard extends Actor
         boardImage = new GreenfootImage(width, height);
         boardImage.setColor(Color.BLACK);
         boardImage.fillRect(0,0,width,height);
-        boardImage.setTransparency(150);
+        boardImage.setTransparency(transparency);
         setImage(boardImage);
     }
 

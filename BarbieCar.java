@@ -8,14 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BarbieCar extends Vehicle
 {
-    private int ImageSize;
+    private int ImageSize; //tamanho da imagem
     
     Player player;
     
     //Images Ken
     GreenfootImage barbieCar = new GreenfootImage(getImage());
     
-    class BarbieKeys { // Class to store the values of the Keys for Barbie
+    class BarbieKeys { // Class to store the values of the Keys for Barbie | Classe para guardar os valores das teclas para a Barbie
         private static final String UP = "W";
         private static final String DOWN = "S";
         private static final String LEFT = "A";

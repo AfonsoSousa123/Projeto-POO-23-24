@@ -8,43 +8,44 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class RaceWorld extends MainWorld
 {
-    private GreenfootImage bgImage = new GreenfootImage(getBackground());
-    private int imageCount = 0;
-    private int ImageSize = 60;
-    private int timer = 0;
-    private int heartsTimer = 0;
-    private int objectsTimer = 0;
-    private int starsTimer = 0;
+    private GreenfootImage bgImage = new GreenfootImage(getBackground()); // Image Variable
+    
+    private int imageCount = 0; // counter for the Image
+    private int ImageSize = 60; // Size for the Image
+    private int timer = 0; // timer for the studs
+    private int heartsTimer = 0; // timer for the hearts
+    private int obstaclesTimer = 0; // timer for the objects
+    private int starsTimer = 0; // timer for the Stars
 
     private KenCar ken;
     private BarbieCar barbie;
 
-    int maxX = 630;
-    int minX = 300;
-    int maxY = 50;
-    int minY = 0;
+    private int maxX = 630; // maximum X
+    private int minX = 300; // minimum X
+    private int maxY = 50; // maximum Y
+    private int minY = 0; // minimum Y
 
     /**
-     * Constructor for objects of class RaceWorld.
-     * 
+     * Constructor for RaceWorld class.
+     * Contrutor para a Classe RaceWorld.
      */
     public RaceWorld()
     {
-        prepare();
-        setPaintOrder(Scoreboard.class,Player.class);
+        prepare(); // Calls the prepare method
+        setPaintOrder(Scoreboard.class, Player.class); // Sets the Paint Order for the RaceWorld
     }
 
     public void act() {
         timer++; // timer for the studs
         heartsTimer++; // timer for the hearts
-        objectsTimer++; // timer for the objects
+        obstaclesTimer++; // timer for the objects
         starsTimer++; // timer for the Stars
 
         imageCount += 3; //(small -> slow moving, big -> fast movement)
-        drawBackgroundImage();
+        drawBackgroundImage(); // Prints the BackgroundImage
 
         populateWorld(); // Spawns the Objects into the World
-        checkStarCount();
+        checkStarCount(); // Calls the checkStarCount
     }
 
     /**
@@ -53,7 +54,8 @@ public class RaceWorld extends MainWorld
      */
     public void drawBackgroundImage() {
         int temp = imageCount % bgImage.getHeight();
-
+        
+        // enquanto o temp for maior que a 
         while (temp > -bgImage.getHeight()) {
             temp -= bgImage.getHeight();
         }
@@ -82,10 +84,10 @@ public class RaceWorld extends MainWorld
      * 
      */
     private void populateWorld() {
-        spawnMoedas();
-        spawnStars();
-        spawnHearts();
-        spawnObjects();
+        spawnMoedas(); // Chama o método spawnMoedas
+        spawnStars(); // Chama o método spawnStars
+        spawnHearts(); // Chama o método spawnHearts
+        spawnObstacles(); // Chama o método spawnObjects
     }
 
     /**
@@ -95,7 +97,7 @@ public class RaceWorld extends MainWorld
     private void spawnStars() {
         if(starsTimer > 1000) {      
             addObject(new Star(), Greenfoot.getRandomNumber(630)+300, minY);
-            starsTimer = 0;
+            starsTimer = 0; // reseta o starsTimer
         }
     }
 
@@ -108,25 +110,25 @@ public class RaceWorld extends MainWorld
             for (int i = 0; i < 2; i++) {            
                 addObject(new Heart(), Greenfoot.getRandomNumber(630)+300, minY);
             }
-            heartsTimer = 0;
+            heartsTimer = 0; // reseta o heartsTimer
         }
     }
 
     /**
-     * Populates the Objects in the world
-     * Adiciona as Objetos no mundo
+     * Populates the Obstacles in the world
+     * Adiciona as Obstacles no mundo
      */
-    private void spawnObjects() {
-        if(objectsTimer > 600) {
+    private void spawnObstacles() {
+        if(obstaclesTimer > 600) {
             addObject(new Ground(), Greenfoot.getRandomNumber(maxX)+ minX, minY);
             // addObject(new Block2x2(), Greenfoot.getRandomNumber(maxX)+ minX, minY);
-            objectsTimer = 0;
+            obstaclesTimer = 0;
         }
     }  
 
     /**
      * Populates the Studs in the world
-     * Adiciona as stud no mundo
+     * Adiciona as Studs no mundo
      */
     private void spawnMoedas() {
         if(timer > 200) {

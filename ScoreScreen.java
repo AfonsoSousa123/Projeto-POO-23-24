@@ -8,22 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ScoreScreen extends Scoreboard
 {
-    PlanetaTerra terra;
+    private PlanetaTerra terra; // Variavel para PlanetaTerra
     
-    private int width;
-    private int height;
+    private int width; // variavel para o comprimento 
+    private int height; // variavel para a altura 
     
-    GreenfootImage star = new GreenfootImage("estrela.png");
-    GreenfootImage lives = new GreenfootImage("heart.png");
+    private GreenfootImage star = new GreenfootImage("estrela.png"); // Imagem para a estrela
+    private GreenfootImage lives = new GreenfootImage("heart.png"); // Imagem para o heart
+    private GreenfootImage screen; // Variavel de imagem para o screen
     
-    GreenfootImage screen;
     /**
      * Act - do whatever the ScoreScreen wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
-    {
-        drawScore();
+    public void act() {
+        drawScore(); // Chama o método drawScore();
     }
     
     public void addedToWorld(World w) {
