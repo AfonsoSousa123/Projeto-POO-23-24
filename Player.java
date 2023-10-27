@@ -48,13 +48,40 @@ public class Player extends Actor
         GifImage imageRight,
         GreenfootImage imageFront
     ) {
-        if(getWorld() instanceof MarioStyleWorld || getWorld() instanceof PlanetaTerra) {
+        if(getWorld() instanceof MarioStyleWorld) {
             movePlayerMarioWorld(up, left, right, x, y, imageLeft, imageRight, imageFront);
         } else if (getWorld() instanceof PacmanWorld) {
             movePlayerPacmanWorld(up, down, left, right, x, y, imageLeft, imageRight, imageFront);
         }
+        else if (getWorld() instanceof PlanetaTerra) {
+            movePlayerPlanetaTerra(left, right, x, y, imageLeft, imageRight, imageFront);
+        }
     }
-
+    
+    /**
+     * Moves the Player in the MarioStyleWorld
+     * Move o Player no MarioStyleWorld
+     */
+    private void movePlayerPlanetaTerra( 
+        String left, 
+        String right, 
+        int x, 
+        int y, 
+        GifImage imageLeft,
+        GifImage imageRight,
+        GreenfootImage imageFront
+    ) {
+        if(Greenfoot.isKeyDown(left)) {
+            setImage(imageLeft.getCurrentImage());
+            moveLeft(x,y);
+        } else if(Greenfoot.isKeyDown(right)) {
+            setImage(imageRight.getCurrentImage());
+            moveRight(x,y);
+        } else {
+            setImage(imageFront);
+        }
+    }
+    
     /**
      * Moves the Player in the MarioStyleWorld
      * Move o Player no MarioStyleWorld
