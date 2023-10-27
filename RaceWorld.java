@@ -44,6 +44,7 @@ public class RaceWorld extends MainWorld
         drawBackgroundImage();
 
         populateWorld(); // Spawns the Objects into the World
+        checkStarCount();
     }
 
     /**
