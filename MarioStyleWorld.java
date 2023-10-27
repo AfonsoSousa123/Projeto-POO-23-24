@@ -60,7 +60,7 @@ public class MarioStyleWorld extends MainWorld
         Enemy enemy1 = new Enemy(enemySize);
         addObject(enemy1,2256,670);
         Enemy enemy2 = new Enemy(enemySize);
-        addObject(enemy2,3886,635);
+        addObject(enemy2,3888,666);
         
         Star star = new Star();
         addObject(star,5149,241);

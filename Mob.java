@@ -81,14 +81,14 @@ public class Mob extends Actor
                 lookForEdge *= -1;
             }
 
-            // // Check if the Mob is turning left or right
-            // if (x > 0) {
-            // // Turning right.
-            // setImage(imageRight.getCurrentImage());
-            // } else if (x < 0) {
-            // // Turning left.
-            // setImage(imageLeft.getCurrentImage());
-            // }
+            // Check if the Mob is turning left or right
+            if (SPEED < 0) {
+            // Turning right.
+            setImage(imageRight.getCurrentImage());
+            } else if (SPEED > 0) {
+            // Turning left.
+            setImage(imageLeft.getCurrentImage());
+            }
 
             // Move the Mob according to its speed
             setLocation(x + SPEED, y);
@@ -146,7 +146,7 @@ public class Mob extends Actor
      * Move o Mob para a direita e a esquerda
      */
     private void moveMobPW(GifImage imageLeft, GifImage imageRight, int x, int y) {
-        if (x > 0) { // Check which direction the Mob is moving in.
+        if (SPEED < 0) { // Check which direction the Mob is moving in.
             setImage(imageRight.getCurrentImage()); // Set the Mob's image to the right-facing image.
         } else {
             setImage(imageLeft.getCurrentImage()); // Set the Mob's image to the left-facing image.
