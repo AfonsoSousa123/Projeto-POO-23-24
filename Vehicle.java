@@ -1,7 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Vehicle extends Actor
-{
+public class Vehicle extends Actor {
     // Local variables | variaveis locais
     private int SPEED = 2; // velocidade
     private int VSPEED = 0; // velocidade vertical
@@ -10,10 +9,6 @@ public class Vehicle extends Actor
 
     // World variables | Variaveis World
     MainWorld mainWorld;
-    
-    public Vehicle() {
-        
-    }
     
     public void addedToWorld(World w) {
         mainWorld = (MainWorld)w;
@@ -231,6 +226,10 @@ public class Vehicle extends Actor
         }
     }
     
+    /**
+     * Checks if the Vheicle is at the Edge of the World
+     * Verifica se o Vheicle está nas bordas do World
+     */
     public void isAtEdge(Vehicle vehicle,int x, int y){
         if(vehicle.isAtEdge()){
             vehicle.setLocation(x,y);
