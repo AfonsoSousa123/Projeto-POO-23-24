@@ -23,12 +23,14 @@ public class BarbieCar extends Vehicle
     }
     
     public BarbieCar() {
-       ImageSize = 30;
+        ImageSize = 50;
+        redimencionaImg(barbieCar, ImageSize);
+        setImage(barbieCar);
     }
     
     public BarbieCar(int imageSize) {
         this.ImageSize = imageSize;
-        redimencionaImg(barbieCar, 50);
+        redimencionaImg(barbieCar, imageSize);
         setImage(barbieCar);
     }
     

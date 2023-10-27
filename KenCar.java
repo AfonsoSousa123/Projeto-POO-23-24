@@ -21,7 +21,14 @@ public class KenCar extends Vehicle
     }
     
     public KenCar() {
-        redimencionaImg(kenCar, 50);
+        ImageSize = 50;
+        redimencionaImg(kenCar, ImageSize);
+        setImage(kenCar);
+    }
+    
+    public KenCar(int imageSize) {
+        this.ImageSize = imageSize;
+        redimencionaImg(kenCar, imageSize);
         setImage(kenCar);
     }
     
