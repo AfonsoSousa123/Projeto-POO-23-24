@@ -25,6 +25,7 @@ public class PacmanWorld extends MainWorld {
     private int BlockOffsetX = 40; // X Offset of the block
     private int mobSize = 13; // Size of the mob 
     private int playerSize = 24; // Size of the player
+    private boolean StopSpawn = false; // Stops the Spawning of the Stars
 
     /**
      * Constructor for objects of class PacmanWorld.
@@ -34,12 +35,23 @@ public class PacmanWorld extends MainWorld {
     {
         drawMap();
         setPaintOrder(Scoreboard.class, Mob.class, Player.class, Target.class);
-        // spawnStarsPW();
     }
     
     public void act() {
         checkStarCount();
-        // spawnStarsPW();
+        spawnStarsPW();
+    }
+    
+    /**
+     * Spawns the Stars when the Score is 1000
+     * Adiciona as Stars quando o Score for igual a 1000
+     */
+    public void spawnStarsPW() {
+        if (getScore() == 1000 && !StopSpawn) { // Spawns the Stars when the score is equals to 1000
+            addObject(new Star(), 823, 97);
+            addObject(new Star(), 214, 706);
+            StopSpawn = true;
+        }
     }
     
     /**
@@ -85,20 +97,6 @@ public class PacmanWorld extends MainWorld {
                         break;
                 }
             }
-        }
-    }
-    
-    /**
-     * Spawns the Stars when the Score is 1000
-     * Adiciona as Stars quando o Score for igual a 1000
-     */
-    public void spawnStarsPW() {
-        boolean StopSpawn = false;
-        
-        if (getScore() == 200 && !StopSpawn) {
-            StopSpawn = true;
-            addObject(new Star(), 823, 97);
-            addObject(new Star(), 214, 706);
         }
     }
 }

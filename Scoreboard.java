@@ -38,7 +38,7 @@ public class Scoreboard extends Actor
         boardImage = new GreenfootImage(width, height);
         boardImage.setColor(Color.BLACK);
         boardImage.fillRect(0,0,width,height);
-        boardImage.setTransparency(100);
+        boardImage.setTransparency(120);
         setImage(boardImage);
     }
 
