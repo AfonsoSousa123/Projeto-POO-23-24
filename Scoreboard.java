@@ -21,7 +21,7 @@ public class Scoreboard extends Actor
     public static int barbieLives = 2;
     public static int kenLives = 2;
 
-    private int width;
+    public int width;
     private int height = 60;
     private int drawHeight = 40;
     private int transparency = 120;
