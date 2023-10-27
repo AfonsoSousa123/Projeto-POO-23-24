@@ -9,9 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class PlanetaTerra extends MainWorld
 {
     private int playerSize = 80;
+    
     /**
-     * Constructor for objects of class MyWorld.
-     * 
+     * Constructor for PlanetaTerra class.
+     * Contrutor para a Classe PlanetaTerra.
      */
     public PlanetaTerra()
     {    

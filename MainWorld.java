@@ -8,9 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MainWorld extends World
 {
-    Scoreboard sb; // Scoreboard variable
-    Portal portal; // Portal variable
-    Player player; // Player variable
+    private Scoreboard sb; // Scoreboard variable
+    private Portal portal; // Portal variable
+    private Player player; // Player variable
 
     private int volume = 10; // volume geral dos .mp3
     private int volumeWav = 70; // volume geral dos .wav

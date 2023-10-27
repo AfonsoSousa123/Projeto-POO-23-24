@@ -17,8 +17,8 @@ public class MarioStyleWorld extends MainWorld
     private Barbie barbie;
 
     /**
-     * Constructor for objects of class MarioStyleWorld.
-     * 
+     * Constructor for MarioStyleWorld class.
+     * Contrutor para a Classe MarioStyleWorld.
      */
     public MarioStyleWorld()
     {    

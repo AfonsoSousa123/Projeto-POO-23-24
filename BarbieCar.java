@@ -22,12 +22,20 @@ public class BarbieCar extends Vehicle
         private static final String RIGHT = "D";
     }
     
+    /**
+     * Constructor for the BarbieCar Class.
+     * Construtor para a BarbieCar Class.
+     */
     public BarbieCar() {
         ImageSize = 50;
         redimencionaImg(barbieCar, ImageSize);
         setImage(barbieCar);
     }
     
+    /**
+     * Overloaded Constructor for the BarbieCar Class.
+     * Overloaded Construtor para a BarbieCar Class.
+     */
     public BarbieCar(int imageSize) {
         this.ImageSize = imageSize;
         redimencionaImg(barbieCar, imageSize);

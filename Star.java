@@ -8,6 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Star extends Target
 {
+    /**
+     * Constructor for the Star Class.
+     * Construtor para a Star Class.
+     */
     public Star() {
         resizeImage(getImage(), getImage().getWidth()/4, getImage().getHeight()/4);
     }

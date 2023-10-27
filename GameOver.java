@@ -8,16 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameOver extends MainWorld
 {
-    Scoreboard sb;
+    Scoreboard sb; // Scoreboard variable
     
     /**
-     * Constructor for objects of class GameOver.
-     * 
+     * Constructor for the GameOver Class.
+     * Construtor para a Classe GameOver.
      */
     public GameOver() {    
-        prepare();
-        playGameOverSound();
-        sb.resetVariables();
+        prepare(); // calls the prepare method
+        playGameOverSound(); // plays the GameOverSound
+        sb.resetVariables(); // method to reset the variables of the Scoreboard
     }
     
     /**
@@ -26,7 +26,7 @@ public class GameOver extends MainWorld
      */
     private void prepare()
     {
-        Botao botao = new Botao();
-        addObject(botao,642,668);
+        Botao botao = new Botao(); // Creates a new instance of Botao()
+        addObject(botao,642,668); // Spawns the Botao into the GameOver World
     }
 }

@@ -96,7 +96,7 @@ public class RaceWorld extends MainWorld
      */
     private void spawnStars() {
         if(starsTimer > 1000) {      
-            addObject(new Star(), Greenfoot.getRandomNumber(630)+300, minY);
+            addObject(new Star(), Greenfoot.getRandomNumber(maxX)+minX, minY);
             starsTimer = 0; // reseta o starsTimer
         }
     }
@@ -108,7 +108,7 @@ public class RaceWorld extends MainWorld
     private void spawnHearts() {
         if(heartsTimer > 1000) {
             for (int i = 0; i < 2; i++) {            
-                addObject(new Heart(), Greenfoot.getRandomNumber(630)+300, minY);
+                addObject(new Heart(), Greenfoot.getRandomNumber(maxX)+minX, minY);
             }
             heartsTimer = 0; // reseta o heartsTimer
         }
@@ -121,7 +121,6 @@ public class RaceWorld extends MainWorld
     private void spawnObstacles() {
         if(obstaclesTimer > 600) {
             addObject(new Ground(), Greenfoot.getRandomNumber(maxX)+ minX, minY);
-            // addObject(new Block2x2(), Greenfoot.getRandomNumber(maxX)+ minX, minY);
             obstaclesTimer = 0;
         }
     }  
@@ -133,10 +132,10 @@ public class RaceWorld extends MainWorld
     private void spawnMoedas() {
         if(timer > 200) {
             for(int i = 0; i < Greenfoot.getRandomNumber(5)+2; i++){
-                addObject(new StudBlue(), Greenfoot.getRandomNumber(630)+300, minY);
+                addObject(new StudBlue(), Greenfoot.getRandomNumber(maxX)+minX, minY);
             }
             for(int i = 0; i < Greenfoot.getRandomNumber(5)+2; i++){
-                addObject(new StudPurple(), Greenfoot.getRandomNumber(630)+300, minY);
+                addObject(new StudPurple(), Greenfoot.getRandomNumber(maxX)+minX, minY);
             }
             timer = 0;
         }

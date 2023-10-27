@@ -10,15 +10,12 @@ public class Target extends Actor
 {
     private int SPEED = 8; // speed for the MarioStyleWorld
     private int speedRaceWorld = 3; // speed for the RaceWorld
-
-    public Ken ken;
-    public Barbie barbie;
     
-    MainWorld mainworld;
+    private MainWorld mainworld;
 
     /**
      * Constructor for the Target class.
-     * Contrutor da classe Target.
+     * Construtor da classe Target.
      */
     public Target() {
         

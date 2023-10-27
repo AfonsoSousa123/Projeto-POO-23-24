@@ -20,12 +20,20 @@ public class KenCar extends Vehicle
         private static final String RIGHT = "right";
     }
     
+    /**
+     * Constructor for the KenCar Class.
+     * Construtor para a KenCar Class.
+     */
     public KenCar() {
         ImageSize = 50;
         redimencionaImg(kenCar, ImageSize);
         setImage(kenCar);
     }
     
+    /**
+     * Overloaded Constructor for the KenCar Class.
+     * Overloaded Construtor para a KenCar Class.
+     */
     public KenCar(int imageSize) {
         this.ImageSize = imageSize;
         redimencionaImg(kenCar, imageSize);

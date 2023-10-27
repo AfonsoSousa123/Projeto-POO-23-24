@@ -11,10 +11,10 @@ public class Ken extends Player
     private int ImageSize;
     
     //Images Ken
-    GreenfootImage kenF = new GreenfootImage("Ken_front.png");
+    private GreenfootImage kenF = new GreenfootImage("Ken_front.png");
     
-    GifImage kwalkingR = new GifImage("ken_walking_right.gif");
-    GifImage kwalkingL = new GifImage("ken_walking_left.gif");
+    private GifImage kwalkingR = new GifImage("ken_walking_right.gif");
+    private GifImage kwalkingL = new GifImage("ken_walking_left.gif");
     
     public class KenKeys { // Class to store the values of the Keys for Ken
         public static final String UP = "up";
@@ -25,7 +25,7 @@ public class Ken extends Player
     
     /**
      * Constructor for the Ken Class.
-     * 
+     * Construtor para a Ken Class.
      */
     public Ken() {
         ImageSize = 30;
@@ -36,7 +36,7 @@ public class Ken extends Player
     
     /**
      * Overloaded Constructor for the Ken Class.
-     * Overloaded Contrutor para a Ken Class.
+     * Overloaded Construtor para a Ken Class.
      */
     public Ken(int imageSize) {
         this.ImageSize = imageSize;

@@ -8,14 +8,10 @@ public class Vehicle extends Actor {
     private int colide = 120; // variavel para o offset do caro
 
     // World variables | Variaveis World
-    MainWorld mainWorld;
+    private MainWorld mainWorld;
     
     public void addedToWorld(World w) {
         mainWorld = (MainWorld)w;
-    }
-    
-    public void act() {
-        
     }
     
     public GreenfootImage redimencionaImg(GreenfootImage image, int percent) {
@@ -45,31 +41,30 @@ public class Vehicle extends Actor {
                 moveDown(x, y);
             } 
             if(Greenfoot.isKeyDown(right)) {
-                if(getX()<932)
+                if(getX() < 932)
                     moveRight(x, y);
             } 
             if(Greenfoot.isKeyDown(left)) {
-                if(getX()>300)
+                if(getX() > 300)
                     moveLeft(x, y);
             } 
 
             if(Greenfoot.isKeyDown(right) && Greenfoot.isKeyDown(up)) {
-                if(getX()<932 && getX()>300 )
+                if(getX() < 932 && getX() > 300)
                     moveUpAndRight(x, y);
             } 
             if(Greenfoot.isKeyDown(left) && Greenfoot.isKeyDown(up)) {
-                if(getX()<932 && getX()>300 )
+                if(getX() < 932 && getX() > 300)
                     moveUpAndLeft(x, y);
             } 
             if(Greenfoot.isKeyDown(right) && Greenfoot.isKeyDown(down)) {
-                if(getX()<932 && getX()>300 )
+                if(getX() < 932 && getX() > 300)
                     moveDownAndRight(x, y);
             } 
             if(Greenfoot.isKeyDown(left) && Greenfoot.isKeyDown(down)) {
-                if(getX()<932 && getX()>300 )
+                if(getX() < 932 && getX() > 300)
                     moveDownAndLeft(x, y);
             }
-
         }
     }
     
@@ -216,13 +211,13 @@ public class Vehicle extends Actor {
             
             if (vehicle.getClass() == BarbieCar.class) {
                 mainWorld.removeBarbieLives(1);
-                vehicle.setLocation(newBarbieX, newY);
+                vehicle.setLocation(newBarbieX, newY); // Spawns the vehicle to the given x and y
             } else if (vehicle.getClass() == KenCar.class) {
                 mainWorld.removeKenLives(1);
-                vehicle.setLocation(newKenX, newY);
+                vehicle.setLocation(newKenX, newY); // Spawns the vehicle to the given x and y
             }
             
-            mainWorld.playExplosionSound();
+            mainWorld.playExplosionSound(); // Plays the ExplosionSound
         }
     }
     

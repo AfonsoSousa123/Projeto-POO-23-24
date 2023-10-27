@@ -10,21 +10,27 @@ public class Enemy extends Mob
 {
     private int ImageSize;
 
-    private MainWorld main;
-
     //Images Ken
-    GreenfootImage enemyF = new GreenfootImage(getImage());
+    private GreenfootImage enemyF = new GreenfootImage(getImage());
 
-    GifImage eWalkingR = new GifImage("enemy_walking_R.gif");
-    GifImage eWalkingL = new GifImage("enemy_walking_L.gif");
+    private GifImage eWalkingR = new GifImage("enemy_walking_R.gif");
+    private GifImage eWalkingL = new GifImage("enemy_walking_L.gif");
     
+    /**
+     * Constructor for the Enemy Class.
+     * Construtor para a Enemy Class.
+     */
     public Enemy() {
         ImageSize = 30;
         redimencionaGif(eWalkingL, ImageSize);
         redimencionaGif(eWalkingR, ImageSize);
         setImage(redimencionaImg(enemyF, ImageSize));
     }
-
+    
+    /**
+     * Overloaded Constructor for the Enemy Class.
+     * Overloaded Construtor para a Enemy Class.
+     */
     public Enemy(int imageSize) {
         this.ImageSize = imageSize;
         redimencionaGif(eWalkingL, imageSize);

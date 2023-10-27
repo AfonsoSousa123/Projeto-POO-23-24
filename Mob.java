@@ -22,7 +22,7 @@ public class Mob extends Actor
     private int lookForGround = height/2; // Procura pelo chão
 
     // World variables | Variaveis World
-    MainWorld mainWorld;
+    private MainWorld mainWorld;
 
     public void addedToWorld(World w) {
         mainWorld = (MainWorld)w;

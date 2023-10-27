@@ -8,14 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BarbieLand extends MainWorld
 {
-
     /**
-     * Constructor for objects of class BarbieLand.
-     * 
+     * Constructor for BarbieLand class.
+     * Contrutor para a Classe BarbieLand.
      */
-    public BarbieLand()
-    {    
-        // Create a new world with 1300x800 cells with a cell size of 1x1 pixels.
-        // super(1300, 800, 1);
+    public BarbieLand() {    
+    
     }
 }

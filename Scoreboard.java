@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Scoreboard extends Actor
 {
     // World variables | variaveis world
-    MainWorld mainWorld;
+    private MainWorld mainWorld;
 
     // Constant variables: they will always be the setted value | Variaveis constantes: vao sempre ser o valor definido
     private final int LIVES = 2;
@@ -27,10 +27,14 @@ public class Scoreboard extends Actor
     private int transparency = 120;
 
     // Image variables | variaveis de imagem
-    GreenfootImage boardImage;
+    private GreenfootImage boardImage;
 
+    /**
+     * Constructor for Scoreboard class.
+     * Contrutor para a Classe Scoreboard.
+     */
     public Scoreboard() {
-
+        
     }
 
     public void addedToWorld(World w) {
@@ -57,22 +61,14 @@ public class Scoreboard extends Actor
     }
 
     /**
-     * Retrns the final Score
-     * Retorna o Score final
-     */
-    public void drawFinalScore() {
-        getScore();
-    }
-
-    /**
      * Draws the score onto the World
      * Mostra o Score no World
      */
     public void drawScore() {
-        boardImage.setColor(Color.BLACK);
-        boardImage.fillRect(0,0,width,height);
-        boardImage.setColor(Color.WHITE);
-        boardImage.setFont(new Font("Arial", 30));
+        boardImage.setColor(Color.BLACK); // sets the Color of the boardImage to Black
+        boardImage.fillRect(0,0,width,height); // Fills a rectangle with the given values
+        boardImage.setColor(Color.WHITE); // sets the Color of the boardImage to White
+        boardImage.setFont(new Font("Arial", 30)); // Creates a new "Arial" font and sets the font size of 30
         boardImage.drawString("Level: "+ level, 15, drawHeight);
         boardImage.drawString("Score: "+ score, 140, drawHeight);
         boardImage.drawString("Stars: "+ starCount, 845, drawHeight);
@@ -115,7 +111,7 @@ public class Scoreboard extends Actor
         if(barbieLives > 0) {
             barbieLives -= amount; // decrements the lives to the barbieLives
         } else if(barbieLives == 0) {
-            mainWorld.gameOver();
+            mainWorld.gameOver(); // teleports the player to the Gameover World
         }
     }
 
@@ -137,7 +133,7 @@ public class Scoreboard extends Actor
         if(kenLives > 0) {
             kenLives -= amount; // decrements the lives to the kenLives
         } else if(kenLives == 0) {
-            mainWorld.gameOver();
+            mainWorld.gameOver(); // teleports the player to the Gameover World
         }
     }
 
