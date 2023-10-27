@@ -52,7 +52,6 @@ public class LoadingScreen extends MainWorld
                     break;
                 case 4:
                     barbieLand(); // Teleports the player to the BarbieLand (the End) | Teleporta o player para a BarbieLand (O Fim)
-                    playVictorySound(); // Plays the VictorySound | Toca o VictorySound
                     break;
                 default:
                     gameOver(); // Its Game Over for the player || Fim do jogo para o player

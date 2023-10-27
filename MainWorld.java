@@ -26,7 +26,6 @@ public class MainWorld extends World
     private GreenfootSound startGameSound = new GreenfootSound("press_start.wav");
     private GreenfootSound jumpSound = new GreenfootSound("jump-super.wav");
     
-
     /**
      * Constructor for objects of class MainWorld.
      * Contrutor para os objetos da classe MainWorld.

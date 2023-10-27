@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Target extends Actor
 {
     private int SPEED = 8; // speed for the MarioStyleWorld
-    private int speedRaceWorld = 1; // speed for the RaceWorld
+    private int speedRaceWorld = 3; // speed for the RaceWorld
 
     public Ken ken;
     public Barbie barbie;

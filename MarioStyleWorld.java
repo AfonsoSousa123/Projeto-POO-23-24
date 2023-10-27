@@ -49,8 +49,8 @@ public class MarioStyleWorld extends MainWorld
      */
     private void populateWorld()
     {
-        //Barbie barbie = new Barbie(imageSize);
-        //addObject(barbie,241,676);
+        Barbie barbie = new Barbie(imageSize);
+        addObject(barbie,241,676);
         
         Ken ken = new Ken(imageSize);
         addObject(ken,423,676);

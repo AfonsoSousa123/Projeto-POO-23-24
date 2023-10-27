@@ -92,7 +92,7 @@ public class RaceWorld extends MainWorld
      * Adiciona as estrelas no mundo
      */
     private void spawnStars() {
-        if(starsTimer > 5000) {      
+        if(starsTimer > 1000) {      
             addObject(new Star(), Greenfoot.getRandomNumber(630)+300, minY);
             starsTimer = 0;
         }

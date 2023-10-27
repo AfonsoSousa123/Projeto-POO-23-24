@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Obstacle extends Actor
 {
     private int SPEED = 8;
-    private int speedRaceWorld = 1; // speed for the RaceWorld
+    private int speedRaceWorld = 3; // speed for the RaceWorld
     
     /**
      * Act - do whatever the Obstacle wants to do. This method is called whenever
