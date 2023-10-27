@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ScoreScreen extends Actor
+public class ScoreScreen extends Scoreboard
 {
     /**
      * Act - do whatever the ScoreScreen wants to do. This method is called whenever
