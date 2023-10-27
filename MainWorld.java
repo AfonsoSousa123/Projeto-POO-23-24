@@ -47,7 +47,7 @@ public class MainWorld extends World
      */
     private void spawnScore() {
         sb = new Scoreboard(); // Initializes the Scoreboard object | Inicializa o objeto Scoreboard
-        if (getClass() != Menu.class) // all worlds but not the Menu
+        if (getClass() != Menu.class && getClass() != PlanetaTerra.class) // all worlds but not the Menu
             addObject(sb, getWidth()/2, 30); // Adds the Scoreboard onto the Worlds
     }
 
