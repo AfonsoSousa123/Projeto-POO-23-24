@@ -9,7 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class PlanetaTerra extends MainWorld
 {
     private int playerSize = 80;
-    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -47,6 +46,9 @@ public class PlanetaTerra extends MainWorld
         
         Portal portal = new Portal();
         addObject(portal,1111,645);
+        
+        Arrow arrow = new Arrow();
+        addObject(arrow,1119,405);
         
         setPaintOrder(Player.class, Portal.class);
     }

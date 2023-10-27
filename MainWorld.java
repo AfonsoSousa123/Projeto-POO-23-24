@@ -123,6 +123,10 @@ public class MainWorld extends World
             loadingScreen();
         }
     }
+    
+    public void CheckPortal() {
+        
+    }
 
     // Loading Screen | Ecra de carregamento
     public void loadingScreen() {
@@ -147,6 +151,10 @@ public class MainWorld extends World
     // Sends the Players to a new world | Manda os Players para um novo world
     public void levelThree() {
         Greenfoot.setWorld(new RaceWorld()); 
+    }
+    
+    public void planetTerra() {
+        Greenfoot.setWorld(new PlanetaTerra());  
     }
 
     // Sends the Players to the Barbie Land | Manda os Players para Barbie Land
