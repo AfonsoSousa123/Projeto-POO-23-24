@@ -342,7 +342,7 @@ public class Player extends Actor
 
         return canMoveDown;
     }
-
+    
     /**
      * PacmanWorld code end
      */

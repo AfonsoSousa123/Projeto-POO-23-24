@@ -6,18 +6,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PacmanWorld extends MainWorld
-{
+public class PacmanWorld extends MainWorld {
     String[] textMap = {
         "****b******p***",
-        "phpbEpbpbpbspbb",
+        "phpbppbpbEbpbpb",
         "*p**p*p******p*",
         "*b*pbpbEpbpbpb*",
         "*p*b*B*b*p*K*p*",
         "*b*p*p*p*b*b*p*",
         "*p*bpbpEpbpbpb*",
         "*b*b**b*b****h*",
-        "bpEsbpb*ppbEbpb",
+        "bpEpbpb*ppbEbpb",
         "****p******b***",
     };
     
@@ -29,27 +28,30 @@ public class PacmanWorld extends MainWorld
 
     /**
      * Constructor for objects of class PacmanWorld.
-     * 
+     * Contrutor da classe PacmanWorld
      */
     public PacmanWorld()
     {
         drawMap();
         setPaintOrder(Scoreboard.class, Mob.class, Player.class, Target.class);
+        // spawnStarsPW();
     }
     
     public void act() {
         checkStarCount();
+        // spawnStarsPW();
     }
     
     /**
      * Draws world map for the program using the textMap String Array.
+     * Desenha o mundo usando uma matriz de Strings
      */
     public void drawMap() {
         for(int i=0; i<textMap.length; i++) {
-            String mapLine = textMap[i];
+            String mapLine = textMap[i]; // Linha da matriz
             
             for(int j=0; j<mapLine.length(); j++) {
-                char mapChar = mapLine.charAt(j);
+                char mapChar = mapLine.charAt(j); // character na linha
                 int y = i * BlockSize + BlockOffsetY; // x position times the size of the Block plus the offset
                 int x = j * BlockSize + BlockOffsetX; // y position times the size of the Block plus the offset
                 
@@ -79,9 +81,24 @@ public class PacmanWorld extends MainWorld
                         addObject(new Heart(),x,y);
                         break;
                     default:
+                        // just leaves an empty space
                         break;
                 }
             }
+        }
+    }
+    
+    /**
+     * Spawns the Stars when the Score is 1000
+     * Adiciona as Stars quando o Score for igual a 1000
+     */
+    public void spawnStarsPW() {
+        boolean StopSpawn = false;
+        
+        if (getScore() == 200 && !StopSpawn) {
+            StopSpawn = true;
+            addObject(new Star(), 823, 97);
+            addObject(new Star(), 214, 706);
         }
     }
 }

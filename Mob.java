@@ -9,31 +9,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Mob extends Actor
 {
     // Local variables
-    private int SPEED = 2;
-    private int VSPEED = 0;
-    private int acceleration = 2;
-    private int imageSize = 30;
-    private int timer = 0;
+    private int SPEED = 2; // Velocidade
+    private int VSPEED = 0; // Velocidade vertical
+    private int acceleration = 2; // aceleração
+    private int imageSize = 30; // tamanho ad imagem
+    private int timer = 0; // contador
 
-    private int width = getImage().getWidth(); 
-    private int height = getImage().getHeight();
-    private int lookForWalls = width/3;
-    private int lookForEdge = width/5; 
-    private int lookForGround = height/2;
-
-    // class Direction { // Class to store the values of the rotation for each movement
-    // public static final int UP = 270;
-    // public static final int DOWN = 90;
-    // public static final int LEFT = 180;
-    // public static final int RIGHT = 0;
-    // }
+    private int width = getImage().getWidth(); // comprimento
+    private int height = getImage().getHeight(); //altura
+    private int lookForWalls = width/3; // Porcura pelas paredes
+    private int lookForEdge = width/5;  // Procura pelas bordas
+    private int lookForGround = height/2; // Procura pelo chão
 
     // World variables | Variaveis World
     MainWorld mainWorld;
-
-    public Mob() {
-
-    }
 
     public void addedToWorld(World w) {
         mainWorld = (MainWorld)w;
@@ -52,10 +41,10 @@ public class Mob extends Actor
      * Moves the Mob
      */
     public void moveMob(
-    int x, 
-    int y, 
-    GifImage imageLeft,
-    GifImage imageRight
+        int x, 
+        int y, 
+        GifImage imageLeft,
+        GifImage imageRight
     ) {
         if(getWorld() instanceof MarioStyleWorld) {
             moveMobMW(imageLeft, imageRight, x, y);
