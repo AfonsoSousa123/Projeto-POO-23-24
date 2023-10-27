@@ -8,45 +8,48 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ScoreScreen extends Scoreboard
 {
-    private PlanetaTerra terra; // Variavel para PlanetaTerra
-    
-    private int width; // variavel para o comprimento 
+     // variavel para o comprimento 
     private int height; // variavel para a altura 
     
     private GreenfootImage star = new GreenfootImage("estrela.png"); // Imagem para a estrela
     private GreenfootImage lives = new GreenfootImage("heart.png"); // Imagem para o heart
-    private GreenfootImage screen; // Variavel de imagem para o screen
+
     
     /**
      * Act - do whatever the ScoreScreen wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
+        resize ();
         drawScore(); // Chama o método drawScore();
+    }
+    
+    private void resize () // resize das imagens da estrela e das vidas
+    {
+        star.scale(130, 160);
+        lives.scale(80, 100);
     }
     
     @Override
     public void addedToWorld(World w) {
-        terra = (PlanetaTerra)w;
-        width = terra.getWidth()/2;
-        height = terra.getHeight()/2;
-        screen = new GreenfootImage(width, height);
-        screen.setColor(Color.BLACK);
-        screen.fillRect(0,0,width,height);
-        screen.setTransparency(200);
-        setImage(screen);
+        mainWorld = (PlanetaTerra)w;
+        width = mainWorld.getWidth()/2;
+        height = mainWorld.getHeight()/2;
+        boardImage = new GreenfootImage(width, height);
+        boardImage.setColor(Color.BLACK);
+        boardImage.fillRect(0,0,width,height);
+        boardImage.setTransparency(200);
+        setImage(boardImage);
     }
     
     @Override
     public void drawScore() {
-        star.scale(130, 160);
-        lives.scale(80, 100);
-        screen.setColor(Color.WHITE);
-        screen.setFont(new Font("Arial", 30));
-        screen.drawString("\nScore: "+ score, 10, 30);
-        screen.drawImage(star, 0, 50);
-        screen.drawString(": "+ starCount, 130, 140);
-        screen.drawImage(lives, 25, 150);
-        screen.drawString(": " + (barbieLives + kenLives), 130, 230);
+        boardImage.setColor(Color.WHITE);
+        boardImage.setFont(new Font("Arial", 30));
+        boardImage.drawString("\nScore: "+ score, 10, 30);
+        boardImage.drawImage(star, 0, 50);
+        boardImage.drawString(": "+ starCount, 130, 140);
+        boardImage.drawImage(lives, 25, 150);
+        boardImage.drawString(": " + (barbieLives + kenLives), 130, 230);
     }
 }
