@@ -8,18 +8,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Portal extends Actor
 {
+    Scoreboard score;
+    MainWorld mainWorld;
     /**
      * Act - do whatever the Portal wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
-        teletranport();
+        teletransport();
     }
     
-    public void teletranport() {
-        if (checkPlayer1() && checkPlayer2()) {
-            Greenfoot.setWorld(new BarbieLand());
+    public void teletransport() {
+        if (checkPlayer1() && checkPlayer2() && (score.starCount >= 6)) {
+            Greenfoot.setWorld(new BarbieLand()); 
+        }
+        else if (checkPlayer1() && checkPlayer2() && (score.starCount <= 6) ){
+            Greenfoot.setWorld(new MarioStyleWorld());
         }
     }
     

@@ -34,7 +34,7 @@ public class ScoreScreen extends Scoreboard
         screen = new GreenfootImage(width, height);
         screen.setColor(Color.BLACK);
         screen.fillRect(0,0,width,height);
-        screen.setTransparency(150);
+        screen.setTransparency(200);
         setImage(screen);
     }
     
@@ -48,6 +48,6 @@ public class ScoreScreen extends Scoreboard
         screen.drawImage(star, 0, 50);
         screen.drawString(": "+ starCount, 130, 140);
         screen.drawImage(lives, 25, 150);
-        screen.drawString(": ", 130, 230);
+        screen.drawString(": " + (barbieLives + kenLives), 130, 230);
     }
 }
