@@ -13,6 +13,6 @@ public class BarbieLand extends MainWorld
      * Contrutor para a Classe BarbieLand.
      */
     public BarbieLand() {    
-    
+        playVictorySound();
     }
 }

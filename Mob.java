@@ -169,7 +169,7 @@ public class Mob extends Actor
     /**
      * PacmanWorld code end
      */
-
+    
     public GreenfootImage redimencionaImg(GreenfootImage image, int percent) {
         int wide = image.getWidth()*percent/100;
         int high = image.getHeight()*percent/100;

@@ -12,7 +12,7 @@ public class MainWorld extends World
     private Portal portal; // Portal variable
     private Player player; // Player variable
 
-    private int volume = 10; // volume geral dos .mp3
+    private int volume = 15; // volume geral dos .mp3
     private int volumeWav = 70; // volume geral dos .wav
 
     // Initializes the sounds | Inicializa os sons

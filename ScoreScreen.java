@@ -14,7 +14,6 @@ public class ScoreScreen extends Scoreboard
     private GreenfootImage star = new GreenfootImage("estrela.png"); // Imagem para a estrela
     private GreenfootImage lives = new GreenfootImage("heart.png"); // Imagem para o heart
 
-    
     /**
      * Act - do whatever the ScoreScreen wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

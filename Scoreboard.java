@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Scoreboard extends Actor
 {
     // World variables | variaveis world
-    private MainWorld mainWorld;
+    public MainWorld mainWorld;
 
     // Constant variables: they will always be the setted value | Variaveis constantes: vao sempre ser o valor definido
     private final int LIVES = 2;
@@ -27,7 +27,7 @@ public class Scoreboard extends Actor
     private int transparency = 120;
 
     // Image variables | variaveis de imagem
-    private GreenfootImage boardImage;
+    public GreenfootImage boardImage;
 
     /**
      * Constructor for Scoreboard class.
