@@ -29,18 +29,7 @@ public class MarioStyleWorld extends MainWorld
     }
 
     public void act() {
-        // imageCount -= 1; //(or any other value; small -> slow moving, big -> fast movement)
-        // drawBackgroundImage();
         checkStarCount();
-    }
-
-    public void drawBackgroundImage() {
-        if (imageCount < -bgImage.getWidth()) {
-            imageCount += bgImage.getWidth();
-        }
-        int temp = imageCount;
-        getBackground().drawImage(bgImage, temp, 0);
-        getBackground().drawImage(bgImage, temp + bgImage.getWidth(), 0);
     }
     
     /**
@@ -57,10 +46,8 @@ public class MarioStyleWorld extends MainWorld
         
         Enemy enemy = new Enemy(enemySize);
         addObject(enemy,1199,481);
-        Enemy enemy1 = new Enemy(enemySize);
-        addObject(enemy1,2256,670);
         Enemy enemy2 = new Enemy(enemySize);
-        addObject(enemy2,3888,666);
+        addObject(enemy2,2256,670);
         
         Star star = new Star();
         addObject(star,5149,241);
