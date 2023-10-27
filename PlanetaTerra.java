@@ -29,10 +29,10 @@ public class PlanetaTerra extends MainWorld
     private void populateWorld()
     {
         Barbie barbie = new Barbie(playerSize);
-        addObject(barbie,570, 591);
+        addObject(barbie,570, 634);
 
         Ken ken = new Ken(playerSize);
-        addObject(ken,750, 591);
+        addObject(ken,750, 634);
         
         Ground ground = new Ground();
         addObject(ground,1163,754);
