@@ -8,22 +8,37 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BarbieCar extends Vehicle
 {
-    private int ImageSize;
+    private int ImageSize; //tamanho da imagem
     
     Player player;
     
     //Images Ken
     GreenfootImage barbieCar = new GreenfootImage(getImage());
     
-    class BarbieKeys { // Class to store the values of the Keys for Barbie
+    class BarbieKeys { // Class to store the values of the Keys for Barbie | Classe para guardar os valores das teclas para a Barbie
         private static final String UP = "W";
         private static final String DOWN = "S";
         private static final String LEFT = "A";
         private static final String RIGHT = "D";
     }
     
+    /**
+     * Constructor for the BarbieCar Class.
+     * Construtor para a BarbieCar Class.
+     */
     public BarbieCar() {
-        redimencionaImg(barbieCar, 50);
+        ImageSize = 50;
+        redimencionaImg(barbieCar, ImageSize);
+        setImage(barbieCar);
+    }
+    
+    /**
+     * Overloaded Constructor for the BarbieCar Class.
+     * Overloaded Construtor para a BarbieCar Class.
+     */
+    public BarbieCar(int imageSize) {
+        this.ImageSize = imageSize;
+        redimencionaImg(barbieCar, imageSize);
         setImage(barbieCar);
     }
     
@@ -44,6 +59,7 @@ public class BarbieCar extends Vehicle
         collectStuds(this);
         collectHearts(this);
         collectStars(this);
-        isTouching(this, getX(), getY());
+        isTouchingVehicle(this, getX(), getY());
+        isTouchingObject(this, getX(), getY());
     }
 }

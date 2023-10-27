@@ -9,27 +9,26 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class LoadingScreen extends MainWorld
 {
     private GreenfootImage bgImage = new GreenfootImage(getBackground());
-    Scoreboard sb;
-    private int timer = 0;
+    Scoreboard sb; // Scoreboard variable
+    private int timer = 0; // timer for the LoadingScreen
 
     /**
-     * Constructor for objects of class LoadingScreen.
-     * 
+     * Constructor for the LoadingScreen Class.
+     * Contrutor para a Classe LoadingScreen.
      */
     public LoadingScreen() {
         super();
         prepare();
-        drawBackground();
+        drawBackground(); // draws the Background
     }
 
     public void act() {
-        timer++;
-        changeWorld();
+        timer++; // Increments the timer
+        changeWorld(); // calls the changeWorld mehtod
     }
 
     private void drawBackground() {
-        // setBackground(resizeImage(bgImage, 1300, 800)); // Scales the image to the desired width and height
-        GreenfootImage bgImage = new GreenfootImage(1,1);
+        GreenfootImage bgImage = new GreenfootImage(1,1); // creates a new Image | cria uma nova imagem
         Color color = new Color(244,216,0); // color to match the yellow of the loader | cor amarela para ser igual à do loader
         bgImage.setColor(color); // sets the color | define a cor
         bgImage.drawRect(0,0,1,1); // draws a rectangle | desenha um quadrado
@@ -39,23 +38,26 @@ public class LoadingScreen extends MainWorld
     private void changeWorld() {
         playExitLevelSound(); // Plays the exitLevelSound | Toca o VictorySound
 
-        if (timer > 60) {
+        if (timer > 100) {
             switch(sb.level) {
+                case 0:
+                    planetaTerra(); // Teleports the player to the Level Zero | Teleporta o player para o Planeta Terra
+                    sb.level++; // Increments one Level
+                    break;
                 case 1:
-                    levelOne();
+                    levelOne(); // Teleports the player to the Level One | Teleporta o player para o nível um 
                     break;
                 case 2:
-                    levelTwo();
+                    levelTwo(); // Teleports the player to the Level Two | Teleporta o player para o nível dois 
                     break;
                 case 3:
-                    levelThree();
+                    levelThree(); // Teleports the player to the Level Three | Teleporta o player para o nível três
                     break;
                 case 4:
-                    barbieLand();
-                    playVictorySound(); // Plays the VictorySound | Toca o VictorySound
+                    planetaTerra(); // Teleports the player to Planeta Terra | Teleporta o player para o Planeta Terra (O Fim)
                     break;
                 default:
-                    Greenfoot.setWorld(new GameOver());
+                    gameOver(); // Its Game Over for the player || Fim do jogo para o player
                     break;
             }
         }
@@ -67,7 +69,7 @@ public class LoadingScreen extends MainWorld
      */
     private void prepare()
     {
-        LegoLoader legoLoader = new LegoLoader();
-        addObject(legoLoader,642,414);
+        LegoLoader legoLoader = new LegoLoader(); // Creates a new instance of LegoLoader()
+        addObject(legoLoader,642,414); // Spawns the LegoLoader into the LoadingScreen
     }
 }

@@ -9,14 +9,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Target extends Actor
 {
     private int SPEED = 8; // speed for the MarioStyleWorld
-    private int speedRaceWorld = 1; // speed for the RaceWorld
-
-    public Ken ken;
-    public Barbie barbie;
+    private int speedRaceWorld = 3; // speed for the RaceWorld
+    
+    private MainWorld mainworld;
 
     /**
      * Constructor for the Target class.
-     * Contrutor da classe Target.
+     * Construtor da classe Target.
      */
     public Target() {
         
@@ -48,6 +47,16 @@ public class Target extends Actor
         } else if(Greenfoot.isKeyDown("D") || Greenfoot.isKeyDown("right")) {
             move(-SPEED);
         }
+    }
+    
+    /**
+     * Generates random speed number
+     * Geraa um numero aleatório para a velocidade
+     */
+    public int getRandomSpeed() {
+        int max = 5;
+        int min = 1;
+        return Greenfoot.getRandomNumber(max) + min;
     }
 
     /**

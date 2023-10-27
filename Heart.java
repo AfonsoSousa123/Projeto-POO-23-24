@@ -8,8 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Heart extends Target
 {
+    /**
+     * Constructor for the Heart Class.
+     * Construtor para a Heart Class.
+     */
     public Heart() {
-        resizeImage(getImage(), getImage().getWidth()/6, getImage().getHeight()/6);
+        resizeImage(getImage(), getImage().getWidth()/7, getImage().getHeight()/7);
     }
     
     /**

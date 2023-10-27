@@ -20,8 +20,23 @@ public class KenCar extends Vehicle
         private static final String RIGHT = "right";
     }
     
+    /**
+     * Constructor for the KenCar Class.
+     * Construtor para a KenCar Class.
+     */
     public KenCar() {
-        redimencionaImg(kenCar, 50);
+        ImageSize = 50;
+        redimencionaImg(kenCar, ImageSize);
+        setImage(kenCar);
+    }
+    
+    /**
+     * Overloaded Constructor for the KenCar Class.
+     * Overloaded Construtor para a KenCar Class.
+     */
+    public KenCar(int imageSize) {
+        this.ImageSize = imageSize;
+        redimencionaImg(kenCar, imageSize);
         setImage(kenCar);
     }
     
@@ -42,6 +57,7 @@ public class KenCar extends Vehicle
         collectStuds(this);
         collectHearts(this);
         collectStars(this);
-        isTouching(this, getX(), getY());
+        isTouchingVehicle(this, getX(), getY());
+        isTouchingObject(this, getX(), getY());
     }
 }

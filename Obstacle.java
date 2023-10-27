@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Obstacle extends Actor
 {
     private int SPEED = 8;
+    private int speedRaceWorld = 3; // speed for the RaceWorld
     
     /**
      * Act - do whatever the Obstacle wants to do. This method is called whenever
@@ -19,13 +20,21 @@ public class Obstacle extends Actor
         // Add your action code here.
     }
     
-    public void moveObstacle() {
+    public void moveObstacle(int x, int y) {
         if (getWorld() instanceof  MarioStyleWorld) {
             if(Greenfoot.isKeyDown("A") || Greenfoot.isKeyDown("left")) {
                 move(SPEED);
+                for (Object obj : getIntersectingObjects(Enemy.class)) {
+                    ((Actor) obj).setLocation(((Actor) obj).getX() + SPEED, ((Actor) obj).getY());
+                }
             } else if(Greenfoot.isKeyDown("D") || Greenfoot.isKeyDown("right")) {
                 move(-SPEED);
+                for (Object obj : getIntersectingObjects(Enemy.class)) {
+                    ((Actor) obj).setLocation(((Actor) obj).getX() - SPEED, ((Actor) obj).getY());
+                }
             }
+        } else if (getWorld() instanceof RaceWorld) {
+            setLocation(x, y + speedRaceWorld);
         }
     }
 }

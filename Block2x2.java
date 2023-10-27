@@ -14,6 +14,6 @@ public class Block2x2 extends Obstacle
      */
     public void act()
     {
-        // Add your action code here.
+        moveObstacle(getX(), getY());
     }
 }

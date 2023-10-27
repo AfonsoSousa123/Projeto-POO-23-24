@@ -12,7 +12,7 @@ public class Player extends Actor
     private int SPEED = 2; // velocidade
     private int VSPEED = 0; // velocidade vertical
     private int acceleration = 2; // aceleração
-    private int jumpStrenght = 50; // força do salto
+    private int jumpStrenght = 45; // força do salto
     private int length; // largura
     private int imageSize = 30; // tamanho das imagens
 
@@ -20,7 +20,7 @@ public class Player extends Actor
     MainWorld mainWorld;
 
     public Player() {
-
+        int playerSize = imageSize;
     }
 
     public void addedToWorld(World w) {
@@ -28,7 +28,7 @@ public class Player extends Actor
     }
 
     public void act() {
-        mainWorld.checkStarCount();
+        
     }
 
     // BEGIN Player Movement -------------------------------------------------------
@@ -38,39 +38,68 @@ public class Player extends Actor
      * Move o Player
      */
     public void movePlayer(
-    String up, 
-    String down, 
-    String left, 
-    String right, 
-    int x, 
-    int y, 
-    GifImage imageLeft,
-    GifImage imageRight,
-    GreenfootImage imageFront
+        String up, 
+        String down, 
+        String left, 
+        String right, 
+        int x, 
+        int y, 
+        GifImage imageLeft,
+        GifImage imageRight,
+        GreenfootImage imageFront
     ) {
-        if(getWorld() instanceof MarioStyleWorld || getWorld() instanceof PlanetaTerra) {
+        if(getWorld() instanceof MarioStyleWorld) {
             movePlayerMarioWorld(up, left, right, x, y, imageLeft, imageRight, imageFront);
         } else if (getWorld() instanceof PacmanWorld) {
             movePlayerPacmanWorld(up, down, left, right, x, y, imageLeft, imageRight, imageFront);
         }
+        else if (getWorld() instanceof PlanetaTerra) {
+            SPEED = 4;
+            movePlayerPlanetaTerra(left, right, x, y, imageLeft, imageRight, imageFront);
+        }
     }
-
+    
+    /**
+     * Moves the Player in the MarioStyleWorld
+     * Move o Player no MarioStyleWorld
+     */
+    private void movePlayerPlanetaTerra( 
+        String left, 
+        String right, 
+        int x, 
+        int y, 
+        GifImage imageLeft,
+        GifImage imageRight,
+        GreenfootImage imageFront
+    ) {
+        if(Greenfoot.isKeyDown(left)) {
+            setImage(imageLeft.getCurrentImage());
+            moveLeft(x,y);
+        } else if(Greenfoot.isKeyDown(right)) {
+            setImage(imageRight.getCurrentImage());
+            moveRight(x,y);
+        } else {
+            setImage(imageFront);
+        }
+    }
+    
     /**
      * Moves the Player in the MarioStyleWorld
      * Move o Player no MarioStyleWorld
      */
     private void movePlayerMarioWorld(
-    String up,  
-    String left, 
-    String right, 
-    int x, 
-    int y, 
-    GifImage imageLeft,
-    GifImage imageRight,
-    GreenfootImage imageFront
+        String up,  
+        String left, 
+        String right, 
+        int x, 
+        int y, 
+        GifImage imageLeft,
+        GifImage imageRight,
+        GreenfootImage imageFront
     ) {
         if(Greenfoot.isKeyDown(up) && onGround(this)) {
             jump(x,y);
+            mainWorld.playJumpSound();
         } else if(Greenfoot.isKeyDown(left)) {
             setImage(imageLeft.getCurrentImage());
             moveLeft(x,y);
@@ -87,15 +116,15 @@ public class Player extends Actor
      * Move o Player no PacmanWorld
      */
     private void movePlayerPacmanWorld(
-    String up,  
-    String down,
-    String left, 
-    String right, 
-    int x, 
-    int y, 
-    GifImage imageLeft,
-    GifImage imageRight,
-    GreenfootImage imageFront
+        String up,
+        String down,
+        String left,
+        String right,
+        int x,
+        int y,
+        GifImage imageLeft,
+        GifImage imageRight,
+        GreenfootImage imageFront
     ) {
         if(Greenfoot.isKeyDown(up) && canMoveUp()) {
             moveUp(x,y);
@@ -131,24 +160,50 @@ public class Player extends Actor
             }
         }
     }
+    
+    /**
+     * Teleports the Player through the passages in the boundaries of the PacmanWorld
+     * Teleporta o Player através das passagens nas bordas do PacmanWorld
+     */
+    public void teleportPlayer(Player player) {
+        if (getWorld() instanceof PacmanWorld) {
+            // Vertical Lines
+            if (player.getY() > 800) {
+                // the upper left to the lower left passage | da passagem do canto superior esquerdo para a do inferior esquerdo
+                if (player.getX() > 345 && player.getX() < 433) {
+                    player.setLocation(388, 0); // teleports the player directly above its position
+                } else if (player.getX() > 954 && player.getX() < 1042) {
+                    player.setLocation(997, 0); // teleports the player directly above its position
+                }
+            } else if (player.getY() < 0) {
+                // the upper left to the lower left passage | da passagem do canto inferior esquerdo para a do superior esquerdo
+                if (player.getX() > 345 && player.getX() < 433) {
+                    player.setLocation(388, 800); // teleports the player directly below its position
+                } else if (player.getX() > 954 && player.getX() < 1042) {
+                    player.setLocation(997, 800); // teleports the player directly below its position
+                }
+            }
+            
+            // Horizontal Lines
+            if (player.getX() > 1300) {
+                // the upper left to the upper right passage | da passagem do canto superior esquerdo para a do superior direito
+                if (player.getY() > 74 && player.getY() < 162) { 
+                    player.setLocation(0, 97); // teleports the player directly to its right position
+                } else if (player.getY() > 663 && player.getY() < 751) {
+                    player.setLocation(0, 706); // teleports the player directly to its right position
+                }
+            } else if (player.getX() < 0) {
+                // the upper right to the upper left passage | da passagem do canto superior direito para a do superior esquerdo
+                if (player.getY() > 74 && player.getY() < 162) { // the upper right to the upper left passage
+                    player.setLocation(1300, 97); // teleports the player directly to its left position
+                } else if (player.getY() > 663 && player.getY() < 751) {
+                    player.setLocation(1300, 706); // teleports the player directly to its left position
+                }
+            }
+        }
+    }
 
     // END Player Movement -------------------------------------------------------
-
-    // public void moveTopView(int x, int y, int rotation) {
-    // int currentX = x;
-    // int currentY = y;
-    // int direction = rotation; // getRotation()
-    // int changeX = getChangeX(direction);
-    // int changeY = getChangeY(direction);
-    // int adjustedChangeX = adjustOffset(changeX);
-    // int adjustedChangeY = adjustOffset(changeY);
-
-    // Actor block = getOneObjectAtOffset(adjustedChangeX, adjustedChangeY, Block2x2.class);
-    // // if the block is null then we can move
-    // if(block==null) { 
-    // setLocation(currentX + changeX, currentY + changeY);
-    // }
-    // }
 
     /**
      * Resizes the given Image to a width and height times the percent specified 
@@ -166,8 +221,7 @@ public class Player extends Actor
      * Redimensiona o Gif dado para um comprimento e uma altura de acordo com a percentagem fornecida
      */
     public GifImage redimencionaGif(GifImage gif, int percent) {
-        for (GreenfootImage image : gif.getImages())
-        {
+        for (GreenfootImage image : gif.getImages()) {
             int wide = image.getWidth()*percent/100;
             int high = image.getHeight()*percent/100;
             image.scale(wide, high);
@@ -316,7 +370,7 @@ public class Player extends Actor
 
         return canMoveDown;
     }
-
+    
     /**
      * PacmanWorld code end
      */
@@ -356,32 +410,6 @@ public class Player extends Actor
     }
 
     // END Player Movement -------------------------------------------------------
-
-    // /**
-    // * Moves the Player into the X direction
-    // */
-    // public int getChangeX(int direction) {
-    // if(direction == Direction.RIGHT) {
-    // return SPEED;
-    // } 
-    // if(direction == Direction.LEFT) {
-    // return -SPEED;
-    // }
-    // return 0;
-    // }
-
-    // /**
-    // * Moves the Player into the Y direction
-    // */
-    // public int getChangeY(int direction) {
-    // if(direction == Direction.DOWN) {
-    // return SPEED;
-    // } 
-    // if(direction == Direction.UP) {
-    // return -SPEED;
-    // }
-    // return 0;
-    // }
 
     /**
      * Sets an adjusted offset with the given value
@@ -455,15 +483,18 @@ public class Player extends Actor
 
         if(enemy != null) {
             if (player.getClass() == Barbie.class) {
-                
                 mainWorld.removeBarbieLives(1); // Removes one live for Barbie
-                barbieSpawnLocation();
+                if(getWorld() instanceof PacmanWorld) 
+                    barbieSpawnLocation();
+                else
+                    marioWorldSpawnLocation();
             } else if (player.getClass() == Ken.class) {
-                
                 mainWorld.removeKenLives(1); // Removes one live for Ken
-                kenSpawnLocation();
+                if(getWorld() instanceof PacmanWorld) 
+                    kenSpawnLocation();
+                else
+                    marioWorldSpawnLocation();
             }
-            
             mainWorld.playDeathSound(); // Plays the healthSound
         }
     }
@@ -474,5 +505,9 @@ public class Player extends Actor
 
     public void kenSpawnLocation() {
         setLocation(997, 358);
+    }
+    
+    public void marioWorldSpawnLocation() {
+        setLocation(300,300); // Spawns the player into the coordinates
     }
 }

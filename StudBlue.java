@@ -8,6 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class StudBlue extends Target
 {
+    /**
+     * Constructor for the StudBlue Class.
+     * Construtor para a StudBlue Class.
+     */
     public StudBlue() {
         resizeImage(getImage(), 50, 50);
     }

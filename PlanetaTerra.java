@@ -11,8 +11,8 @@ public class PlanetaTerra extends MainWorld
     private int playerSize = 80;
     
     /**
-     * Constructor for objects of class MyWorld.
-     * 
+     * Constructor for PlanetaTerra class.
+     * Contrutor para a Classe PlanetaTerra.
      */
     public PlanetaTerra()
     {    
@@ -29,10 +29,10 @@ public class PlanetaTerra extends MainWorld
     private void populateWorld()
     {
         Barbie barbie = new Barbie(playerSize);
-        addObject(barbie,570, 591);
+        addObject(barbie,570, 634);
 
         Ken ken = new Ken(playerSize);
-        addObject(ken,750, 591);
+        addObject(ken,750, 634);
         
         Ground ground = new Ground();
         addObject(ground,1163,754);
@@ -44,6 +44,17 @@ public class PlanetaTerra extends MainWorld
         addObject(ground4,384,753);
         Ground ground5 = new Ground();
         addObject(ground5,115,754);
+        
+        Portal portal = new Portal();
+        addObject(portal,1111,645);
+        
+        Arrow arrow = new Arrow();
+        addObject(arrow,1119,405);
+        
+        ScoreScreen screen = new ScoreScreen();
+        addObject(screen,633,290);
+        
+        setPaintOrder(Player.class, Portal.class);
     }
     
     /**

@@ -6,18 +6,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PacmanWorld extends MainWorld
-{
-    String[] textMap = {
+public class PacmanWorld extends MainWorld {
+    String[] textMap = { // Array de Strings
         "****b******p***",
-        "phpbEpbpbpbspbb",
+        "phpbppbpbEbpbpb",
         "*p**p*p******p*",
         "*b*pbpbEpbpbpb*",
         "*p*b*B*b*p*K*p*",
         "*b*p*p*p*b*b*p*",
         "*p*bpbpEpbpbpb*",
         "*b*b**b*b****h*",
-        "bpEsbpb*ppbEbpb",
+        "bpEpbpb*ppbEbpb",
         "****p******b***",
     };
     
@@ -26,30 +25,45 @@ public class PacmanWorld extends MainWorld
     private int BlockOffsetX = 40; // X Offset of the block
     private int mobSize = 13; // Size of the mob 
     private int playerSize = 24; // Size of the player
+    private boolean StopSpawn = false; // Stops the Spawning of the Stars
 
     /**
      * Constructor for objects of class PacmanWorld.
-     * 
+     * Contrutor da classe PacmanWorld
      */
     public PacmanWorld()
     {
-        drawMap();
-        setPaintOrder(Scoreboard.class, Mob.class, Player.class, Target.class);
+        drawMap(); // Calls the drawMap method;
+        setPaintOrder(Scoreboard.class, Mob.class, Player.class, Target.class); // Sets the Paint Order of the PacmanWorld
     }
     
     public void act() {
-        checkStarCount();
+        checkStarCount(); // Calls the checkStarCount method;
+        spawnStarsPW(); // Calls the spawnStarsPW method;
+    }
+    
+    /**
+     * Spawns the Stars when the Score is 1000
+     * Adiciona as Stars quando o Score for igual a 1000
+     */
+    public void spawnStarsPW() {
+        if (getScore() == 1000 && !StopSpawn) { // Spawns the Stars when the score is equals to 1000
+            addObject(new Star(), 823, 97);
+            addObject(new Star(), 214, 706);
+            StopSpawn = true;
+        }
     }
     
     /**
      * Draws world map for the program using the textMap String Array.
+     * Desenha o mundo usando uma matriz de Strings
      */
     public void drawMap() {
         for(int i=0; i<textMap.length; i++) {
-            String mapLine = textMap[i];
+            String mapLine = textMap[i]; // Linha da matriz
             
             for(int j=0; j<mapLine.length(); j++) {
-                char mapChar = mapLine.charAt(j);
+                char mapChar = mapLine.charAt(j); // character na linha
                 int y = i * BlockSize + BlockOffsetY; // x position times the size of the Block plus the offset
                 int x = j * BlockSize + BlockOffsetX; // y position times the size of the Block plus the offset
                 
@@ -79,6 +93,7 @@ public class PacmanWorld extends MainWorld
                         addObject(new Heart(),x,y);
                         break;
                     default:
+                        // just leaves an empty space
                         break;
                 }
             }

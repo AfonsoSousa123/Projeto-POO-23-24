@@ -9,31 +9,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Mob extends Actor
 {
     // Local variables
-    private int SPEED = 2;
-    private int VSPEED = 0;
-    private int acceleration = 2;
-    private int imageSize = 30;
-    private int timer = 0;
+    private int SPEED = 2; // Velocidade
+    private int VSPEED = 0; // Velocidade vertical
+    private int acceleration = 2; // aceleração
+    private int imageSize = 30; // tamanho ad imagem
+    private int timer = 0; // contador
 
-    private int width = getImage().getWidth(); 
-    private int height = getImage().getHeight();
-    private int lookForWalls = width/3;
-    private int lookForEdge = width/5; 
-    private int lookForGround = height/2;
-
-    // class Direction { // Class to store the values of the rotation for each movement
-    // public static final int UP = 270;
-    // public static final int DOWN = 90;
-    // public static final int LEFT = 180;
-    // public static final int RIGHT = 0;
-    // }
+    private int width = getImage().getWidth(); // comprimento
+    private int height = getImage().getHeight(); //altura
+    private int lookForWalls = width/3; // Porcura pelas paredes
+    private int lookForEdge = width/5;  // Procura pelas bordas
+    private int lookForGround = height/2; // Procura pelo chão
 
     // World variables | Variaveis World
-    MainWorld mainWorld;
-
-    public Mob() {
-
-    }
+    private MainWorld mainWorld;
 
     public void addedToWorld(World w) {
         mainWorld = (MainWorld)w;
@@ -52,10 +41,10 @@ public class Mob extends Actor
      * Moves the Mob
      */
     public void moveMob(
-    int x, 
-    int y, 
-    GifImage imageLeft,
-    GifImage imageRight
+        int x, 
+        int y, 
+        GifImage imageLeft,
+        GifImage imageRight
     ) {
         if(getWorld() instanceof MarioStyleWorld) {
             moveMobMW(imageLeft, imageRight, x, y);
@@ -81,39 +70,27 @@ public class Mob extends Actor
                 lookForEdge *= -1;
             }
 
-            // // Check if the Mob is turning left or right
-            // if (x > 0) {
-            // // Turning right.
-            // setImage(imageRight.getCurrentImage());
-            // } else if (x < 0) {
-            // // Turning left.
-            // setImage(imageLeft.getCurrentImage());
-            // }
+            // Check if the Mob is turning left or right
+            if (SPEED < 0) {
+            // Turning right.
+            setImage(imageRight.getCurrentImage());
+            } else if (SPEED > 0) {
+            // Turning left.
+            setImage(imageLeft.getCurrentImage());
+            }
 
             // Move the Mob according to its speed
             setLocation(x + SPEED, y);
         }
     }
-
-    /**
-     * Simulates the gravity of the Mob
-     */
-    public void fall(int x,int y) {
-        if(getWorld() instanceof  MarioStyleWorld) {
-            setLocation(x, y + VSPEED);
-            VSPEED += acceleration;
-        }
-    }
-
-    /**
-     *  Checks if the Mob is falling
-     */
-    public void checkFall(Mob enemy, int x,int y) {
+    
+    public void checkEdges(Mob enemy, int x,int y) {
         if(getWorld() instanceof  MarioStyleWorld){
-            if(!onGround(enemy)) {
-                fall(x,y);
-            } else if (onGround(enemy)) {
-                VSPEED = 0;
+            if(!onGround(enemy) && SPEED == SPEED){
+                setLocation(x + SPEED , y);
+            }
+            if(!onGround(enemy) && SPEED == -SPEED){
+                setLocation(x - SPEED , y);
             }
         }
     }
@@ -135,21 +112,19 @@ public class Mob extends Actor
      * Move o Mob para a direita e a esquerda
      */
     private void moveMobPW(GifImage imageLeft, GifImage imageRight, int x, int y) {
-        if (x > 0) { // Check which direction the Mob is moving in.
+        if (SPEED < 0) { // Check which direction the Mob is moving in.
             setImage(imageRight.getCurrentImage()); // Set the Mob's image to the right-facing image.
         } else {
             setImage(imageLeft.getCurrentImage()); // Set the Mob's image to the left-facing image.
         }
-        
-        timer++; // Increment the timer.
+
         setLocation(x + SPEED, y); // Move the Mob.
 
-        if (timer >= 200) { // Check if the timer has reached the maximum value.
-            timer = 0; // Reset the timer.
+        if (isAtEdge()) { // Check if the Mob has reached the edge of the world.
+            setImage(imageLeft.getCurrentImage()); // Reset the Mob's image.
             SPEED *= -1; // Reverse the Mob's direction.
         }
-
-        if (x >= getWorld().getWidth() || x <= 0) { // Check if the Mob has reached the edge of the world.
+        if (!canMoveLeft() || !canMoveRight()) { // Check if the Mob has reached the edge of the world.
             setImage(imageLeft.getCurrentImage()); // Reset the Mob's image.
             SPEED *= -1; // Reverse the Mob's direction.
         }
@@ -192,45 +167,9 @@ public class Mob extends Actor
     }
 
     /**
-     * Checks if the Mob can move up
-     * Verifica se o jogador consegue se mover para cima
-     */
-    public boolean canMoveUp() {
-        boolean canMoveUp = true;
-
-        int imageWidth = getImage().getWidth();
-        int imageHeight = getImage().getHeight();
-
-        if(getOneObjectAtOffset(imageWidth/-2, imageHeight/-2-4, Block2x2.class) != null || 
-        getOneObjectAtOffset(imageWidth/2-1, imageHeight/-2-4, Block2x2.class) != null) {
-            canMoveUp = false;
-        }
-
-        return canMoveUp;
-    }
-
-    /**
-     * Checks if the Mob can move down
-     * Verifica se o jogador consegue se mover para baixo
-     */
-    public boolean canMoveDown() {
-        boolean canMoveDown = true;
-
-        int imageWidth = getImage().getWidth();
-        int imageHeight = getImage().getHeight();
-
-        if(getOneObjectAtOffset(imageWidth/-2, imageHeight/2+4, Block2x2.class) != null || 
-        getOneObjectAtOffset(imageWidth/2-1, imageHeight/2+4, Block2x2.class) != null) {
-            canMoveDown = false;
-        }
-
-        return canMoveDown;
-    }
-
-    /**
      * PacmanWorld code end
      */
-
+    
     public GreenfootImage redimencionaImg(GreenfootImage image, int percent) {
         int wide = image.getWidth()*percent/100;
         int high = image.getHeight()*percent/100;
@@ -245,57 +184,5 @@ public class Mob extends Actor
             image.scale(wide, high);
         }
         return gif;
-    }
-
-    /**
-     * Checks if the Mob is touching the right wall
-     */
-    public boolean checkRightWall(Actor Mob) { // verifica se está em contacto com a parede da direita
-        int spriteWidth = getImage().getWidth();
-        int xDistance = spriteWidth/2;
-
-        Actor rWall = getOneObjectAtOffset(xDistance, 0, Block2x2.class);
-
-        if(rWall == null) {
-            return false;
-        } else {
-            StopByTherWall(rWall);
-            return true;
-        }
-    }
-
-    /**
-     *  Mob stops when reaches a wall on the right
-     */
-    public void StopByTherWall(Actor rWall) { // para quando está em contacto na parede da esquerda
-        int wallWidth = rWall.getImage().getWidth();
-        int newX = rWall.getX() - (wallWidth + getImage().getWidth())/2;
-        setLocation(newX, getY());
-    }
-
-    /**
-     *  Checks if the Mob is thoucing the left wall
-     */
-    public boolean checkLeftWall(Actor Mob) { // verifica se está em contacto com a parede da esquerda
-        int spriteWidth = getImage().getWidth();
-        int xDistance = spriteWidth/-3;
-
-        Actor lWall = getOneObjectAtOffset(xDistance, 0, Block2x2.class);
-
-        if(lWall != null) {
-            StopByTheLWall(lWall);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     *  Mob stops when it reaches a wall on the left
-     */
-    public void StopByTheLWall(Actor lWall) { // para quando está em contacto na parede da esquerda
-        int wallWidth = lWall.getImage().getWidth();
-        int newX = lWall.getX() + (wallWidth + getImage().getHeight())/3;
-        setLocation(newX, getY());
     }
 }

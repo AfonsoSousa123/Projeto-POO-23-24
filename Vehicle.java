@@ -1,26 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Vehicle extends Actor
-{
+public class Vehicle extends Actor {
     // Local variables | variaveis locais
     private int SPEED = 2; // velocidade
     private int VSPEED = 0; // velocidade vertical
     private int acceleration = 2; // aceleração
-    private int colide = 120;
+    private int colide = 120; // variavel para o offset do caro
 
     // World variables | Variaveis World
-    MainWorld mainWorld;
-    
-    public Vehicle() {
-        
-    }
+    private MainWorld mainWorld;
     
     public void addedToWorld(World w) {
         mainWorld = (MainWorld)w;
-    }
-    
-    public void act() {
-        
     }
     
     public GreenfootImage redimencionaImg(GreenfootImage image, int percent) {
@@ -45,17 +36,36 @@ public class Vehicle extends Actor
         if(getWorld() instanceof RaceWorld) {
             if(Greenfoot.isKeyDown(up)) {
                 moveUp(x, y);
-            } else if(Greenfoot.isKeyDown(down)) {
+            } 
+            if(Greenfoot.isKeyDown(down)) {
                 moveDown(x, y);
-            } else if(Greenfoot.isKeyDown(right)) {
-                if(getX()<932)
+            } 
+            if(Greenfoot.isKeyDown(right)) {
+                if(getX() < 932)
                     moveRight(x, y);
-            } else if(Greenfoot.isKeyDown(left)) {
-                if(getX()>300)
+            } 
+            if(Greenfoot.isKeyDown(left)) {
+                if(getX() > 300)
                     moveLeft(x, y);
             } 
-       } 
-        
+
+            if(Greenfoot.isKeyDown(right) && Greenfoot.isKeyDown(up)) {
+                if(getX() < 932 && getX() > 300)
+                    moveUpAndRight(x, y);
+            } 
+            if(Greenfoot.isKeyDown(left) && Greenfoot.isKeyDown(up)) {
+                if(getX() < 932 && getX() > 300)
+                    moveUpAndLeft(x, y);
+            } 
+            if(Greenfoot.isKeyDown(right) && Greenfoot.isKeyDown(down)) {
+                if(getX() < 932 && getX() > 300)
+                    moveDownAndRight(x, y);
+            } 
+            if(Greenfoot.isKeyDown(left) && Greenfoot.isKeyDown(down)) {
+                if(getX() < 932 && getX() > 300)
+                    moveDownAndLeft(x, y);
+            }
+        }
     }
     
     /**
@@ -91,6 +101,38 @@ public class Vehicle extends Actor
     }
     
     /**
+     * Moves the Vehicle Up and Right
+     * Move o Vehicle para a cima e para a direita
+     */
+    private void moveUpAndRight(int x, int y) {
+        setLocation(x + SPEED, y - SPEED);
+    }
+    
+    /**
+     * Moves the Vehicle Up and Left
+     * Move o Vehicle para a cima e para a esquerda
+     */
+    private void moveUpAndLeft(int x, int y) {
+        setLocation(x - SPEED, y - SPEED);
+    }
+    
+    /**
+     * Moves the Vehicle Down and Right
+     * Move o Vehicle para a baixo e para a direita
+     */
+    private void moveDownAndRight(int x, int y) {
+        setLocation(x + SPEED, y + SPEED);
+    }
+    
+    /**
+     * Moves the Vehicle Down and Left
+     * Move o Vehicle para a baixo e para a esquerda
+     */
+    private void moveDownAndLeft(int x, int y) {
+        setLocation(x - SPEED, y + SPEED);
+    }
+    
+    /**
      * Collects the studs and adds points to the Scoreboard
      * Apanha as studs e adiciona os respetivos pontos ao Scoreboard
      */
@@ -119,8 +161,8 @@ public class Vehicle extends Actor
         if(heart != null) {
             if (vehicle.getClass() == BarbieCar.class) {
                 mainWorld.addBarbieLives(1); // Adds one live to the livesCounter for Barbie
-            } else if (vehicle.getClass() == BarbieCar.class) {
-                mainWorld.addKenLives(1); // Adds one live to the livesCounter for Kem
+            } else if (vehicle.getClass() == KenCar.class) {
+                mainWorld.addKenLives(1); // Adds one live to the livesCounter for Ken
             }
             
             mainWorld.playHealthSound(); // Plays the healthSound
@@ -142,9 +184,10 @@ public class Vehicle extends Actor
         }
     }
     
-    public void isTouching(Vehicle vehicle,int x, int y) {
+    public void isTouchingVehicle(Vehicle vehicle,int x, int y) {
         Actor BarbieCar = getOneIntersectingObject(BarbieCar.class);
         Actor KenCar = getOneIntersectingObject(KenCar.class);
+        
         if(BarbieCar != null){
             int newX = x - colide;
             int newY = BarbieCar.getY();
@@ -154,6 +197,39 @@ public class Vehicle extends Actor
             int newX = x + colide;
             int newY = KenCar.getY();
             KenCar.setLocation(newX,newY);
+        }
+    }
+    
+    public void isTouchingObject(Vehicle vehicle,int x, int y) {
+        Actor ground = getOneIntersectingObject(Ground.class);
+        Actor block2x2 = getOneIntersectingObject(Block2x2.class);
+        
+        if(ground != null || block2x2!= null){
+            int newBarbieX = 432;
+            int newKenX = 802;
+            int newY = 631;
+            
+            if (vehicle.getClass() == BarbieCar.class) {
+                mainWorld.removeBarbieLives(1);
+                vehicle.setLocation(newBarbieX, newY); // Spawns the vehicle to the given x and y
+            } else if (vehicle.getClass() == KenCar.class) {
+                mainWorld.removeKenLives(1);
+                vehicle.setLocation(newKenX, newY); // Spawns the vehicle to the given x and y
+            }
+            
+            mainWorld.playExplosionSound(); // Plays the ExplosionSound
+        }
+    }
+    
+    /**
+     * Checks if the Vheicle is at the Edge of the World
+     * Verifica se o Vheicle está nas bordas do World
+     */
+    public void isAtEdge(Vehicle vehicle,int x, int y){
+        if(vehicle.isAtEdge()){
+            vehicle.setLocation(x,y);
+            vehicle.setLocation(vehicle.getX(), vehicle.getY() - 2);
+            vehicle.setLocation(vehicle.getX(), vehicle.getY() + 2);
         }
     }
 }

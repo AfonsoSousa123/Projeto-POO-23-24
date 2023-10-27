@@ -8,23 +8,26 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MainWorld extends World
 {
-    Scoreboard sb; // space variable
+    private Scoreboard sb; // Scoreboard variable
+    private Portal portal; // Portal variable
+    private Player player; // Player variable
 
-    private int volume = 10; // volume geral dos .mp3
-    private int volumeWav = 70; // volume dos .wav
+    private int volume = 15; // volume geral dos .mp3
+    private int volumeWav = 70; // volume geral dos .wav
 
     // Initializes the sounds | Inicializa os sons
     private GreenfootSound fallingSound = new GreenfootSound("Falling-object.mp3");
-    private GreenfootSound coinSound = new GreenfootSound("8bit-coin-sound-effect.mp3");
+    private GreenfootSound coinSound = new GreenfootSound("coin.wav");
     private GreenfootSound deathSound = new GreenfootSound("Pacman-death-sound.mp3");
-    private GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
-    private GreenfootSound healthSound = new GreenfootSound("red_coin.wav");
-    private GreenfootSound exitLevelSound = new GreenfootSound("exit_course.wav");
     private GreenfootSound victorySound =  new GreenfootSound("Retro-winning-sound-effect.mp3");
-    private GreenfootSound gameOverSound = new GreenfootSound("game_over.wav");
+    private GreenfootSound explosionSound =  new GreenfootSound("Cartoon-explosion.mp3");
+    private GreenfootSound oneUpSound = new GreenfootSound("1-up.wav");
+    private GreenfootSound healthSound = new GreenfootSound("super_mushroom.wav");
+    private GreenfootSound exitLevelSound = new GreenfootSound("exit_course.wav");
+    private GreenfootSound gameOverSound = new GreenfootSound("smb_gameover.wav");
     private GreenfootSound startGameSound = new GreenfootSound("press_start.wav");
+    private GreenfootSound jumpSound = new GreenfootSound("jump-super.wav");
     
-
     /**
      * Constructor for objects of class MainWorld.
      * Contrutor para os objetos da classe MainWorld.
@@ -33,11 +36,7 @@ public class MainWorld extends World
     public MainWorld() {    
         // Create a new world with 1300x800 cells with a cell size of 1x1 pixels. | Cria um novo mundo com 1300x800 células, com um tamanho de célula de 1x1 pixeis
         super(1300, 800, 1, false); // The boolean atribute, is to set the world with bounds | O atributo boolean, define se o mundo tem ou não bordas
-        spawnScore();
-    }
-    
-    public void act() {
-        
+        spawnScore(); // Imprime o Score
     }
 
     /**
@@ -46,7 +45,8 @@ public class MainWorld extends World
      */
     private void spawnScore() {
         sb = new Scoreboard(); // Initializes the Scoreboard object | Inicializa o objeto Scoreboard
-        if (getClass() != Menu.class) // all worlds but not the Menu
+        if (getClass() != Menu.class && getClass() != PlanetaTerra.class &&
+        getClass() != BarbieLand.class) // all worlds but not the Menu
             addObject(sb, getWidth()/2, 30); // Adds the Scoreboard onto the Worlds
     }
 
@@ -113,15 +113,15 @@ public class MainWorld extends World
     public void checkStarCount() {
         if (sb.starCount == 2 && sb.level == 1 && getClass() == MarioStyleWorld.class) {
             sb.level++; // Increments one level | Incrementa um nivel
-            // levelTwo(); // Teleports the player to the level 2 | Teleporta o player para o nivel 2
-            loadingScreen();
+            loadingScreen(); // Teleports the player to LoadingScreen | Teleporta o player para o LoadingScreen
         } else if (sb.starCount == 4 && sb.level == 2 && getClass() == PacmanWorld.class) {
             sb.level++; // Increments one level | Incrementa um nivel
-            // levelThree(); // Teleports the player to the level 3 | Teleporta o player para o nivel 3
-            loadingScreen();
+            loadingScreen(); 
         } else if (sb.starCount == 6 && sb.level == 3 && getClass() == RaceWorld.class) {
             sb.level++; // Increments one level | Incrementa um nivel
-            barbieLand(); // Teleports the player to the BarbieLand (the End) | Teleporta o player para a BarbieLand (O Fim)
+            loadingScreen();
+        } else if (getClass() == PlanetaTerra.class) {
+            sb.level++; // Increments one level | Incrementa um nivel
             loadingScreen();
         }
     }
@@ -150,6 +150,11 @@ public class MainWorld extends World
     public void levelThree() {
         Greenfoot.setWorld(new RaceWorld()); 
     }
+    
+    // Sends the Players to Planeta Terra | Manda os players para o Planeta Terra
+    public void planetaTerra() {
+        Greenfoot.setWorld(new PlanetaTerra());  
+    }
 
     // Sends the Players to the Barbie Land | Manda os Players para Barbie Land
     public void barbieLand() {
@@ -165,6 +170,15 @@ public class MainWorld extends World
     public void playOneUpSound() {
         oneUpSound.setVolume(volumeWav); // Sets the volume of the oneUpSound
         oneUpSound.play(); // Plays the oneUpSound
+    }
+    
+    /**
+     * Plays the JumpSound
+     * Toca o JumpSound
+     */
+    public void playJumpSound() {
+        jumpSound.setVolume(volumeWav); // Sets the volume of the jumpSound
+        jumpSound.play(); // Plays the jumpSound
     }
 
     /**
@@ -190,7 +204,7 @@ public class MainWorld extends World
      * Toca o CoinSound
      */
     public void playCoinSound() {
-        coinSound.setVolume(volume); // Sets the volume of the coinSound
+        coinSound.setVolume(volumeWav); // Sets the volume of the coinSound
         coinSound.play(); // Plays the coinSound
     }
 
@@ -238,6 +252,15 @@ public class MainWorld extends World
         deathSound.setVolume(volume); // Sets the volume of the deathSound
         deathSound.play(); // Plays the deathSound
     }
+    
+    /**
+     * Plays the ExplosionSound
+     * Toca o ExplosionSound
+     */
+    public void playExplosionSound() {
+        explosionSound.setVolume(volume); // Sets the volume of the explosionSound
+        explosionSound.play(); // Plays the explosionSound
+    }
 
     // END Sounds -------------------------------------------------------
 
@@ -267,8 +290,7 @@ public class MainWorld extends World
      * Redimensiona o Gif dado para um comprimento e uma altura de acordo com a percentagem fornecida
      */
     public GifImage redimencionaGif(GifImage gif, int percent) {
-        for (GreenfootImage image : gif.getImages())
-        {
+        for (GreenfootImage image : gif.getImages()) {
             int wide = image.getWidth()*percent/100;
             int high = image.getHeight()*percent/100;
             image.scale(wide, high);

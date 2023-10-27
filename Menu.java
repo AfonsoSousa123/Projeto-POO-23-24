@@ -8,10 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Menu extends MainWorld
 {
-    Scoreboard sb;
+    private Scoreboard sb;
     
     /**
-     * Constructor of Menu class.
+     * Constructor of the Menu class.
      * Contrutor da classe Menu
      */
     public Menu() {    

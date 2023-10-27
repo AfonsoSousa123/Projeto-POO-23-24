@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Barbie extends Player
 {
-    private int ImageSize;
+    private int ImageSize; // tamanho da imagem
     
     GreenfootImage barbieF = new GreenfootImage("Barbie_front.png");
     
@@ -24,18 +24,27 @@ public class Barbie extends Player
     
     /**
      * Constructor for the Barbie Class.
-     * 
+     * Contrutor para a Classe da Barbie.
      */
-    public Barbie(int imageSize)
-    {
-        this.ImageSize = imageSize;
-        redimencionaGif(bwalkingL, ImageSize);
-        redimencionaGif(bwalkingR, ImageSize);
-        setImage(redimencionaImg(barbieF, ImageSize));
+    public Barbie() {
+        ImageSize = 30;
+        redimencionaGif(bwalkingL, ImageSize); // redimensiona a imagem da Barbie
+        redimencionaGif(bwalkingR, ImageSize); // redimensiona a imagem da Barbie
+        setImage(redimencionaImg(barbieF, ImageSize)); // define a imagem da Barbie
     }
     
-    public void act()
-    {
+    /**
+     * Overloaded Constructor for the Barbie Class.
+     * Overloaded Construtor para a Classe da Barbie.
+     */
+    public Barbie(int imageSize) {
+        this.ImageSize = imageSize;
+        redimencionaGif(bwalkingL, imageSize);
+        redimencionaGif(bwalkingR, imageSize);
+        setImage(redimencionaImg(barbieF, imageSize));
+    }
+    
+    public void act() {
         movePlayer(
             BarbieKeys.UP, 
             BarbieKeys.DOWN, 
@@ -55,5 +64,6 @@ public class Barbie extends Player
         collectHearts(this);
         collectStars(this);
         touchEnemy(this);
+        teleportPlayer(this);
     }
 }
