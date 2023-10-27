@@ -17,12 +17,19 @@ public class Enemy extends Mob
 
     GifImage eWalkingR = new GifImage("enemy_walking_R.gif");
     GifImage eWalkingL = new GifImage("enemy_walking_L.gif");
-
-    public Enemy(int imageSize) {
-        this.ImageSize = imageSize;
+    
+    public Enemy() {
+        ImageSize = 30;
         redimencionaGif(eWalkingL, ImageSize);
         redimencionaGif(eWalkingR, ImageSize);
         setImage(redimencionaImg(enemyF, ImageSize));
+    }
+
+    public Enemy(int imageSize) {
+        this.ImageSize = imageSize;
+        redimencionaGif(eWalkingL, imageSize);
+        redimencionaGif(eWalkingR, imageSize);
+        setImage(redimencionaImg(enemyF, imageSize));
     }
 
     /**

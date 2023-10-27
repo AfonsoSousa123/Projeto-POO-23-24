@@ -27,12 +27,22 @@ public class Ken extends Player
      * Constructor for the Ken Class.
      * 
      */
-    public Ken(int imageSize)
-    {
-        this.ImageSize = imageSize;
+    public Ken() {
+        ImageSize = 30;
         redimencionaGif(kwalkingL, ImageSize);
         redimencionaGif(kwalkingR, ImageSize);
         setImage(redimencionaImg(kenF, ImageSize));
+    }
+    
+    /**
+     * Overloaded Constructor for the Ken Class.
+     * Overloaded Contrutor para a Ken Class.
+     */
+    public Ken(int imageSize) {
+        this.ImageSize = imageSize;
+        redimencionaGif(kwalkingL, imageSize);
+        redimencionaGif(kwalkingR, imageSize);
+        setImage(redimencionaImg(kenF, imageSize));
     }
     
     public void act()

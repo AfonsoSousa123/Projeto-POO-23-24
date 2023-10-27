@@ -20,7 +20,7 @@ public class Player extends Actor
     MainWorld mainWorld;
 
     public Player() {
-
+        int playerSize = imageSize;
     }
 
     public void addedToWorld(World w) {

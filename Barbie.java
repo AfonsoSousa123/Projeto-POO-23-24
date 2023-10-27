@@ -26,16 +26,25 @@ public class Barbie extends Player
      * Constructor for the Barbie Class.
      * 
      */
-    public Barbie(int imageSize)
-    {
-        this.ImageSize = imageSize;
+    public Barbie() {
+        ImageSize = 30;
         redimencionaGif(bwalkingL, ImageSize);
         redimencionaGif(bwalkingR, ImageSize);
         setImage(redimencionaImg(barbieF, ImageSize));
     }
     
-    public void act()
-    {
+    /**
+     * Overloaded Constructor for the Barbie Class.
+     * Overloaded Contrutor para a Barbie Class.
+     */
+    public Barbie(int imageSize) {
+        this.ImageSize = imageSize;
+        redimencionaGif(bwalkingL, imageSize);
+        redimencionaGif(bwalkingR, imageSize);
+        setImage(redimencionaImg(barbieF, imageSize));
+    }
+    
+    public void act() {
         movePlayer(
             BarbieKeys.UP, 
             BarbieKeys.DOWN, 
