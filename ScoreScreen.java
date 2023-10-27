@@ -26,6 +26,7 @@ public class ScoreScreen extends Scoreboard
         drawScore();
     }
     
+    @Override
     public void addedToWorld(World w) {
         terra = (PlanetaTerra)w;
         width = terra.getWidth()/2;
@@ -37,11 +38,16 @@ public class ScoreScreen extends Scoreboard
         setImage(screen);
     }
     
+    @Override
     public void drawScore() {
+        star.scale(130, 160);
+        lives.scale(80, 100);
         screen.setColor(Color.WHITE);
         screen.setFont(new Font("Arial", 30));
         screen.drawString("\nScore: "+ score, 10, 30);
-        screen.drawString("\nStars: "+ starCount, 10, 80);
-        screen.drawString("\nLives: ", 10, 130);
+        screen.drawImage(star, 0, 50);
+        screen.drawString(": "+ starCount, 130, 140);
+        screen.drawImage(lives, 25, 150);
+        screen.drawString(": ", 130, 230);
     }
 }
