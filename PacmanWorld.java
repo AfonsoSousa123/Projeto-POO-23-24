@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class PacmanWorld extends MainWorld {
-    String[] textMap = {
+    String[] textMap = { // Array de Strings
         "****b******p***",
         "phpbppbpbEbpbpb",
         "*p**p*p******p*",
@@ -33,13 +33,13 @@ public class PacmanWorld extends MainWorld {
      */
     public PacmanWorld()
     {
-        drawMap();
-        setPaintOrder(Scoreboard.class, Mob.class, Player.class, Target.class);
+        drawMap(); // Calls the drawMap method;
+        setPaintOrder(Scoreboard.class, Mob.class, Player.class, Target.class); // Sets the Paint Order of the PacmanWorld
     }
     
     public void act() {
-        checkStarCount();
-        spawnStarsPW();
+        checkStarCount(); // Calls the checkStarCount method;
+        spawnStarsPW(); // Calls the spawnStarsPW method;
     }
     
     /**
