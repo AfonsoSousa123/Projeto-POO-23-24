@@ -50,6 +50,9 @@ public class PlanetaTerra extends MainWorld
         Arrow arrow = new Arrow();
         addObject(arrow,1119,405);
         
+        ScoreScreen screen = new ScoreScreen();
+        addObject(screen,633,290);
+        
         setPaintOrder(Player.class, Portal.class);
     }
     

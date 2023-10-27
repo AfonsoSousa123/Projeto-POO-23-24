@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MainWorld extends World
 {
     Scoreboard sb; // space variable
+    Portal portal;
+    Player player;
 
     private int volume = 10; // volume geral dos .mp3
     private int volumeWav = 70; // volume dos .wav
@@ -47,7 +49,8 @@ public class MainWorld extends World
      */
     private void spawnScore() {
         sb = new Scoreboard(); // Initializes the Scoreboard object | Inicializa o objeto Scoreboard
-        if (getClass() != Menu.class && getClass() != PlanetaTerra.class) // all worlds but not the Menu
+        if (getClass() != Menu.class && getClass() != PlanetaTerra.class &&
+        getClass() != BarbieLand.class) // all worlds but not the Menu
             addObject(sb, getWidth()/2, 30); // Adds the Scoreboard onto the Worlds
     }
 
@@ -122,10 +125,10 @@ public class MainWorld extends World
             sb.level++; // Increments one level | Incrementa um nivel
             loadingScreen();
         }
-    }
-    
-    public void CheckPortal() {
-        
+        else if (getClass() == PlanetaTerra.class) {
+            sb.level++; // Increments one level | Incrementa um nivel
+            loadingScreen();
+        }
     }
 
     // Loading Screen | Ecra de carregamento
@@ -153,7 +156,8 @@ public class MainWorld extends World
         Greenfoot.setWorld(new RaceWorld()); 
     }
     
-    public void planetTerra() {
+    // Sends the Players to Planeta Terra | Manda os players para o Planeta Terra
+    public void planetaTerra() {
         Greenfoot.setWorld(new PlanetaTerra());  
     }
 

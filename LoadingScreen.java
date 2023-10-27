@@ -51,8 +51,8 @@ public class LoadingScreen extends MainWorld
                     levelThree(); // Teleports the player to the Level Three | Teleporta o player para a BarbieLand (O Fim)
                     break;
                 case 4:
-                    barbieLand(); // Teleports the player to the BarbieLand (the End) | Teleporta o player para a BarbieLand (O Fim)
-                    break;
+                    planetaTerra(); // Teleports the player to the Level Three | Teleporta o player para a BarbieLand (O Fim)
+                break;
                 default:
                     gameOver(); // Its Game Over for the player || Fim do jogo para o player
                     break;

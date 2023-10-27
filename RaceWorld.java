@@ -70,8 +70,8 @@ public class RaceWorld extends MainWorld
      * That is: create the initial objects and add them to the world.
      */
     private void prepare() {
-        BarbieCar barbieCar = new BarbieCar();
-        addObject(barbieCar,432,631);
+        // BarbieCar barbieCar = new BarbieCar();
+        // addObject(barbieCar,432,631);
 
         KenCar kenCar = new KenCar();
         addObject(kenCar,802,631);
