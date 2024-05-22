@@ -24,7 +24,7 @@ public class Barbie extends Player
     
     /**
      * Constructor for the Barbie Class.
-     * Contrutor para a Classe da Barbie.
+     * Construtor para a Classe da Barbie.
      */
     public Barbie() {
         ImageSize = 30;
